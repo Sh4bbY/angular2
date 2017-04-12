@@ -1,10 +1,11 @@
 'use strict';
 
-var webpackConfig = require('./webpack.test');
+const webpackConfig = require('./webpack.test');
+const conf          = require('./conf');
 
 module.exports = function (config) {
-    var _config = {
-        basePath: '',
+    const _config = {
+        basePath: '.',
         
         frameworks: ['jasmine'],
         
@@ -16,22 +17,26 @@ module.exports = function (config) {
             './karma-test-shim.js': ['webpack', 'sourcemap']
         },
         
-        webpack: webpackConfig,
+        webpack          : webpackConfig,
+        webpackMiddleware: {stats: 'errors-only'},
+        webpackServer    : {noInfo: true},
         
-        webpackMiddleware: {
-            stats: 'errors-only'
+        coverageIstanbulReporter: {
+            reports                : ['html', 'text-summary'],
+            dir                    : conf.dir.fromRoot('coverage'),
+            fixWebpackSourcePaths  : true, // if using webpack and pre-loaders, work around webpack breaking the source path
+            skipFilesWithNoCoverage: true, // stop istanbul outputting messages like `File [${filename}] ignored, nothing could be mapped`
+            'report-config'        : {
+                html: {subdir: 'html'}
+            }
         },
         
-        webpackServer: {
-            noInfo: true
-        },
-        
-      //  reporters: ['kjhtml'],
-        port: 9876,
-        colors: true,
-        logLevel: config.LOG_INFO,
+        reporters: ['mocha', 'coverage-istanbul'],
+        port     : 9876,
+        colors   : true,
+        logLevel : config.LOG_INFO,
         autoWatch: false,
-        browsers: ['Chrome'],
+        browsers : ['PhantomJS'/*, 'Chrome'*/],
         singleRun: true
     };
     

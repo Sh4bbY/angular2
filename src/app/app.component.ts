@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import '../assets/css/styles.css';
+
 @Component({
-    selector: 'my-app',
+    selector   : 'my-app',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls  : ['./app.component.css'],
 })
-export class AppComponent { }
+export class AppComponent {
+}
