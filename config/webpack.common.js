@@ -1,13 +1,10 @@
-var webpack           = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+'use strict';
 
-var path  = require('path');
-var _root = path.resolve(__dirname, '..');
-function root(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return path.join.apply(path, [_root].concat(args));
-}
+const webpack           = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path              = require('path');
+const conf              = require('./conf');
 
 module.exports = {
     entry: {
@@ -27,26 +24,23 @@ module.exports = {
                 loaders: [
                     {
                         loader : 'awesome-typescript-loader',
-                        options: {configFileName: root('tsconfig.json')}
-                    }, 'angular2-template-loader'
+                        options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
+                    },
+                    'angular2-template-loader'
                 ]
-            },
-            {
+            }, {
                 test  : /\.html$/,
                 loader: 'html-loader'
-            },
-            {
+            }, {
                 test  : /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file-loader?name=assets/[name].[hash].[ext]'
-            },
-            {
+            }, {
                 test   : /\.css$/,
-                exclude: root('src', 'app'),
+                exclude: conf.dir.fromRoot('src/app'),
                 loader : ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap'})
-            },
-            {
+            }, {
                 test   : /\.css$/,
-                include: root('src', 'app'),
+                include: conf.dir.fromRoot('src/app'),
                 loader : 'raw-loader'
             }
         ]
@@ -55,9 +49,8 @@ module.exports = {
     plugins: [
         // Workaround for angular/angular#11580
         new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)@angular/,
-            root('./src'), // location of your src
+            /angular(\\|\/)core(\\|\/)@angular/, // The (\\|\/) piece accounts for path separators in *nix and Windows
+            conf.dir.fromRoot('src'), // location of your src
             {} // a map of your routes
         ),
         
