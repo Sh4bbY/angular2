@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --inline --progress --port 8080",
     "test": "karma start config/karma.conf.js",
+    "lint": "tslint -c tslint.json ./src",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "license": "MIT",
@@ -26,6 +27,7 @@
     "@types/node": "7.0.12",
     "angular2-template-loader": "0.6.2",
     "awesome-typescript-loader": "3.1.2",
+    "codelyzer": "2.1.1",
     "css-loader": "0.28.0",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.11.1",
@@ -45,6 +47,7 @@
     "raw-loader": "0.5.1",
     "rimraf": "2.6.1",
     "style-loader": "0.16.1",
+    "tslint": "4.5.1",
     "typescript": "2.1.5",
     "webpack": "2.3.3",
     "webpack-dev-server": "2.4.2",
