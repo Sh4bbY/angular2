@@ -1,4 +1,10 @@
 body {
-    background: #0147A7;
-    color: #fff;
+    background: #DDD;
+    color: #333;
+}
+
+.demo-toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

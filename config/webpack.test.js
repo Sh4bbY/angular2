@@ -35,6 +35,13 @@ module.exports = {
                 test  : /\.html$/,
                 loader: 'html-loader'
             }, {
+                test: /\.s[ac]ss$/,
+                use : [
+                    {loader: 'to-string-loader'}, // creates style nodes from JS strings
+                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS
+                    {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
+                ]
+            }, {
                 test  : /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'null-loader'
             }, {

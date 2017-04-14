@@ -8,30 +8,37 @@ import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'my-todolist',
     template: `<h1>Todo List!</h1>
-    <button (click)="addTodo()">add</button>
-    <button (click)="removeTodo()">remove</button>
-    <button (click)="updateTodo()">update</button>
+    <md-input-container>
+        <input mdInput [(ngModel)]="newTitle" placeholder="Title">
+    </md-input-container>
+    <button md-raised-button color="primary" (click)="addTodo()">add</button>
     <ul>
-        <li *ngFor="let item of todos | async">item: {{item.title}}</li>
+        <li *ngFor="let item of todos | async">
+            {{item.title}}
+            <button md-button color="warn" (click)="removeTodo(item)">remove</button>
+            <button md-button color="accent" (click)="updateTodo(item)">update</button>
+        </li>
     </ul>`,
 })
 export class TodoList {
     todos: Observable<Array<TodoItem>>;
+    newTitle: string;
     
     constructor(private store: Store<AppStore>) {
         this.todos = store.select('todos');
     }
     
-    addTodo() {
-        const todo = { title: 'test' };
+    addTodo(title: string) {
+        const todo = { title: this.newTitle };
         this.store.dispatch({ type: ADD_TODO, payload: todo });
     }
     
-    removeTodo(id: number) {
-        this.store.dispatch({ type: REMOVE_TODO, payload: { title: 'test' } });
+    removeTodo(item: TodoItem) {
+        this.store.dispatch({ type: REMOVE_TODO, payload: item });
     }
     
-    updateTodo() {
-        this.store.dispatch({ type: UPDATE_TODO, payload: { title: 'test23' } });
+    updateTodo(item: TodoItem) {
+        item.title = 'updated';
+        this.store.dispatch({ type: UPDATE_TODO, payload: item });
     }
 }

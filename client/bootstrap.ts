@@ -8,10 +8,13 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 import 'rxjs';
+import 'hammerjs';
+import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { AppModule } from './app.module';
+
 
 if (process.env.ENV === 'production') {
     enableProdMode();

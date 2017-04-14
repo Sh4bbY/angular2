@@ -28,6 +28,13 @@ module.exports = {
                     'angular2-template-loader'
                 ]
             }, {
+                test: /\.s[ac]ss$/,
+                use : [
+                    {loader: 'to-string-loader'}, // creates style nodes from JS strings
+                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS
+                    {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
+                ]
+            }, {
                 test  : /\.html$/,
                 loader: 'html-loader'
             }, {
