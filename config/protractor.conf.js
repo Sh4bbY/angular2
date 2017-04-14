@@ -6,8 +6,7 @@ const conf           = require('./conf');
 exports.config = {
     allScriptsTimeout: 11000,
     specs            : [
-        conf.dir.fromRoot('e2e/**/*.e2e.ts'),
-        conf.dir.fromRoot('src/**/*.e2e.ts')
+        conf.dir.fromRoot('test/e2e/**/*.e2e.ts')
     ],
     exclude          : [],
     capabilities     : {

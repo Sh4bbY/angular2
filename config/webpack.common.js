@@ -9,9 +9,7 @@ const conf              = require('./conf');
 
 module.exports = {
     entry: {
-        'polyfills': './src/polyfills.ts',
-        'vendor'   : './src/vendor.ts',
-        'app'      : './src/main.ts'
+        'app': './client/bootstrap.ts'
     },
     
     resolve: {
@@ -56,15 +54,15 @@ module.exports = {
         ),
         
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
+            name: ['app']
         }),
         
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'client/public/index.html'
         }),
         
         new CopyWebpackPlugin([{
-            from: 'src/assets',
+            from: 'client/public/assets',
             to  : 'assets'
         }])
     ]
