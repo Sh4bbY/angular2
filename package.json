@@ -1,11 +1,11 @@
 {
   "name": "client",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A webpack starter for Angular",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress --port 8080",
     "test": "karma start config/karma.conf.js",
-    "lint": "tslint -c tslint.json ./client/**/*.ts",
+    "lint": "tslint -c tslint.json ./src/**/*.ts",
     "e2e": "protractor ./config/protractor.conf.js",
     "build": "rimraf dist && webpack --config ./config/webpack.prod.js --progress --profile --bail"
   },
@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@ngrx/store-devtools": "3.2.4",
-    "@ngrx/store-log-monitor": "3.0.2",
     "@types/jasmine": "2.5.47",
     "@types/node": "7.0.12",
     "angular2-template-loader": "0.6.2",

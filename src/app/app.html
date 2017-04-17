@@ -15,6 +15,7 @@
 
 <md-sidenav-container>
     <md-sidenav mode="side" opened="true" #sidenav>
+        <my-usermenu></my-usermenu>
         <md-nav-list>
             <a *ngFor="let navItem of navItems" md-list-item [routerLink]="[navItem.route]">
                 <md-icon>{{navItem.icon}}</md-icon>

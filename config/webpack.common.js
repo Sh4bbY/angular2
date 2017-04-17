@@ -4,12 +4,11 @@ const webpack           = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path              = require('path');
 const conf              = require('./conf');
 
 module.exports = {
     entry: {
-        'app': './client/bootstrap.ts'
+        'app': './src/bootstrap.ts'
     },
     
     resolve: {
@@ -42,11 +41,11 @@ module.exports = {
                 loader: 'file-loader?name=assets/[name].[hash].[ext]'
             }, {
                 test   : /\.css$/,
-                exclude: conf.dir.fromRoot('src/app'),
+                exclude: conf.dir.fromRoot('app/app'),
                 loader : ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap'})
             }, {
                 test   : /\.css$/,
-                include: conf.dir.fromRoot('src/app'),
+                include: conf.dir.fromRoot('app/app'),
                 loader : 'raw-loader'
             }
         ]
@@ -56,7 +55,7 @@ module.exports = {
         // Workaround for angular/angular#11580
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/, // The (\\|\/) piece accounts for path separators in *nix and Windows
-            conf.dir.fromRoot('src'), // location of your src
+            conf.dir.fromRoot('src'), // location of your app
             {} // a map of your routes
         ),
         
@@ -65,11 +64,11 @@ module.exports = {
         }),
         
         new HtmlWebpackPlugin({
-            template: 'client/public/index.html'
+            template: 'public/index.html'
         }),
         
         new CopyWebpackPlugin([{
-            from: 'client/public/assets',
+            from: 'public/assets',
             to  : 'assets'
         }])
     ]

@@ -1,15 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { App } from '../../../client/src/app';
-import { MaterialModule } from '../../../client/material.module';
+import { App } from '../../../src/app/app';
+import { MaterialModule } from '../../../src/material.module';
+import { UserMenuComponent } from '../../../src/app/components/usermenu';
+import { StoreModule } from '@ngrx/store';
+import { user } from '../../../src/app/common/stores/user.store';
+import { AuthService } from '../../../src/app/common/services/auth.service';
 
 describe('App', () => {
     
     beforeEach(() => {
-        TestBed.configureTestingModule({declarations: [App], imports: [
-            RouterTestingModule,
-            MaterialModule
-        ]});
+        TestBed.configureTestingModule({
+            declarations: [ App, UserMenuComponent ],
+            providers   : [ AuthService ],
+            imports     : [
+                RouterTestingModule,
+                MaterialModule,
+                StoreModule.provideStore({ user }),
+            ],
+        });
     });
     
     it('should work', () => {

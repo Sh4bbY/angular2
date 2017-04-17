@@ -46,11 +46,11 @@ module.exports = {
                 loader: 'null-loader'
             }, {
                 test   : /\.css$/,
-                exclude: conf.dir.fromRoot('src/app'),
+                exclude: conf.dir.fromRoot('app/app'),
                 loader : 'null-loader'
             }, {
                 test   : /\.css$/,
-                include: conf.dir.fromRoot('src/app'),
+                include: conf.dir.fromRoot('app/app'),
                 loader : 'raw-loader'
             }
         ]
@@ -59,7 +59,7 @@ module.exports = {
     plugins: [
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,// The (\\|\/) piece accounts for path separators in *nix and Windows
-            conf.dir.fromRoot('src'), // location of your src
+            conf.dir.fromRoot('src'), // location of your app
             {} // a map of your routes
         )
     ]

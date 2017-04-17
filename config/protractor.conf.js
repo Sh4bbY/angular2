@@ -13,7 +13,7 @@ exports.config = {
         'browserName': 'chrome'
     },
     directConnect    : true,
-    baseUrl          : 'http://localhost:8080/',
+    baseUrl          : 'http://localhost:8000/',
     framework        : 'jasmine2',
     jasmineNodeOpts  : {
         showColors            : true,
@@ -23,7 +23,7 @@ exports.config = {
     },
     beforeLaunch     : () => {
         require('ts-node').register({
-            project: conf.dir.fromRoot('config/protractor.tsconfig.json')
+            project: conf.dir.fromRoot('tsconfig.json')
         });
     },
     onPrepare() {

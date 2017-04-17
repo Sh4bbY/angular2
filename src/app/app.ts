@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import '../public/assets/css/styles.css';
+import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
+import '../../public/assets/css/styles.css';
 import { MdSidenav } from '@angular/material';
 
+/* tslint:disable:no-access-missing-member */
 @Component({
     selector     : 'my-app',
     templateUrl  : './app.html',
