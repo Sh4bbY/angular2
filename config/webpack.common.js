@@ -8,8 +8,7 @@ const conf              = require('./conf');
 
 module.exports = {
     entry: {
-        'app'   : './src/bootstrap.ts',
-        'vendor': './src/vendor.ts'
+        'app': './src/bootstrap.ts'
     },
     
     resolve: {
@@ -38,11 +37,10 @@ module.exports = {
                 include: [conf.dir.fromRoot('src/app')]
             }, {
                 test   : /\.s[ac]ss$/,
-                use    : [
-                    {loader: 'style-loader'}, // creates style nodes
+                loader : ExtractTextPlugin.extract([
                     {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
-                ],
+                ]),
                 exclude: [conf.dir.fromRoot('src/app')],
                 include: [conf.dir.fromRoot('src/scss')]
             }, {
