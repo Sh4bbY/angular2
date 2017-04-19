@@ -8,7 +8,8 @@ const conf              = require('./conf');
 
 module.exports = {
     entry: {
-        'app': './src/bootstrap.ts'
+        'app'   : './src/bootstrap.ts',
+        'vendor': './src/vendor.ts'
     },
     
     resolve: {
@@ -27,12 +28,23 @@ module.exports = {
                     'angular2-template-loader'
                 ]
             }, {
-                test: /\.s[ac]ss$/,
-                use : [
-                    {loader: 'to-string-loader'}, // creates style nodes from JS strings
-                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS
+                test   : /\.s[ac]ss$/,
+                use    : [
+                    {loader: 'to-string-loader'}, // creates JS strings
+                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
-                ]
+                ],
+                exclude: [conf.dir.fromRoot('src/scss')],
+                include: [conf.dir.fromRoot('src/app')]
+            }, {
+                test   : /\.s[ac]ss$/,
+                use    : [
+                    {loader: 'style-loader'}, // creates style nodes
+                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
+                    {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
+                ],
+                exclude: [conf.dir.fromRoot('src/app')],
+                include: [conf.dir.fromRoot('src/scss')]
             }, {
                 test  : /\.html$/,
                 loader: 'html-loader'

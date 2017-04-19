@@ -8,99 +8,85 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <my-app>
     <style type="text/css">
         .pre-bootstrap {
-            position: fixed;
-            background-color: #333;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
-
-        .pre-bootstrap div.message {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            left: 0;
-        }
-
-        .pre-bootstrap div.message > div {
-            width: 600px;
-            margin: 0 auto;
+            position         : fixed;
+            background-color : #333;
+            top              : 0;
+            right            : 0;
+            bottom           : 0;
+            left             : 0;
+            display          : flex;
+            justify-content  : center;
+            align-items      : center;
+            padding          : 2rem;
         }
 
         .loading-text {
-            font-family: monospace;
-            text-align: center;
-            color: #FFFFFF;
-            font-size: 26px;
-            line-height: 55px;
-            margin-top: 30px;
+            font-family : monospace;
+            text-align  : center;
+            color       : #FFFFFF;
+            font-size   : 2rem;
+            line-height : 2rem;
         }
 
         .spinner-bounce-circle {
-            float: left;
-            width: 60px;
-            height: 60px;
-
-            position: relative;
-            margin: 0 30px;
+            float        : left;
+            width        : 5rem;
+            height       : 5rem;
+            position     : relative;
+            margin-right : 1rem;
         }
 
         .spinner-bounce-circle div {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: #CCC;
-            opacity: 0.6;
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            -webkit-animation: circlebounce 2.0s infinite ease-in-out;
-            animation: circlebounce 2.0s infinite ease-in-out;
+            width             : 100%;
+            height            : 100%;
+            border-radius     : 50%;
+            background-color  : #CCC;
+            opacity           : 0.6;
+            position          : absolute;
+            top               : 0;
+            left              : 0;
+            -webkit-animation : circlebounce 2.0s infinite ease-in-out;
+            animation         : circlebounce 2.0s infinite ease-in-out;
         }
 
         .spinner-bounce-circle div:nth-child(1) {
-            -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
+            -webkit-animation-delay : -1.0s;
+            animation-delay         : -1.0s;
         }
 
         @-webkit-keyframes circlebounce {
             0%, 100% {
-                -webkit-transform: scale(0.0)
+                -webkit-transform : scale(0.0)
             }
             50% {
-                -webkit-transform: scale(1.0)
+                -webkit-transform : scale(1.0)
             }
         }
 
         @keyframes circlebounce {
             0%, 100% {
-                transform: scale(0.0);
+                transform : scale(0.0);
             }
             50% {
-                transform: scale(1.0);
+                transform : scale(1.0);
             }
         }
-
     </style>
-
-    <div class="pre-bootstrap">
-        <div class="message">
-            <div>
-                <div class="spinner-bounce-circle">
-                    <div></div>
-                    <div></div>
-                </div>
-                <span class="loading-text">The application is Loading</span>
-            </div>
+</my-app>
+<div class="pre-bootstrap">
+    <div style="display: inline-block">
+        <div class="spinner-bounce-circle">
+            <div></div>
+            <div></div>
         </div>
     </div>
-</my-app>
+    <span class="loading-text">The application is Loading</span>
+</div>
 </body>
 </html>

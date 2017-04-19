@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { App } from '../../../src/app/app';
-import { MaterialModule } from '../../../src/material.module';
-import { UserMenuComponent } from '../../../src/app/components/usermenu';
 import { StoreModule } from '@ngrx/store';
-import { user } from '../../../src/app/common/stores/user.store';
-import { AuthService } from '../../../src/app/common/services/auth.service';
+import { App } from '../../../src/app/app.component';
+import { MaterialModule } from '../../../src/app/modules/material.module';
+import { UserMenuComponent } from '../../../src/app/components/user-menu';
+import { AuthService } from '../../../src/app/services/auth.service';
+import { rootReducer } from '../../../src/app/reducers/index';
+import 'rxjs/Rx';
 
 describe('App', () => {
     
@@ -16,7 +17,7 @@ describe('App', () => {
             imports     : [
                 RouterTestingModule,
                 MaterialModule,
-                StoreModule.provideStore({ user }),
+                StoreModule.provideStore(rootReducer),
             ],
         });
     });

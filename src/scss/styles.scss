@@ -1,0 +1,71 @@
+@import './themes/default-theme.scss';
+@import './util.scss';
+
+body {
+  font-family : Roboto, 'Helvetica Neue', sans-serif;
+
+  // Helps fonts on OSX looks more consistent with other systems
+  // Isn't currently in button styles due to performance concerns
+  * {
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+  }
+}
+
+my-app {
+  position              : absolute;
+  top                   : 0;
+  bottom                : 0;
+  left                  : 0;
+  right                 : 0;
+  display               : -webkit-box;
+  display               : -ms-flexbox;
+  display               : flex;
+  -webkit-box-orient    : vertical;
+  -webkit-box-direction : normal;
+  -ms-flex-direction    : column;
+  flex-direction        : column;
+}
+
+md-toolbar {
+  z-index : 1;
+  @include mat-elevation(6);
+
+  .app-title {
+    line-height : 40px;
+  }
+}
+
+md-sidenav-container {
+  height : 100%;
+}
+
+md-sidenav {
+  width        : 240px;
+  border-right : 1px solid #DDD;
+
+  md-nav-list md-icon {
+    margin-right : 10px;
+  }
+}
+
+.app-content {
+  max-width             : 800px;
+  align-items           : center;
+  justify-content       : center;
+  margin                : 50px auto;
+  display               : -webkit-box;
+  display               : -ms-flexbox;
+  display               : flex;
+  -webkit-box-orient    : vertical;
+  -webkit-box-direction : normal;
+  -ms-flex-direction    : column;
+  flex-direction        : column;
+}
+
+.mat-raised-button {
+  &:focus, &:hover {
+    @include mat-elevation(7);
+    @include mat-elevation-transition();
+  }
+}
