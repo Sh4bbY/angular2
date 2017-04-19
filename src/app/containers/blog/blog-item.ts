@@ -23,7 +23,7 @@ import { BlogService } from '../../services/blog.service';
     `,
 })
 export class BlogItemPage implements OnInit {
-    private formData: IBlogPost;
+    public formData: IBlogPost;
     private initialState: IBlogPost = {
         author     : {
             name : '',
@@ -50,15 +50,15 @@ export class BlogItemPage implements OnInit {
         });
     }
     
-    private publish() {
+    publish() {
     
     }
     
-    private save() {
+    save() {
         this.blogService.storeBlogPost(this.formData);
     }
     
-    private discard() {
+    discard() {
         this.formData = Object.assign({}, this.initialState);
     }
 }

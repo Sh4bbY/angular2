@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { Observable } from 'rxjs/Observable';
-import { RootState } from './reducers/index';
+import { IRootState } from './reducers/index';
 import { setWindowSize } from './reducers/app.reducer';
 import { Store } from '@ngrx/store';
 
@@ -23,7 +23,7 @@ export class App {
         { name: 'Create Blog Item', route: '/blog/item/1', icon: 'book' },
     ];
     
-    constructor(private store: Store<RootState>, private dialog: MdDialog) {
+    constructor(private store: Store<IRootState>, private dialog: MdDialog) {
         this.windowSize$ = store.select(s => s.app.windowSize);
         this.windowSize$.skip(1).subscribe(screen => {
             if (screen.width < 768) {

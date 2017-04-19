@@ -13,7 +13,7 @@ export class BlogService {
     constructor(private http: Http,
                 private snackbar: MdSnackBar,
                 private authService: AuthService) {
-        this.token     = sessionStorage.getItem('token');
+        this.token = sessionStorage.getItem('token');
     }
     
     fetchBlogPost() {
@@ -23,7 +23,11 @@ export class BlogService {
                     offset: 0,
                     limit : 20,
                 };
-                const params       = '?' + Object.keys(transmitData).map(key => key + '=' + transmitData[ key ]).join('&');
+                
+                const params = '?' + Object.keys(transmitData)
+                        .map(key => key + '=' + transmitData[ key ])
+                        .join('&');
+                
                 this.http.get('/api/blog/posts' + params, transmitData)
                     .map(res => res.json())
                     .subscribe(
@@ -36,7 +40,7 @@ export class BlogService {
     }
     
     storeBlogPost(blogItem: IBlogPost) {
-        let headers = new Headers();
+        const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
         this.authService.getUser().then(user => {
             const transmitData = {
@@ -56,7 +60,6 @@ export class BlogService {
                     () => console.log('complete handler'),
                 );
         });
-        
     }
     
     errorHandler(err: any) {

@@ -5,9 +5,9 @@ export const ADD_TODO    = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 
-const initialState: Array<ITodoItem> = [];
+const initialState: ITodoItem[] = [];
 
-export const todoReducer = (state: Array<ITodoItem> = initialState, { type, payload }: Action): Array<ITodoItem> => {
+export const todoReducer = (state: ITodoItem[] = initialState, { type, payload }: Action): ITodoItem[] => {
     switch (type) {
         case ADD_TODO:
             payload.id = state.length;
@@ -17,7 +17,7 @@ export const todoReducer = (state: Array<ITodoItem> = initialState, { type, payl
             return state.filter((item: any) => item.id !== payload.id);
         
         case UPDATE_TODO:
-            const item = state.find((item: any) => item.id === payload.id);
+            const item = state.find((tmpItem: any) => tmpItem.id === payload.id);
             item.title = payload.title;
             return state;
         

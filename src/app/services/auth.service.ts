@@ -7,7 +7,7 @@ import { ILoginForm } from '../interfaces/forms/login';
 import { IUser } from '../interfaces/user';
 import { IRegistrationForm } from '../interfaces/forms/registration';
 import { Store } from '@ngrx/store';
-import { RootState } from '../reducers/index';
+import { IRootState } from '../reducers/index';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import {
@@ -25,7 +25,7 @@ export class AuthService {
     private token: string;
     
     constructor(private http: Http,
-                private store: Store<RootState>,
+                private store: Store<IRootState>,
                 private router: Router,
                 private snackbar: MdSnackBar) {
         this.userStore = store.select('userReducer');

@@ -12,15 +12,15 @@ export function setWindowSize(): Action {
     };
 }
 
-export interface AppState {
-    windowSize: { width: number, height: number }
+export interface IAppState {
+    windowSize: { width: number; height: number };
 }
 
-const initialState: AppState = {
+const initialState: IAppState = {
     windowSize: { width: 0, height: 0 },
 };
 
-export const appReducer = (state = initialState, { type, payload }: Action): AppState => {
+export const appReducer = (state = initialState, { type, payload }: Action): IAppState => {
     switch (type) {
         case SET_WINDOW_SIZE:
             return Object.assign({}, state, { windowSize: payload });

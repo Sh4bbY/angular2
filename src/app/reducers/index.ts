@@ -24,7 +24,7 @@ import { storeLogger } from 'ngrx-store-logger';
  *
  * More: https://egghead.io/lessons/javascript-redux-implementing-combinereducers-from-scratch
  */
-import { ActionReducer, combineReducers } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
 /**
  * storeFreeze prevents state from being mutated. When mutation occurs, an
  * exception will be thrown. This is useful during development mode to
@@ -34,14 +34,14 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import { ITodoItem } from '../interfaces/todo-item';
 import { IUser } from '../interfaces/user';
-import { appReducer, AppState } from './app.reducer';
+import { appReducer, IAppState } from './app.reducer';
 import { userReducer } from './user.reducer';
 import { todoReducer } from './todo.reducer';
 
-export interface RootState {
-    app: AppState
-    todo: Array<ITodoItem>,
-    user: IUser
+export interface IRootState {
+    app: IAppState;
+    todo: ITodoItem[];
+    user: IUser;
 }
 
 const reducers = {

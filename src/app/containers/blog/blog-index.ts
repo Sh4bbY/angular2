@@ -38,8 +38,10 @@ import { BlogService } from '../../services/blog.service';
                 <md-card-header>
                     <div md-card-avatar class="example-header-image"></div>
                     <md-card-title>{{post.title}}</md-card-title>
-                    <md-card-subtitle>created by <a routerLink="/user/profile/{{post.author.id}}">{{post.author.name}}</a> at
-                        {{post.createdAt | date:'fullDate'}}
+                    <md-card-subtitle>
+                        created by
+                        <a routerLink="/user/profile/{{post.author.id}}">{{post.author.name}}</a>
+                        at {{post.createdAt | date:'fullDate'}}
                     </md-card-subtitle>
                 </md-card-header>
                 <hr/>

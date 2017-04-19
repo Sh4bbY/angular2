@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ADD_TODO, REMOVE_TODO, UPDATE_TODO } from '../reducers/todo.reducer';
-import { RootState } from '../reducers/index';
+import { IRootState } from '../reducers/index';
 import { ITodoItem } from '../interfaces/todo-item';
 import { Observable } from 'rxjs/Observable';
 
@@ -27,18 +27,18 @@ import { Observable } from 'rxjs/Observable';
                 <button md-raised-button color="primary">add</button>
             </form>
             <ul style="min-width: 300px">
-                <li my-todoitem *ngFor="let todo of todos | async"
-                    [item]="todo"
-                    (remove)="removeItem($event)"
-                    (update)="updateItem($event)"></li>
+                <my-todo-item *ngFor="let todo of todos | async"
+                              [item]="todo"
+                              (remove)="removeItem($event)"
+                              (update)="updateItem($event)"></my-todo-item>
             </ul>
         </div>`,
 })
 export class TodoListComponent implements OnInit {
-    todos: Observable<Array<ITodoItem>>;
+    todos: Observable<ITodoItem[]>;
     @ViewChild('newTodoInput') newTodoInput: ElementRef;
     
-    constructor(private store: Store<RootState>) {
+    constructor(private store: Store<IRootState>) {
     }
     
     ngOnInit() {

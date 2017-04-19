@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { ITodoItem } from '../interfaces/todo-item';
 
 @Component({
-    selector: '[my-todoitem]',
+    selector: 'my-todo-item',
     template: `
         <md-checkbox [(ngModel)]="checked"></md-checkbox>
         <span *ngIf="!isEditMode" style="width: 200px; display: inline-block;">{{item.title}}</span>

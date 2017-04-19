@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RootState } from '../reducers/index';
+import { IRootState } from '../reducers/index';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -51,7 +51,7 @@ export class UserMenuComponent implements OnInit {
     isAuthenticated: boolean = false;
     name: string;
     
-    constructor(private store: Store<RootState>, private authService: AuthService) {
+    constructor(private store: Store<IRootState>, private authService: AuthService) {
     }
     
     ngOnInit() {
