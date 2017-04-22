@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { Observable } from 'rxjs/Observable';

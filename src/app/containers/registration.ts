@@ -37,7 +37,7 @@ import { Router } from '@angular/router';
                 </md-input-container>
                 <md-input-container class="full-width">
                     <input mdInput name="password_check" [(ngModel)]="model.password_check" type="password"
-                           placeholder="Password">
+                           placeholder="Password repetition">
                 </md-input-container>
                 <button md-raised-button type="submit" color="primary" class="full-width">Register</button>
                 <p>

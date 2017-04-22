@@ -8,7 +8,7 @@
     <script>
         if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js');
-                // TODO: enable in production
+                // TODO: enable in production builds
                 // navigator.serviceWorker.register('/precache-service-worker.js');
         }
     </script>
@@ -86,15 +86,15 @@
             }
         }
     </style>
-</my-app>
-<div class="pre-bootstrap">
-    <div style="display: inline-block">
-        <div class="spinner-bounce-circle">
-            <div></div>
-            <div></div>
+    <div class="pre-bootstrap">
+        <div style="display: inline-block">
+            <div class="spinner-bounce-circle">
+                <div></div>
+                <div></div>
+            </div>
         </div>
+        <span class="loading-text">The application is Loading</span>
     </div>
-    <span class="loading-text">The application is Loading</span>
-</div>
+</my-app>
 </body>
 </html>
