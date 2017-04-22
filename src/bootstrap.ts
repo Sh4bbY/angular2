@@ -10,6 +10,8 @@ import '@angular/router';
 import 'rxjs';
 import 'hammerjs';
 
+import 'sw-toolbox';
+
 // prevents error message about md-theme is not loaded with webpack-dev-server
 if (process.env.NODE_ENV === 'development') {
     require('@angular/material/prebuilt-themes/indigo-pink.css');

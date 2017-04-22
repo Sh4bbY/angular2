@@ -1,10 +1,11 @@
 'use strict';
 
-const webpack           = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const conf              = require('./conf');
+const webpack                 = require('webpack');
+const HtmlWebpackPlugin       = require('html-webpack-plugin');
+const CopyWebpackPlugin       = require('copy-webpack-plugin');
+const ExtractTextPlugin       = require('extract-text-webpack-plugin');
+
+const conf = require('./conf');
 
 module.exports = {
     entry: {
@@ -68,22 +69,18 @@ module.exports = {
             conf.dir.fromRoot('src'), // location of your app
             {} // a map of your routes
         ),
-        
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app']
         }),
-        
         new HtmlWebpackPlugin({
             template: 'public/index.html'
         }),
-        
         new CopyWebpackPlugin([{
-            from: 'public/assets',
-            to  : 'assets'
+            from: 'public',
+            to  : ''
         }]),
-        
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-        })
+        }),
     ]
 };
