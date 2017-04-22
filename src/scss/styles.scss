@@ -38,13 +38,19 @@ md-toolbar {
   }
 }
 
-md-sidenav-container {
-  height : 100%;
+.mat-sidenav-container {
+  height           : 100%;
+  background-color : #EEE;
 }
 
-md-sidenav {
-  width        : 240px;
-  border-right : 1px solid #DDD;
+.mat-sidenav {
+  width            : 240px;
+  border-right     : 1px solid #DDD;
+  background-color : #FFF;
+
+  a:hover md-icon {
+    color : mat-color($candy-app-primary, A200);
+  }
 
   md-nav-list md-icon {
     margin-right : 10px;
@@ -52,6 +58,7 @@ md-sidenav {
 }
 
 .app-content {
+  padding               : 15px;
   max-width             : 800px;
   align-items           : center;
   justify-content       : center;
@@ -80,6 +87,7 @@ pre {
   background-color : #2B2B2B;
   padding          : 10px;
   color            : #e0e5eb;
+  overflow         : scroll;
   code {
     font-family : 'Source Code Pro', monospace;
     font-size   : 1rem;

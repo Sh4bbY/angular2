@@ -7,3 +7,9 @@ angular2 client application
 - `npm e2e` make sure to have selenium and browser drivers installed before executing end-to-end test. install it with `$(npm bin)/webdriver-manager update`
 - `npm lint`
 - `npm build`
+
+
+#### Todo's
+- [ ] 
+- [ ] increase test coverage
+- [ ] checkout [wallaby ci tool](https://wallabyjs.com/)
