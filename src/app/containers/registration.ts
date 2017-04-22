@@ -43,7 +43,9 @@ import { Router } from '@angular/router';
                 <p>
                     Already have an account?
                 </p>
-                <button md-raised-button type="button" color="accent" routerLink="/login" class="full-width">Login</button>
+                <button md-raised-button type="button" color="accent" routerLink="/login" class="full-width">
+                    Login
+                </button>
             </form>
         </div>`,
 })

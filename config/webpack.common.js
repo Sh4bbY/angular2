@@ -1,9 +1,9 @@
 'use strict';
 
-const webpack                 = require('webpack');
-const HtmlWebpackPlugin       = require('html-webpack-plugin');
-const CopyWebpackPlugin       = require('copy-webpack-plugin');
-const ExtractTextPlugin       = require('extract-text-webpack-plugin');
+const webpack           = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const conf = require('./conf');
 
@@ -54,10 +54,6 @@ module.exports = {
                 test   : /\.css$/,
                 exclude: conf.dir.fromRoot('app/app'),
                 loader : ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap'})
-            }, {
-                test   : /\.css$/,
-                include: conf.dir.fromRoot('app/app'),
-                loader : 'raw-loader'
             }
         ]
     },
@@ -81,6 +77,6 @@ module.exports = {
         }]),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-        }),
+        })
     ]
 };

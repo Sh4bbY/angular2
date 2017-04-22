@@ -4,6 +4,7 @@
 
 body {
   font-family : Roboto, 'Helvetica Neue', sans-serif;
+  font-size   : 1rem;
 
   // Helps fonts on OSX looks more consistent with other systems
   // Isn't currently in button styles due to performance concerns
@@ -62,6 +63,10 @@ md-sidenav {
   -webkit-box-direction : normal;
   -ms-flex-direction    : column;
   flex-direction        : column;
+
+  & > * {
+    width : 100%;
+  }
 }
 
 .mat-raised-button {
@@ -69,4 +74,15 @@ md-sidenav {
     @include mat-elevation(7);
     @include mat-elevation-transition();
   }
+}
+
+pre {
+  background-color : #2B2B2B;
+  padding          : 10px;
+  color            : #e0e5eb;
+  code {
+    font-family : 'Source Code Pro', monospace;
+    font-size   : 1rem;
+  }
+  @include mat-elevation(3);
 }

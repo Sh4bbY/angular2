@@ -39,8 +39,6 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": [false, "Component"],
     "directive-class-suffix": [false, "Directive"],
-    "directive-selector": [true, "attribute", ["dir"], "camelCase"],
-    "component-selector": [true, "element", ["my"], "kebab-case"],
     "templates-use-public": true,
     "no-access-missing-member": true,
     "invoke-injectable": true

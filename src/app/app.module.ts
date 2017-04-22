@@ -18,7 +18,7 @@ import { LoginComponent } from './containers/login';
 import { RegistrationComponent } from './containers/registration';
 import { BlogIndexPage } from './containers/blog/blog-index';
 import { BlogItemPage } from './containers/blog/blog-item';
-import { UserProfilePage } from './containers/user-profile';
+import { UserProfilePage } from './containers/user/profile';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
 import { TodoListComponent } from './components/todo-list';
@@ -27,6 +27,7 @@ import { BlogService } from './services/blog.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
+import { MarkdownPipe } from './pipes/markdown.pipe';
 
 @NgModule({
     imports        : [
@@ -55,6 +56,7 @@ import { AuthGuard } from './guards/auth.guard';
         UserProfilePage,
         BlogItemPage,
         BlogIndexPage,
+        MarkdownPipe,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
