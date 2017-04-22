@@ -48,7 +48,7 @@ module.exports = {
                 loader: 'html-loader'
             }, {
                 test  : /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file-loader?name=assets/[name].[hash].[ext]'
+                loader: 'file-loader?username=assets/[username].[hash].[ext]'
             }, {
                 test   : /\.css$/,
                 exclude: conf.dir.fromRoot('app/app'),
@@ -80,6 +80,10 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: 'public/assets',
             to  : 'assets'
-        }])
+        }]),
+        
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        })
     ]
 };

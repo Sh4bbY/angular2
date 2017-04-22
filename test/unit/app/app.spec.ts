@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { App } from '../../../src/app/app.component';
 import { MaterialModule } from '../../../src/app/modules/material.module';
 import { UserMenuComponent } from '../../../src/app/components/user-menu';
-import { AuthService } from '../../../src/app/services/auth.service';
+import { AuthenticationService } from '../../../src/app/services/authentication.service';
 import { rootReducer } from '../../../src/app/reducers/index';
 import 'rxjs/Rx';
 
@@ -13,7 +13,7 @@ describe('App', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [ App, UserMenuComponent ],
-            providers   : [ AuthService ],
+            providers   : [ AuthenticationService ],
             imports     : [
                 RouterTestingModule,
                 MaterialModule,

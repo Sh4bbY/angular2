@@ -14,8 +14,8 @@ import { routes }   from './app.routes';
 import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
 import { HomePage } from './containers/home';
-import { LoginPage } from './containers/login';
-import { RegisterPage } from './containers/register';
+import { LoginComponent } from './containers/login';
+import { RegistrationComponent } from './containers/registration';
 import { BlogIndexPage } from './containers/blog/blog-index';
 import { BlogItemPage } from './containers/blog/blog-item';
 import { UserProfilePage } from './containers/user-profile';
@@ -24,7 +24,9 @@ import { UserMenuComponent } from './components/user-menu';
 import { TodoListComponent } from './components/todo-list';
 import { TodoItemComponent } from './components/todo-item';
 import { BlogService } from './services/blog.service';
-import { AuthService } from './services/auth.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
     imports        : [
@@ -40,14 +42,16 @@ import { AuthService } from './services/auth.service';
         RouterModule.forRoot(routes),
     ],
     providers      : [
-        AuthService,
+        AuthenticationService,
+        UserService,
         BlogService,
+        AuthGuard,
     ],
     declarations   : [
         App,
         HomePage,
-        LoginPage,
-        RegisterPage,
+        LoginComponent,
+        RegistrationComponent,
         UserProfilePage,
         BlogItemPage,
         BlogIndexPage,

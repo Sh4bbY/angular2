@@ -34,6 +34,7 @@ import { BlogService } from '../../services/blog.service';
     template: `
         <div class="blog">
             <h1>Blog Index!</h1>
+            <button md-raised-button routerLink="/blog/item/1">Create Post</button><br/><br/>
             <md-card *ngFor="let post of blogPosts">
                 <md-card-header>
                     <div md-card-avatar class="example-header-image"></div>
@@ -72,7 +73,7 @@ export class BlogIndexPage implements OnInit {
     }
     
     ngOnInit() {
-        this.blogService.fetchBlogPost().then((blogPosts: any[]) => {
+        this.blogService.fetchBlogPosts().subscribe((blogPosts: any[]) => {
             this.blogPosts = blogPosts;
         });
     }

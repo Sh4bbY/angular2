@@ -1,11 +1,9 @@
 import { Action } from '@ngrx/store';
 import { IUser } from '../interfaces/user';
 
-export const USER_REGISTRATION = 'USER_REGISTRATION';
-export const LOGIN_PENDING     = 'LOGIN_PENDING';
-export const LOGIN_SUCCESS     = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR       = 'LOGIN_ERROR';
-export const LOGOUT            = 'LOGOUT';
+export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
+export const LOGIN_SUCCESS        = 'LOGIN_SUCCESS';
+export const LOGOUT_SUCCESS       = 'LOGOUT_SUCCESS';
 
 const initialState: IUser = {
     id             : '',
@@ -19,27 +17,29 @@ const initialState: IUser = {
 
 export const userReducer = (state: IUser = initialState, { type, payload }: Action): IUser => {
     switch (type) {
-        case USER_REGISTRATION:
-            return payload;
-        
-        case LOGIN_PENDING:
-            return state;
         
         case LOGIN_SUCCESS:
-            const userData = {
+            const userLoginData = {
                 id             : payload.id,
                 name           : payload.name,
                 email          : payload.email,
                 createdAt      : payload.createdAt,
                 isAuthenticated: true,
             };
-            return Object.assign({}, state, userData);
+            return Object.assign({}, state, userLoginData);
         
-        case LOGOUT:
+        case REGISTRATION_SUCCESS:
+            const userRegistrationData = {
+                id             : payload.id,
+                name           : payload.name,
+                email          : payload.email,
+                createdAt      : payload.createdAt,
+                isAuthenticated: true,
+            };
+            return Object.assign({}, state, userRegistrationData);
+        
+        case LOGOUT_SUCCESS:
             return Object.assign({}, initialState);
-        
-        case LOGIN_ERROR:
-            return state;
         
         default:
             return state;

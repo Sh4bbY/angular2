@@ -14,7 +14,7 @@ module.exports = webpackMerge(commonConfig, {
     output: {
         path         : conf.dir.build,
         publicPath   : '/',
-        filename     : '[name].[hash].js',
+        filename     : '[username].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
     },
     
@@ -26,7 +26,7 @@ module.exports = webpackMerge(commonConfig, {
                 keep_fnames: true
             }
         }),
-        new ExtractTextPlugin('[name].[hash].css'),
+        new ExtractTextPlugin('[username].[hash].css'),
         new webpack.DefinePlugin({
             'process.env': {
                 'ENV': JSON.stringify(ENV)

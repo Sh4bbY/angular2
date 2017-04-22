@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
-import { AuthService } from '../services/auth.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
     selector: 'my-usermenu',
@@ -29,7 +29,7 @@ import { AuthService } from '../services/auth.service';
     template: `
         <div class="usermenu" *ngIf="isAuthenticated">
             <div class="user-image"></div>
-            <span class="user-name">{{name}}</span>
+            <span class="user-name">{{username}}</span>
             <span class="fill"></span>
             <button md-icon-button [mdMenuTriggerFor]="menu">
                 <md-icon>more_vert</md-icon>
@@ -49,19 +49,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserMenuComponent implements OnInit {
     isAuthenticated: boolean = false;
-    name: string;
+    username: string;
     
-    constructor(private store: Store<IRootState>, private authService: AuthService) {
+    constructor(private store: Store<IRootState>, private authenticationService: AuthenticationService) {
     }
     
     ngOnInit() {
         this.store.select('user').subscribe((user: any) => {
             this.isAuthenticated = user.isAuthenticated;
-            this.name            = user.name;
+            this.username        = user.name;
         });
     }
     
     onLogoutClick() {
-        this.authService.logout();
+        this.authenticationService.logout().subscribe();
     }
 }

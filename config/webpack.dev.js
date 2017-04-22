@@ -11,12 +11,12 @@ module.exports = webpackMerge(commonConfig, {
     output: {
         path         : conf.dir.build,
         publicPath   : 'http://localhost:8000/',
-        filename     : '[name].js',
+        filename     : '[username].js',
         chunkFilename: '[id].chunk.js'
     },
     
     plugins: [
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[username].css')
     ],
     
     devServer: {

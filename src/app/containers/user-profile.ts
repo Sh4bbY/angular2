@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
-    selector: 'my-user-settings',
+    selector: 'my-user-profile',
     styles  : [ `` ],
     template: `
         <h1>USER SETTINGS!</h1>
@@ -30,12 +30,12 @@ import { AuthService } from '../services/auth.service';
 export class UserProfilePage implements OnInit {
     formData: any;
     
-    constructor(private authService: AuthService) {
+    constructor(private userService: UserService) {
         this.formData = { id: '', name: '' };
     }
     
     ngOnInit() {
-        this.authService.getUser().then(user => {
+        this.userService.getUser().subscribe(user => {
             this.formData.id        = user.id;
             this.formData.name      = user.name;
             this.formData.email     = user.email;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/forms/blog-post';
-import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { BlogService } from '../../services/blog.service';
     styles  : [ `` ],
     template: `
         <h1>Blog Item!</h1>
-        <form>
+        <form style="display:flex;flex-direction: column">
             <md-input-container class="full-width">
                 <input mdInput name="title" [(ngModel)]="formData.title" placeholder="Title">
             </md-input-container>
@@ -38,12 +38,12 @@ export class BlogItemPage implements OnInit {
         comments   : [],
     };
     
-    constructor(private authService: AuthService, private blogService: BlogService) {
+    constructor(private userService: UserService, private blogService: BlogService) {
         this.formData = Object.assign({}, this.initialState);
     }
     
     ngOnInit() {
-        this.authService.getUser().then(user => {
+        this.userService.getUser().subscribe(user => {
             this.formData.author.id    = user.id;
             this.formData.author.name  = user.name;
             this.formData.author.email = user.email;

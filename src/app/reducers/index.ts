@@ -51,6 +51,9 @@ const reducers = {
 };
 
 let actionReducer;
+
+console.log(process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'development') {
     actionReducer = compose(storeFreeze, storeLogger(), combineReducers)(reducers);
 } else {

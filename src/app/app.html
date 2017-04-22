@@ -4,11 +4,16 @@
     </button>
     <span class="app-title">My Application</span>
     <span class="fill-space"></span>
-    <button md-button routerLink="/login" title="Login">
+    <button *ngIf="!(isAuthenticated$ | async)" md-button routerLink="/login" title="Login">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         <span>Sign-up</span>
     </button>
+    <button *ngIf="isAuthenticated$ | async" md-button (click)="logout()" title="Logout">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <span>Logout</span>
+    </button>
 </md-toolbar>
+
 
 <md-sidenav-container>
     <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">

@@ -10,8 +10,9 @@ const initialState: ITodoItem[] = [];
 export const todoReducer = (state: ITodoItem[] = initialState, { type, payload }: Action): ITodoItem[] => {
     switch (type) {
         case ADD_TODO:
-            payload.id = state.length;
-            return [ ...state, payload ];
+            console.log(payload);
+            const addItem: ITodoItem = { id: state.length, title: payload.title };
+            return [ ...state, addItem ];
         
         case REMOVE_TODO:
             return state.filter((item: any) => item.id !== payload.id);
