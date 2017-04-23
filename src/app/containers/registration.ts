@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
-import { IRegistrationForm } from '../interfaces/forms/registration';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { fade } from '../animations/fade.animation';
 
 @Component({
     selector: 'my-registration',
+    animations: [ fade ],
+    host: { '[@fade]': '' },
     styles  : [ `
         .register-page {
             padding    : 15px;

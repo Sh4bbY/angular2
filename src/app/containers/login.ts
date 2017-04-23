@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { fade } from '../animations/fade.animation';
 
 @Component({
-    selector: 'my-login',
-    styles  : [ `
+    selector  : 'my-login',
+    animations: [ fade ],
+    host: { '[@fade]': '' },
+    styles    : [ `
         .login-page {
-            position: relative;
+            position   : relative;
             max-width  : 400px;
             padding    : 15px;
             text-align : center;
@@ -16,7 +19,7 @@ import { UserService } from '../services/user.service';
         .full-width {
             width : 100%;
         }` ],
-    template: `
+    template  : `
         <div class="login-page">
             <div *ngIf="loading" class="loading-spinner">
                 <div class="spinner-bounce-circle">

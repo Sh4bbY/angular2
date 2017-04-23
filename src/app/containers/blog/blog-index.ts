@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/forms/blog-post';
 import { BlogService } from '../../services/blog.service';
+import { fade } from '../../animations/fade.animation';
 
 @Component({
     selector: 'my-blog-index',
+    animations: [ fade ],
+    host: { '[@fade]': '' },
     styles  : [ require('to-string-loader!highlightjs/styles/darkula.css'), `
 
         .example-header-image {
