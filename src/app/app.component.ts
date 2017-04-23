@@ -18,7 +18,7 @@ export class App implements OnInit {
     isAuthenticated$: Observable<boolean>;
     
     navMode  = 'side';
-    navOpen  = true;
+    navOpen  = false;
     navItems = [
         { name: 'Home', route: '/', icon: 'home' },
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
@@ -29,6 +29,13 @@ export class App implements OnInit {
                 private dialog: MdDialog,
                 private authenticationService: AuthenticationService) {
         this.windowSize$ = store.select(s => s.app.windowSize);
+        
+        Observable.fromEvent(window, 'load').subscribe(() => this.store.dispatch(setWindowSize()));
+        Observable.fromEvent(window, 'resize')
+            .debounceTime(200)
+            .subscribe(() => this.store.dispatch(setWindowSize()));
+        
+        this.isAuthenticated$ = store.select(s => s.user.isAuthenticated);
         this.windowSize$.skip(1).subscribe(screen => {
             if (screen.width < 768) {
                 this.navMode = 'over';
@@ -39,12 +46,6 @@ export class App implements OnInit {
                 this.sideNav.open();
             }
         });
-        Observable.fromEvent(window, 'resize')
-            .debounceTime(200) // Don't trigger continuous actions
-            .subscribe(() => {
-                this.store.dispatch(setWindowSize());
-            });
-        this.isAuthenticated$ = store.select(s => s.user.isAuthenticated);
     }
     
     ngOnInit() {
