@@ -4,7 +4,7 @@ import { BlogService } from '../../services/blog.service';
 import { fade } from '../../animations/fade.animation';
 
 @Component({
-    selector: 'my-blog-index',
+    selector: 'my-blog',
     animations: [ fade ],
     host: { '[@fade]': '' },
     styles  : [ require('to-string-loader!highlightjs/styles/darkula.css'), `
@@ -25,7 +25,7 @@ import { fade } from '../../animations/fade.animation';
     ` ],
     template: `
         <h1>Blog Index!</h1>
-        <button md-raised-button routerLink="/blog/item/1">Create Post</button>
+        <button md-raised-button routerLink="/admin/blog/">Blog Administration</button>
         <br/><br/>
         <md-card *ngFor="let post of posts">
             <md-card-header>
@@ -55,7 +55,7 @@ import { fade } from '../../animations/fade.animation';
         </md-card>
     `,
 })
-export class BlogIndexPage implements OnInit {
+export class BlogComponent implements OnInit {
     posts: IBlogPost[];
     
     constructor(private blogService: BlogService) {

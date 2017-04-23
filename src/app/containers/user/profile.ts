@@ -27,7 +27,7 @@ import { UserService } from '../../services/user.service';
     
     `,
 })
-export class UserProfilePage implements OnInit {
+export class UserProfileComponent implements OnInit {
     formData: any;
     
     constructor(private userService: UserService) {

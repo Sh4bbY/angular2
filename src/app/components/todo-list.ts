@@ -6,7 +6,7 @@ import { ITodoItem } from '../interfaces/todo-item';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-    selector: 'my-todolist',
+    selector: 'my-todo-list',
     styles  : [ `
         ul {
             padding    : 0;

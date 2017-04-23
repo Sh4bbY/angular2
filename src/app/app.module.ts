@@ -1,5 +1,5 @@
 // angular
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -13,12 +13,13 @@ import { App } from './app.component';
 import { routes }   from './app.routes';
 import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
-import { HomePage } from './containers/home';
+import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { RegistrationComponent } from './containers/registration';
-import { BlogIndexPage } from './containers/blog/blog-index';
-import { BlogItemPage } from './containers/blog/blog-item';
-import { UserProfilePage } from './containers/user/profile';
+import { BlogComponent } from './containers/blog/blog';
+import { BlogAdminComponent } from './containers/blog/blog.admin';
+import { PostAdminComponent } from './containers/blog/post.admin';
+import { UserProfileComponent } from './containers/user/profile';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
 import { TodoListComponent } from './components/todo-list';
@@ -43,6 +44,7 @@ import { MarkdownPipe } from './pipes/markdown.pipe';
         RouterModule.forRoot(routes),
     ],
     providers      : [
+        { provide: LOCALE_ID, useValue: 'de-DE' }, //replace "en-US" with your locale
         AuthenticationService,
         UserService,
         BlogService,
@@ -50,12 +52,13 @@ import { MarkdownPipe } from './pipes/markdown.pipe';
     ],
     declarations   : [
         App,
-        HomePage,
+        HomeComponent,
         LoginComponent,
         RegistrationComponent,
-        UserProfilePage,
-        BlogItemPage,
-        BlogIndexPage,
+        UserProfileComponent,
+        BlogComponent,
+        BlogAdminComponent,
+        PostAdminComponent,
         MarkdownPipe,
         TodoListComponent,
         TodoItemComponent,

@@ -32,7 +32,26 @@ export class BlogService {
             .map(res => res.json());
     }
     
-    storeBlogPost(blogItem: IBlogPost) {
+    fetchBlogPost(id: string) {
+        return this.http.get('/api/blog/post/' + id)
+            .map(res => res.json());
+    }
+    
+    
+    updateBlogPost(id: string, body: IBlogPost) {
+        return this.http.put('/api/blog/post/' + id, body)
+            .map(res => res.json());
+    }
+    
+    deleteBlogPost(id: string) {
+        const headers = new Headers({ Authorization: 'Bearer ' + this.authenticationService.token });
+        const options = new RequestOptions({ headers: headers });
+        
+        return this.http.delete('/api/blog/post/' + id, options)
+            .map(res => res.json());
+    }
+    
+    createBlogPost(blogItem: IBlogPost) {
         const headers = new Headers({ Authorization: 'Bearer ' + this.authenticationService.token });
         const options = new RequestOptions({ headers: headers });
         

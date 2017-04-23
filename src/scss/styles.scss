@@ -94,3 +94,7 @@ pre {
   }
   @include mat-elevation(3);
 }
+
+textarea {
+  resize: vertical;
+}
