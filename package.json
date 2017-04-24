@@ -4,6 +4,7 @@
   "description": "A webpack starter for Angular",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress",
+    "server": "node ./node_modules/node-server/index.js",
     "test": "karma start config/karma.conf.js",
     "lint": "tslint -c tslint.json './src/**/*.ts'",
     "e2e": "protractor ./config/protractor.conf.js",
@@ -31,7 +32,8 @@
     "ngrx-store-logger": "0.1.7",
     "rxjs": "5.3.0",
     "sw-toolbox": "^3.6.0",
-    "zone.js": "0.8.5"
+    "zone.js": "0.8.5",
+    "node-server": "git://github.com/sh4bby/node.git"
   },
   "devDependencies": {
     "@ngrx/store-devtools": "3.2.4",

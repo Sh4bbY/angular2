@@ -1,12 +1,19 @@
 # angular2
 angular2 client application
 
+### Getting started
+after you cloned the repository you need to install all necessary
+dependencies by `npm install` or `yarn install`.
+to start the backend server enter `npm run server` and then
+spin up the client application using `npm start`.
+
 #### scripts
 - `npm start`
+- `npm run server`
 - `npm test`
-- `npm e2e` make sure to have selenium and browser drivers installed before executing end-to-end test. install it with `$(npm bin)/webdriver-manager update`
-- `npm lint`
-- `npm build`
+- `npm run e2e` make sure to have selenium and browser drivers installed before executing end-to-end test. install it with `$(npm bin)/webdriver-manager update`
+- `npm run lint`
+- `npm run build`
 
 
 #### Todo's
