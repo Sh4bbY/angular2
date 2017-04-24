@@ -20,7 +20,7 @@ const initialState: IAppState = {
     windowSize: { width: 0, height: 0 },
 };
 
-export const appReducer = (state = initialState, { type, payload }: Action): IAppState => {
+export const appReducer = (state: IAppState = initialState, { type, payload }: Action): IAppState => {
     switch (type) {
         case SET_WINDOW_SIZE:
             return Object.assign({}, state, { windowSize: payload });
