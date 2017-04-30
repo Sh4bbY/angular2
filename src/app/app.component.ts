@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { Observable } from 'rxjs/Observable';
@@ -21,8 +21,9 @@ export class App implements OnInit {
     navOpen  = false;
     navItems = [
         { name: 'Home', route: '/', icon: 'home' },
-        { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Blog', route: '/blog', icon: 'description' },
+        { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
+        { name: 'Chat', route: '/chat', icon: 'chat' },
     ];
     
     constructor(private store: Store<IRootState>,

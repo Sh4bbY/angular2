@@ -27,15 +27,20 @@ my-app {
   -webkit-box-direction : normal;
   -ms-flex-direction    : column;
   flex-direction        : column;
+
+  & > md-toolbar {
+    z-index : 1;
+    @include mat-elevation(6);
+
+    .app-title {
+      line-height : 40px;
+    }
+  }
 }
 
-md-toolbar {
-  z-index : 1;
-  @include mat-elevation(6);
-
-  .app-title {
-    line-height : 40px;
-  }
+md-card.mat-card > md-toolbar.mat-toolbar {
+  margin : -24px 24px 24px -24px;
+  width  : calc(100% + 48px);
 }
 
 .mat-sidenav-container {
@@ -96,5 +101,5 @@ pre {
 }
 
 textarea {
-  resize: vertical;
+  resize : vertical;
 }

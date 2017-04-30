@@ -8,6 +8,7 @@ import { UserProfileComponent } from './containers/user/profile';
 import { PostAdminComponent } from './containers/blog/post.admin';
 import { BlogComponent } from './containers/blog/blog';
 import { BlogAdminComponent } from './containers/blog/blog.admin';
+import { ChatComponent } from './components/chat';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,8 +16,10 @@ export const routes: Routes = [
     { path: 'register', component: RegistrationComponent },
     { path: 'user/profile', component: UserProfileComponent },
     { path: 'blog', component: BlogComponent },
-    { path: 'todo', component: TodoListComponent },
     { path: 'admin/blog', component: BlogAdminComponent, canActivate: [ AuthGuard ] },
     { path: 'admin/blog/post/create', component: PostAdminComponent, canActivate: [ AuthGuard ] },
     { path: 'admin/blog/post/:id', component: PostAdminComponent, canActivate: [ AuthGuard ] },
+    
+    { path: 'todo', component: TodoListComponent },
+    { path: 'chat', component: ChatComponent },
 ];

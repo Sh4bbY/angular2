@@ -29,6 +29,9 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { MarkdownPipe } from './pipes/markdown.pipe';
+import { WebSocketService } from './services/websocket.service';
+import { ChatService } from './services/chat.service';
+import { ChatComponent } from './components/chat';
 
 @NgModule({
     imports        : [
@@ -48,6 +51,8 @@ import { MarkdownPipe } from './pipes/markdown.pipe';
         AuthenticationService,
         UserService,
         BlogService,
+        WebSocketService,
+        ChatService,
         AuthGuard,
     ],
     declarations   : [
@@ -64,6 +69,7 @@ import { MarkdownPipe } from './pipes/markdown.pipe';
         TodoItemComponent,
         UserMenuComponent,
         FeedbackDialogComponent,
+        ChatComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],
