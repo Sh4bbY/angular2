@@ -1,9 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO, UPDATE_TODO } from '../reducers/todo.reducer';
 import { IRootState } from '../reducers/index';
 import { ITodoItem } from '../interfaces/todo-item';
-import { Observable } from 'rxjs/Observable';
+import { TodoService } from '../services/todo.service';
+import { ITodoList } from '../interfaces/todo-list';
 
 @Component({
     selector: 'my-todo-list',
@@ -12,33 +12,50 @@ import { Observable } from 'rxjs/Observable';
             padding    : 0;
             list-style : none;
         }
+
+        md-card-header {
+            display        : flex;
+            flex-direction : row;
+            align-items    : center;
+        }
+
+        md-card {
+            margin-bottom : 15px;
+        }
     ` ],
     template: `
-        <h1>Todo List!</h1>
-        <form (ngSubmit)="addItem()">
-            <md-input-container>
-                <input #newTodoInput name="title" mdInput placeholder="Todo-Text">
-            </md-input-container>
-            <button md-raised-button color="primary">add</button>
-        </form>
-        <ul style="min-width: 300px">
-            <li *ngFor="let todo of todos | async">
-                <my-todo-item [item]="todo"
-                              (remove)="removeItem($event)"
-                              (update)="updateItem($event)"
-                              (toggle)="toggleItem($event)"></my-todo-item>
-            </li>
-        </ul>`,
+        <md-card>
+            <md-card-header>
+                <h2 class="fill-space">{{list.title}}</h2>
+                <button md-mini-fab (click)="removeList()" title="remove todo-list">
+                    <md-icon>delete</md-icon>
+                </button>
+            </md-card-header>
+            <form (ngSubmit)="addItem()">
+                <md-input-container>
+                    <input #newTodoInput name="title" mdInput placeholder="Todo-Text">
+                </md-input-container>
+                <button md-raised-button color="primary">add</button>
+            </form>
+            <ul style="min-width: 300px">
+                <li *ngFor="let item of list.items">
+                    <my-todo-item [item]="item"
+                                  (remove)="removeItem($event)"
+                                  (update)="updateItem($event)"
+                                  (toggle)="toggleItem($event)"></my-todo-item>
+                </li>
+            </ul>
+        </md-card>`,
 })
-export class TodoListComponent implements OnInit {
-    todos: Observable<ITodoItem[]>;
+export class TodoListComponent {
+    @Input() list: ITodoList;
     @ViewChild('newTodoInput') newTodoInput: ElementRef;
     
-    constructor(private store: Store<IRootState>) {
+    constructor(private store: Store<IRootState>, private todoService: TodoService) {
     }
     
-    ngOnInit() {
-        this.todos = this.store.select('todo');
+    removeList() {
+        this.todoService.removeList(this.list._id).subscribe();
     }
     
     addItem() {
@@ -46,20 +63,22 @@ export class TodoListComponent implements OnInit {
         if (newTodoInputEl.value.length <= 0) {
             return;
         }
-        this.store.dispatch({ type: ADD_TODO, payload: { text: newTodoInputEl.value } });
+        
+        this.todoService.addItem(this.list._id, newTodoInputEl.value).subscribe();
+        
         newTodoInputEl.value = '';
         newTodoInputEl.focus();
     }
     
     updateItem(item: ITodoItem) {
-        this.store.dispatch({ type: UPDATE_TODO, payload: item });
+        this.todoService.updateItem(this.list._id, item._id, item.text).subscribe();
     }
     
     removeItem(item: ITodoItem) {
-        this.store.dispatch({ type: REMOVE_TODO, payload: item });
+        this.todoService.removeItem(this.list._id, item._id).subscribe();
     }
     
     toggleItem(item: ITodoItem) {
-        this.store.dispatch({ type: TOGGLE_TODO, payload: item });
+        this.todoService.toggleItem(this.list._id, item._id).subscribe();
     }
 }

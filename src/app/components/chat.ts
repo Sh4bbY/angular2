@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService, IMessage } from '../services/chat.service';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/user';
@@ -23,12 +23,14 @@ import { IUser } from '../interfaces/user';
             <md-toolbar color="primary">
                 Chat
             </md-toolbar>
-            <md-card-content>
-                <p *ngFor="let msg of messages">
-                    <span>[{{msg.createdAt | date:'mediumTime'}}]</span>
-                    <span>{{msg.author}}: </span>
-                    <span>{{msg.message}}</span>
-                </p>
+            <md-card-content #messagesFrame>
+                <div #messagesContainer>
+                    <p *ngFor="let msg of messages">
+                        <span>[{{msg.createdAt | date:'mediumTime'}}]</span>
+                        <span>{{msg.author}}: </span>
+                        <span>{{msg.message}}</span>
+                    </p>
+                </div>
             </md-card-content>
             <md-card-actions>
                 <form #sendMsg="ngForm" (ngSubmit)="onSubmit()">
@@ -44,13 +46,20 @@ import { IUser } from '../interfaces/user';
         </md-card>
     `,
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
     public messages: IMessage[] = [];
     public model: any           = {};
+    @ViewChild('messagesFrame') messagesFrame: ElementRef;
+    @ViewChild('messagesContainer') messagesContainer: ElementRef;
     
     constructor(private chatService: ChatService, private userService: UserService) {
         chatService.messages.subscribe((msg: IMessage) => {
             this.messages.push(msg);
+            const frameEl     = this.messagesFrame.nativeElement;
+            const containerEl = this.messagesContainer.nativeElement;
+            setTimeout(() => frameEl.scrollTop = containerEl.offsetHeight, 0);
+            console.log(this.messages);
+            
         });
         userService.getUser().subscribe((user: IUser) => {
             this.model.author = user.name;
@@ -61,6 +70,10 @@ export class ChatComponent {
         this.model.createdAt = new Date();
         this.chatService.messages.next(this.model);
         this.model.message = '';
+    }
+    
+    ngOnInit() {
+        console.log(this.messages);
     }
 }
 

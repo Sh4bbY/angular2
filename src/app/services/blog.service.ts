@@ -15,20 +15,19 @@ export class BlogService {
                 private snackbar: MdSnackBar,
                 private userService: UserService,
                 private authenticationService: AuthenticationService) {
-        this.token = sessionStorage.getItem('token');
     }
     
     fetchBlogPosts() {
-        const transmitData = {
+        const options = {
             offset: 0,
-            limit : 20,
+            limit : 10,
         };
         
-        const params = '?' + Object.keys(transmitData)
-                .map(key => key + '=' + transmitData[ key ])
+        const params = '?' + Object.keys(options)
+                .map(key => key + '=' + options[ key ])
                 .join('&');
         
-        return this.http.get('/api/blog/posts' + params, transmitData)
+        return this.http.get('/api/blog/posts' + params)
             .map(res => res.json());
     }
     

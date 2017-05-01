@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs/Observable';
 import { IRootState } from '../reducers/index';
 import { Store } from '@ngrx/store';
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
     selector: 'my-feedback-dialog',
@@ -64,7 +65,8 @@ export class FeedbackDialogComponent implements OnInit {
     
     constructor(public dialogRef: MdDialogRef<FeedbackDialogComponent>,
                 private userService: UserService,
-                private store: Store<IRootState>) {
+                private store: Store<IRootState>,
+                private feedbackService: FeedbackService) {
         this.model            = {};
         this.model.author     = {};
         this.model.message    = '';
@@ -84,7 +86,10 @@ export class FeedbackDialogComponent implements OnInit {
     }
     
     onSubmitClick() {
-        this.dialogRef.close();
-        console.log(this.model);
+        this.feedbackService.create(this.model)
+            .subscribe(
+                data => this.dialogRef.close(),
+                err => console.error('ERROR ', err),
+            );
     }
 }

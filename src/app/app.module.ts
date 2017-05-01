@@ -31,6 +31,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { WebSocketService } from './services/websocket.service';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat';
+import { FeedbackService } from './services/feedback.service';
+import { TodoService } from './services/todo.service';
+import { TodoComponent } from './components/todo';
 
 @NgModule({
     imports        : [
@@ -52,6 +55,8 @@ import { ChatComponent } from './components/chat';
         BlogService,
         WebSocketService,
         ChatService,
+        FeedbackService,
+        TodoService,
         AuthGuard,
     ],
     declarations   : [
@@ -63,6 +68,7 @@ import { ChatComponent } from './components/chat';
         BlogComponent,
         BlogAdminComponent,
         PostAdminComponent,
+        TodoComponent,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,

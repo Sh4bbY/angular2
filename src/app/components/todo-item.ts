@@ -48,9 +48,8 @@ export class TodoItemComponent {
     }
     
     onUpdateClick() {
-        const item: ITodoItem = Object.assign({}, this.item, {
-            text: this.updateInput.nativeElement.value,
-        });
+        const updatedText     = this.updateInput.nativeElement.value;
+        const item: ITodoItem = Object.assign({}, this.item, { text: updatedText });
         this.update.emit(item);
     }
 }
