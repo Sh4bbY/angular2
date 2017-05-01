@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import * as Rx from 'rxjs/Rx';
+import { Subject, Observable, Observer } from 'rxjs/Rx';
 import * as io from 'socket.io-client';
 
 
 @Injectable()
 export class WebSocketService {
-    private socket: Rx.Subject<MessageEvent>;
+    private socket: Subject<MessageEvent>;
     
-    public connect(url: string): Rx.Subject<MessageEvent> {
+    public connect(url: string): Subject<MessageEvent> {
         if (!this.socket) {
             this.socket = this.create(url);
         }
@@ -15,9 +15,9 @@ export class WebSocketService {
         return this.socket;
     }
     
-    private create(url: string): Rx.Subject<MessageEvent> {
+    private create(url: string): Subject<MessageEvent> {
         const socket     = io(url, { path: '/api/chat' });
-        const observable = Rx.Observable.create((obs: Rx.Observer<MessageEvent>) => {
+        const observable = Observable.create((obs: Observer<MessageEvent>) => {
             socket.on('message', obs.next.bind(obs));
             socket.on('error', obs.error.bind(obs));
             socket.on('disconnect', obs.complete.bind(obs));
@@ -31,6 +31,6 @@ export class WebSocketService {
             },
         };
         
-        return Rx.Subject.create(observer, observable);
+        return Subject.create(observer, observable);
     }
 }

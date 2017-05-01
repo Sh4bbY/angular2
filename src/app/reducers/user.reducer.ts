@@ -7,7 +7,7 @@ export const LOGOUT_SUCCESS       = 'LOGOUT_SUCCESS';
 
 const initialState: IUser = {
     id             : '',
-    name           : '',
+    name           : 'Guest',
     email          : '',
     isAuthenticated: false,
     isVerified     : false,

@@ -38,7 +38,7 @@ import { fade } from '../../animations/fade.animation';
                 </md-card-subtitle>
             </md-card-header>
             <hr/>
-            <md-card-content [innerHTML]="post.body | markdown">
+            <md-card-content [innerHTML]="post.body">
             </md-card-content>
             <md-card-actions>
                 <button md-button>

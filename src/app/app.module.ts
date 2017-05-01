@@ -28,7 +28,6 @@ import { BlogService } from './services/blog.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
-import { MarkdownPipe } from './pipes/markdown.pipe';
 import { WebSocketService } from './services/websocket.service';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat';
@@ -64,7 +63,6 @@ import { ChatComponent } from './components/chat';
         BlogComponent,
         BlogAdminComponent,
         PostAdminComponent,
-        MarkdownPipe,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
