@@ -1,4 +1,5 @@
 export interface IBlogPost {
+    _id: string;
     author: {
         name: string;
         email: string;

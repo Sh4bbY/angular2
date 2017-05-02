@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'my-blog-item',
@@ -30,7 +30,8 @@ export class PostAdminComponent implements OnInit {
     
     constructor(private userService: UserService,
                 private blogService: BlogService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private router: Router) {
         this.model = {};
     }
     
@@ -55,9 +56,11 @@ export class PostAdminComponent implements OnInit {
     
     save() {
         if (this.id) {
-            this.blogService.updateBlogPost(this.id, this.model);
+            this.blogService.updateBlogPost(this.id, this.model)
+                .subscribe(() => this.router.navigateByUrl('/admin/blog'));
         }
-        this.blogService.createBlogPost(this.model);
+        this.blogService.createBlogPost(this.model)
+            .subscribe(() => this.router.navigateByUrl('/admin/blog'));
     }
     
     discard() {

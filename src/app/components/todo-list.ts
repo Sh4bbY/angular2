@@ -1,6 +1,4 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { IRootState } from '../reducers/index';
 import { ITodoItem } from '../interfaces/todo-item';
 import { TodoService } from '../services/todo.service';
 import { ITodoList } from '../interfaces/todo-list';
@@ -51,7 +49,7 @@ export class TodoListComponent {
     @Input() list: ITodoList;
     @ViewChild('newTodoInput') newTodoInput: ElementRef;
     
-    constructor(private store: Store<IRootState>, private todoService: TodoService) {
+    constructor(private todoService: TodoService) {
     }
     
     removeList() {

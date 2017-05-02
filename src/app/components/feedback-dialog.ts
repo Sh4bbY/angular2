@@ -87,9 +87,6 @@ export class FeedbackDialogComponent implements OnInit {
     
     onSubmitClick() {
         this.feedbackService.create(this.model)
-            .subscribe(
-                data => this.dialogRef.close(),
-                err => console.error('ERROR ', err),
-            );
+            .subscribe(() => this.dialogRef.close());
     }
 }

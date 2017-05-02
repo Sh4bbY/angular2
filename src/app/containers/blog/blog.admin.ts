@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/forms/blog-post';
 import { BlogService } from '../../services/blog.service';
 import { fade } from '../../animations/fade.animation';
+import { Observable } from 'rxjs/Observable';
+import { IRootState } from '../../reducers/index';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector  : 'my-admin-blog-index',
@@ -26,7 +29,7 @@ import { fade } from '../../animations/fade.animation';
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let post of posts">
+            <tr *ngFor="let post of posts | async">
                 <td>{{post.title}}</td>
                 <td class="author">{{post.author.name}}</td>
                 <td class="created-at">{{post.createdAt | date:'short'}}</td>
@@ -47,23 +50,17 @@ import { fade } from '../../animations/fade.animation';
         </table>
     `,
 })
-export class BlogAdminComponent implements OnInit {
-    posts: IBlogPost[];
+export class BlogAdminComponent {
+    posts: Observable<IBlogPost[]>;
     
-    constructor(private blogService: BlogService) {
-        this.posts = [];
-    }
-    
-    ngOnInit() {
-        this.blogService.fetchBlogPosts().subscribe((posts: any[]) => {
-            this.posts = posts;
-        });
+    constructor(private store: Store<IRootState>, private blogService: BlogService) {
+        this.posts = store.select(s => s.blog);
+        this.blogService.fetchBlogPosts().subscribe();
     }
     
     onDeleteClick(id: string) {
         this.blogService.deleteBlogPost(id).subscribe(result => {
-            console.log(`item ${id} deleted`, result);
-            this.posts = this.posts.filter((post:any) => post._id !== id);
+            this.posts = this.posts.filter((post: any) => post._id !== id);
         });
     }
 }

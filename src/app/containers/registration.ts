@@ -67,9 +67,6 @@ export class RegistrationComponent implements OnInit {
     
     submit() {
         this.userService.register(this.model)
-            .subscribe(
-                () => console.log('registration success'),
-                err => console.log('registration error', err),
-                () => this.router.navigateByUrl('/'));
+            .subscribe(() => this.router.navigateByUrl('/'));
     }
 }

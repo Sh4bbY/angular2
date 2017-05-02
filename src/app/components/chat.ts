@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ChatService, IMessage } from '../services/chat.service';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/user';
@@ -46,7 +46,7 @@ import { IUser } from '../interfaces/user';
         </md-card>
     `,
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
     public messages: IMessage[] = [];
     public model: any           = {};
     @ViewChild('messagesFrame') messagesFrame: ElementRef;
@@ -58,8 +58,6 @@ export class ChatComponent implements OnInit {
             const frameEl     = this.messagesFrame.nativeElement;
             const containerEl = this.messagesContainer.nativeElement;
             setTimeout(() => frameEl.scrollTop = containerEl.offsetHeight, 0);
-            console.log(this.messages);
-            
         });
         userService.getUser().subscribe((user: IUser) => {
             this.model.author = user.name;
@@ -70,10 +68,6 @@ export class ChatComponent implements OnInit {
         this.model.createdAt = new Date();
         this.chatService.messages.next(this.model);
         this.model.message = '';
-    }
-    
-    ngOnInit() {
-        console.log(this.messages);
     }
 }
 

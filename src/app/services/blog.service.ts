@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { MdSnackBar } from '@angular/material';
 import { IBlogPost } from '../interfaces/forms/blog-post';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
+import { IRootState } from '../reducers/index';
+import { Store } from '@ngrx/store';
+import { CREATE_BLOG_POST, DELETE_BLOG_POST, LOAD_BLOG_POSTS, UPDATE_BLOG_POST } from '../reducers/blog.reducer';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class BlogService {
-    private token: string;
     
     constructor(private http: Http,
-                private snackbar: MdSnackBar,
+                private store: Store<IRootState>,
                 private userService: UserService,
                 private authenticationService: AuthenticationService) {
     }
@@ -28,7 +31,7 @@ export class BlogService {
                 .join('&');
         
         return this.http.get('/api/blog/posts' + params)
-            .map(res => res.json());
+            .map(res => this.store.dispatch({ type: LOAD_BLOG_POSTS, payload: res.json() }));
     }
     
     fetchBlogPost(id: string) {
@@ -37,9 +40,9 @@ export class BlogService {
     }
     
     
-    updateBlogPost(id: string, body: IBlogPost) {
-        return this.http.put('/api/blog/post/' + id, body)
-            .map(res => res.json());
+    updateBlogPost(id: string, post: IBlogPost) {
+        return this.http.put('/api/blog/post/' + id, post)
+            .map(res => this.store.dispatch({ type: UPDATE_BLOG_POST, payload: res.json() }));
     }
     
     deleteBlogPost(id: string) {
@@ -47,34 +50,27 @@ export class BlogService {
         const options = new RequestOptions({ headers: headers });
         
         return this.http.delete('/api/blog/post/' + id, options)
-            .map(res => res.json());
+            .map(res => this.store.dispatch({ type: DELETE_BLOG_POST, payload: res.json() }));
     }
     
     createBlogPost(blogItem: IBlogPost) {
-        const headers = new Headers({ Authorization: 'Bearer ' + this.authenticationService.token });
-        const options = new RequestOptions({ headers: headers });
+        const headers      = new Headers({ Authorization: 'Bearer ' + this.authenticationService.token });
+        const options      = new RequestOptions({ headers: headers });
+        const transmitData = {
+            author: {},
+            title : blogItem.title,
+            body  : blogItem.body,
+        };
         
-        this.userService.getUser().subscribe(user => {
-            const transmitData = {
-                author: {
+        return this.userService.getUser()
+            .flatMap(user => {
+                transmitData.author = {
                     id   : user.id,
                     name : user.name,
                     email: user.email,
-                },
-                title : blogItem.title,
-                body  : blogItem.body,
-            };
-            this.http.post('/api/blog/post', transmitData, options)
-                .map(res => res.json())
-                .subscribe(
-                    data => console.log('success handler', data),
-                    this.errorHandler.bind(this),
-                    () => console.log('complete handler'),
-                );
-        });
-    }
-    
-    errorHandler(err: any) {
-        this.snackbar.open(err._body);
+                };
+                return this.http.post('/api/blog/post', transmitData, options);
+            })
+            .map(res => this.store.dispatch({ type: CREATE_BLOG_POST, payload: res.json() }));
     }
 }

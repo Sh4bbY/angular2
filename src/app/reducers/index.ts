@@ -37,17 +37,21 @@ import { IUser } from '../interfaces/user';
 import { appReducer, IAppState } from './app.reducer';
 import { userReducer } from './user.reducer';
 import { todoReducer } from './todo.reducer';
+import { blogReducer } from './blog.reducer';
+import { IBlogPost } from '../interfaces/forms/blog-post';
 
 export interface IRootState {
     app: IAppState;
     todo: ITodoItem[];
     user: IUser;
+    blog: IBlogPost[];
 }
 
 const reducers = {
     app : appReducer,
     todo: todoReducer,
     user: userReducer,
+    blog: blogReducer,
 };
 
 let actionReducer;

@@ -7,7 +7,6 @@ import { IFeedbackForm } from '../interfaces/forms/feedback';
 
 @Injectable()
 export class FeedbackService {
-    private token: string;
     
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
@@ -43,13 +42,8 @@ export class FeedbackService {
             topic  : feedback.topic,
             message: feedback.message,
         };
-        console.log(body);
         
         return this.http.post('/api/feedback', body, options)
             .map(res => res.json());
-    }
-    
-    errorHandler(err: any) {
-        console.log('ERR', err);
     }
 }
