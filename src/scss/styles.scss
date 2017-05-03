@@ -48,6 +48,10 @@ md-card.mat-card > md-toolbar.mat-toolbar {
   background-color : #EEE;
 }
 
+div.mat-sidenav-content {
+  overflow-x : hidden;
+}
+
 .mat-sidenav {
   width            : 240px;
   border-right     : 1px solid #DDD;
@@ -63,21 +67,14 @@ md-card.mat-card > md-toolbar.mat-toolbar {
 }
 
 .app-content {
-  padding               : 15px;
-  max-width             : 800px;
-  align-items           : center;
-  justify-content       : center;
-  margin                : 50px auto;
-  display               : -webkit-box;
-  display               : -ms-flexbox;
-  display               : flex;
-  -webkit-box-orient    : vertical;
-  -webkit-box-direction : normal;
-  -ms-flex-direction    : column;
-  flex-direction        : column;
+  position  : relative;
+  padding   : 15px;
+  max-width : 800px;
+  margin    : 50px auto;
 
   & > * {
-    width : 100%;
+    width    : 100%;
+    position : absolute;
   }
 }
 

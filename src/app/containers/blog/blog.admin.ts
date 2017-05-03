@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
-import { fade } from '../../animations/fade.animation';
+import { routeAnim } from '../../animations/fade.animation';
 import { Observable } from 'rxjs/Observable';
 import { IRootState } from '../../reducers/index';
 import { Store } from '@ngrx/store';
 
 @Component({
     selector  : 'my-admin-blog-index',
-    animations: [ fade ],
-    host      : { '[@fade]': '' },
+    animations: [ routeAnim ],
+    host      : { '[@routeAnim]': '' },
     styles    : [ `
         .actions, .created-at, .author {
             text-align : right;

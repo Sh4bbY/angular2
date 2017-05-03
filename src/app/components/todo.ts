@@ -4,9 +4,12 @@ import { IRootState } from '../reducers/index';
 import { Observable } from 'rxjs/Observable';
 import { TodoService } from '../services/todo.service';
 import { ITodoList } from '../interfaces/todo-list';
+import { routeAnim } from '../animations/fade.animation';
 
 @Component({
     selector: 'my-todo',
+    animations: [ routeAnim ],
+    host      : { '[@routeAnim]': '' },
     styles  : [ `
         ul {
             padding    : 0;

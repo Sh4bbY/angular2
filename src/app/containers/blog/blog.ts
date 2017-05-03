@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
-import { fade } from '../../animations/fade.animation';
+import { routeAnim } from '../../animations/fade.animation';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../../reducers/index';
 
 @Component({
     selector  : 'my-blog',
-    animations: [ fade ],
-    host      : { '[@fade]': '' },
+    animations: [ routeAnim ],
+    host      : { '[@routeAnim]': '' },
     styles    : [ require('to-string-loader!highlightjs/styles/darkula.css'), `
 
         .example-header-image {

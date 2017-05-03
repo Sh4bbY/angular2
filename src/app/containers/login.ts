@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { fade } from '../animations/fade.animation';
+import { routeAnim } from '../animations/fade.animation';
 
 @Component({
     selector  : 'my-login',
-    animations: [ fade ],
-    host: { '[@fade]': '' },
+    animations: [ routeAnim ],
+    host      : { '[@routeAnim]': '' },
     styles    : [ `
         .login-page {
             position   : relative;

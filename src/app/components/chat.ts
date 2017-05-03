@@ -6,11 +6,13 @@ import { IChatMessage } from '../interfaces/chat-message';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
-import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
+import { routeAnim } from '../animations/fade.animation';
 
 @Component({
     selector: 'my-chat',
+    animations: [ routeAnim ],
+    host      : { '[@routeAnim]': '' },
     styles  : [ `
         md-card-content {
             max-height : 200px;
