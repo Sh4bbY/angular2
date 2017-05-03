@@ -38,13 +38,16 @@ import { appReducer, IAppState } from './app.reducer';
 import { userReducer } from './user.reducer';
 import { todoReducer } from './todo.reducer';
 import { blogReducer } from './blog.reducer';
-import { IBlogPost } from '../interfaces/forms/blog-post';
+import { IBlogPost } from '../interfaces/blog-post';
+import { IChatMessage } from '../interfaces/chat-message';
+import { chatReducer } from './chat.reducer';
 
 export interface IRootState {
     app: IAppState;
     todo: ITodoItem[];
     user: IUser;
     blog: IBlogPost[];
+    chat: IChatMessage[];
 }
 
 const reducers = {
@@ -52,6 +55,7 @@ const reducers = {
     todo: todoReducer,
     user: userReducer,
     blog: blogReducer,
+    chat: chatReducer,
 };
 
 let actionReducer;

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IBlogPost } from '../interfaces/forms/blog-post';
+import { IBlogPost } from '../interfaces/blog-post';
 
 export const LOAD_BLOG_POSTS  = 'LOAD_BLOG_POSTS';
 export const CREATE_BLOG_POST = 'CREATE_BLOG_POST';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { IBlogPost } from '../interfaces/forms/blog-post';
+import { IBlogPost } from '../interfaces/blog-post';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
 import { IRootState } from '../reducers/index';

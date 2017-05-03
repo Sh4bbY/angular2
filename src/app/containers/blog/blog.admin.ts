@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBlogPost } from '../../interfaces/forms/blog-post';
+import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
 import { fade } from '../../animations/fade.animation';
 import { Observable } from 'rxjs/Observable';

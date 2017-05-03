@@ -1,7 +1,13 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ChatService, IMessage } from '../services/chat.service';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChatService } from '../services/chat.service';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/user';
+import { IChatMessage } from '../interfaces/chat-message';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../reducers/index';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'my-chat',
@@ -23,9 +29,9 @@ import { IUser } from '../interfaces/user';
             <md-toolbar color="primary">
                 Chat
             </md-toolbar>
-            <md-card-content #messagesFrame>
-                <div #messagesContainer>
-                    <p *ngFor="let msg of messages">
+            <md-card-content #msgFrame>
+                <div #msgContainer>
+                    <p *ngFor="let msg of messages | async">
                         <span>[{{msg.createdAt | date:'mediumTime'}}]</span>
                         <span>{{msg.author}}: </span>
                         <span>{{msg.message}}</span>
@@ -46,22 +52,36 @@ import { IUser } from '../interfaces/user';
         </md-card>
     `,
 })
-export class ChatComponent {
-    public messages: IMessage[] = [];
-    public model: any           = {};
-    @ViewChild('messagesFrame') messagesFrame: ElementRef;
-    @ViewChild('messagesContainer') messagesContainer: ElementRef;
+export class ChatComponent implements OnInit, OnDestroy {
+    private ngUnsubscribe: Subject<void> = new Subject<void>();
+            model: any;
+            messages: Observable<IChatMessage[]>;
     
-    constructor(private chatService: ChatService, private userService: UserService) {
-        chatService.messages.subscribe((msg: IMessage) => {
-            this.messages.push(msg);
-            const frameEl     = this.messagesFrame.nativeElement;
-            const containerEl = this.messagesContainer.nativeElement;
-            setTimeout(() => frameEl.scrollTop = containerEl.offsetHeight, 0);
-        });
-        userService.getUser().subscribe((user: IUser) => {
-            this.model.author = user.name;
-        });
+    @ViewChild('msgFrame') msgFrame: ElementRef;
+    @ViewChild('msgContainer') msgContainer: ElementRef;
+    
+    constructor(private store: Store<IRootState>, private chatService: ChatService, private userService: UserService) {
+        this.model    = {};
+        this.messages = store.select(s => s.chat);
+    }
+    
+    ngOnInit() {
+        this.chatService.connect().takeUntil(this.ngUnsubscribe)
+            .subscribe(() => {
+                const frameEl     = this.msgFrame.nativeElement;
+                const containerEl = this.msgContainer.nativeElement;
+                setTimeout(() => frameEl.scrollTop = containerEl.offsetHeight, 0);
+            });
+        
+        this.userService.getUser().takeUntil(this.ngUnsubscribe)
+            .subscribe((user: IUser) => {
+                this.model.author = user.name;
+            });
+    }
+    
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
     }
     
     public onSubmit() {
