@@ -42,8 +42,7 @@ module.exports = {
                     {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
                 ]),
-                exclude: [conf.dir.fromRoot('src/app')],
-                include: [conf.dir.fromRoot('src/scss')]
+                exclude: [conf.dir.fromRoot('src/app')]
             }, {
                 test  : /\.html$/,
                 loader: 'html-loader'

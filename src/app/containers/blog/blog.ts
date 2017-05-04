@@ -10,8 +10,7 @@ import { IRootState } from '../../reducers/index';
     selector  : 'my-blog',
     animations: [ routeAnim ],
     host      : { '[@routeAnim]': '' },
-    styles    : [ require('to-string-loader!highlightjs/styles/darkula.css'), `
-
+    styles    : [ `
         .example-header-image {
             background-image : url('/assets/img/user.png');
             background-size  : cover;
@@ -24,39 +23,41 @@ import { IRootState } from '../../reducers/index';
 
         md-card {
             margin-bottom : 20px;
-            font-size: 16px;
+            font-size     : 16px;
         }
     ` ],
     template  : `
         <h1>Blog Index!</h1>
         <button md-raised-button routerLink="/admin/blog/">Blog Administration</button>
         <br/><br/>
-        <md-card *ngFor="let post of posts | async">
-            <md-card-header>
-                <div md-card-avatar class="example-header-image"></div>
-                <md-card-title>{{post.title}}</md-card-title>
-                <md-card-subtitle>
-                    created by
-                    <a routerLink="/user/profile/{{post.author.id}}">{{post.author.name}}</a>
-                    at {{post.createdAt | date:'fullDate'}}
-                </md-card-subtitle>
-            </md-card-header>
-            <hr/>
-            <md-card-content [innerHTML]="post.body">
-            </md-card-content>
-            <md-card-actions>
-                <button md-button>
-                    <md-icon>thumb_up</md-icon>
-                    LIKE
-                </button>
-                <button md-button>
-                    <md-icon>share</md-icon>
-                    SHARE
-                </button>
-                <span class="fill-space"></span>
-                <span>0 likes - 0 comments</span>
-            </md-card-actions>
-        </md-card>
+        <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <md-card *ngFor="let post of posts | async">
+                <md-card-header>
+                    <div md-card-avatar class="example-header-image"></div>
+                    <md-card-title>{{post.title}}</md-card-title>
+                    <md-card-subtitle>
+                        created by
+                        <a routerLink="/user/profile/{{post.author.id}}">{{post.author.name}}</a>
+                        at {{post.createdAt | date:'fullDate'}}
+                    </md-card-subtitle>
+                </md-card-header>
+                <hr/>
+                <md-card-content [innerHTML]="post.body">
+                </md-card-content>
+                <md-card-actions>
+                    <button md-button>
+                        <md-icon>thumb_up</md-icon>
+                        LIKE
+                    </button>
+                    <button md-button>
+                        <md-icon>share</md-icon>
+                        SHARE
+                    </button>
+                    <span class="fill-space"></span>
+                    <span>0 likes - 0 comments</span>
+                </md-card-actions>
+            </md-card>
+        </div>
     `,
 })
 export class BlogComponent {
