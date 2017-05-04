@@ -34,6 +34,7 @@ import { ChatComponent } from './components/chat';
 import { FeedbackService } from './services/feedback.service';
 import { TodoService } from './services/todo.service';
 import { TodoComponent } from './components/todo';
+import { TypographyComponent } from './containers/typography';
 
 @NgModule({
     imports        : [
@@ -72,6 +73,7 @@ import { TodoComponent } from './components/todo';
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
+        TypographyComponent,
         FeedbackDialogComponent,
         ChatComponent,
     ],

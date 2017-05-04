@@ -24,6 +24,7 @@ export class App implements OnInit {
         { name: 'Blog', route: '/blog', icon: 'description' },
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },
+        { name: 'Typography', route: '/typography', icon: 'view_quilt' },
     ];
     
     constructor(private store: Store<IRootState>,

@@ -9,9 +9,11 @@ import { BlogComponent } from './containers/blog/blog';
 import { BlogAdminComponent } from './containers/blog/blog.admin';
 import { ChatComponent } from './components/chat';
 import { TodoComponent } from './components/todo';
+import { TypographyComponent } from './containers/typography';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'typography', component: TypographyComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
     { path: 'user/profile', component: UserProfileComponent },
