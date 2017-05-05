@@ -8,13 +8,23 @@
     </ul>
 </div>
 <div class="row typography-samples">
-    <div class="typography-widget col-sm-12 col-md-6 col-lg-3">
+    <div class="typography-widget col-sm-12 col-md-6 col-lg-6">
+        <md-card>
+            <md-card-header>
+                <h3 class="card-title">Bar Chart</h3>
+            </md-card-header>
+            <md-card-content>
+                <my-bar-chart [data]="barChart"></my-bar-chart>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div class="typography-widget col-sm-12 col-md-6 col-lg-6">
         <md-card>
             <md-card-header>
                 <h3 class="card-title">Pie Chart</h3>
             </md-card-header>
             <md-card-content>
-                Chart
+                <my-pie-chart [data]="pieChart"></my-pie-chart>
             </md-card-content>
         </md-card>
     </div>

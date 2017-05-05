@@ -40,6 +40,8 @@ import { BackToTopComponent } from './components/back-to-top';
 import { ChartsPage } from './pages/ui/charts/charts.page';
 import { NavItemComponent } from './components/nav-item';
 import { TablesPage } from './pages/ui/tables/tables.page';
+import { BarChartComponent } from './components/charts/bar-chart';
+import { PieChartComponent } from './components/charts/pie-chart';
 
 @NgModule({
     imports        : [
@@ -86,6 +88,8 @@ import { TablesPage } from './pages/ui/tables/tables.page';
         ChatComponent,
         BackToTopComponent,
         NavItemComponent,
+        BarChartComponent,
+        PieChartComponent
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],

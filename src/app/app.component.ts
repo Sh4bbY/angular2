@@ -26,7 +26,9 @@ export class App implements OnInit {
         { name: 'Chat', route: '/chat', icon: 'chat' },
         { name: 'UI', icon: 'view_quilt', children: [
             { name: 'Typography', route: '/ui/typography', icon: 'text_format' },
-            { name: 'Charts', route: '/ui/charts', icon: 'show_chart' },
+            { name: 'Charts', icon: 'show_chart', children: [
+                { name: 'D3 Charts', route: '/ui/charts', icon: 'show_chart' },
+            ]},
             { name: 'tables', route: '/ui/tables', icon: 'grid_on' },
         ]},
     ];

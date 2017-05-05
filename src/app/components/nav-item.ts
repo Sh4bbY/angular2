@@ -34,10 +34,7 @@ import { rotateAnimation } from '../animations/rotate.animation';
         </a>
         <div *ngIf="showChildren" class="child-container" [attr.data-parent]="navItem.name"
              [@expandAnimation]>
-            <a *ngFor="let child of navItem.children" md-list-item [routerLink]="[child.route]">
-                <md-icon>{{child.icon}}</md-icon>
-                {{child.name}}
-            </a>
+            <my-nav-item *ngFor="let child of navItem.children" [navItem]="child"></my-nav-item>
         </div>`,
 })
 export class NavItemComponent {
