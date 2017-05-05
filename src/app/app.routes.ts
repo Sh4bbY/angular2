@@ -10,13 +10,15 @@ import { BlogAdminPage } from './pages/blog/blog.admin.page';
 import { TodoPage } from './pages/todo.page';
 import { TypographyPage } from './pages/ui/typography/typography.page';
 import { ChatPage } from './pages/chat.page';
-import { ChartsPage } from './pages/ui/charts/charts.page';
+import { D3Page } from './pages/ui/charts/d3/d3.page';
 import { TablesPage } from './pages/ui/tables/tables.page';
+import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
 
 export const routes: Routes = [
     { path: '', component: HomePage },
     { path: 'ui/typography', component: TypographyPage },
-    { path: 'ui/charts', component: ChartsPage },
+    { path: 'ui/charts/d3', component: D3Page },
+    { path: 'ui/charts/highcharts', component: HighchartsPage },
     { path: 'ui/tables', component: TablesPage },
     { path: 'login', component: LoginPage },
     { path: 'register', component: RegistrationPage },

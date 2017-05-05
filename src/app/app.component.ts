@@ -27,7 +27,8 @@ export class App implements OnInit {
         { name: 'UI', icon: 'view_quilt', children: [
             { name: 'Typography', route: '/ui/typography', icon: 'text_format' },
             { name: 'Charts', icon: 'show_chart', children: [
-                { name: 'D3 Charts', route: '/ui/charts', icon: 'show_chart' },
+                { name: 'D3 Charts', route: '/ui/charts/d3', icon: 'show_chart' },
+                { name: 'Highcharts', route: '/ui/charts/highcharts', icon: 'show_chart' },
             ]},
             { name: 'tables', route: '/ui/tables', icon: 'grid_on' },
         ]},

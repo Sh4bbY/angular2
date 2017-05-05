@@ -234,6 +234,12 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.2.tgz#b02d10ab028e2928ac592a051aaa4981a1941d03"
 
+"@types/highcharts@^4.2.54":
+  version "4.2.54"
+  resolved "https://registry.yarnpkg.com/@types/highcharts/-/highcharts-4.2.54.tgz#b803fd15a7d45f124483213b437e9cdb6cb24fe2"
+  dependencies:
+    "@types/geojson" "*"
+
 "@types/jasmine@2.5.47":
   version "2.5.47"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.47.tgz#bbba9bcf0e95e7890c6f4a47394e8bacaa960eb6"
@@ -2459,6 +2465,10 @@ hawk@~3.1.3:
 he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+highcharts@^5.0.11:
+  version v5.0.11
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-5.0.11.tgz#c8e7ebe4cb584ea99d113f7fc7925b2b90398453"
 
 highlightjs@^9.10.0:
   version "9.10.0"

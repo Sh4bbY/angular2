@@ -1,20 +1,31 @@
 <div class="st-content-top clearfix">
-    <h1 class="st-title">Charts</h1>
+    <h1 class="st-title">Highcharts</h1>
     <ul class="breadcrumb">
         <li class="breadcrumb-item">
             <a routerLink="/">Home</a>
         </li>
-        <li class="breadcrumb-item active">Charts</li>
+        <li class="breadcrumb-item">Charts</li>
+        <li class="breadcrumb-item active">Highcharts</li>
     </ul>
 </div>
 <div class="row typography-samples">
     <div class="typography-widget col-sm-12 col-md-6 col-lg-6">
         <md-card>
             <md-card-header>
+                <h3 class="card-title">Line Chart</h3>
+            </md-card-header>
+            <md-card-content>
+                <div #lineChartEl></div>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div class="typography-widget col-sm-12 col-md-6 col-lg-6">
+        <md-card>
+            <md-card-header>
                 <h3 class="card-title">Bar Chart</h3>
             </md-card-header>
             <md-card-content>
-                <my-bar-chart [data]="barChart"></my-bar-chart>
+                <div #barChartEl></div>
             </md-card-content>
         </md-card>
     </div>
@@ -24,7 +35,7 @@
                 <h3 class="card-title">Pie Chart</h3>
             </md-card-header>
             <md-card-content>
-                <my-pie-chart [data]="pieChart"></my-pie-chart>
+                <div #pieChartEl></div>
             </md-card-content>
         </md-card>
     </div>

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { routeAnimation } from '../../../animations/route.animation';
+import { routeAnimation } from '../../../../animations/route.animation';
 
 @Component({
     selector  : 'my-charts',
     animations: [ routeAnimation ],
     host      : { '[@routeAnimation]': '' },
-    styles    : [ require('./charts.scss') ],
-    template  : require('./charts.html'),
+    template  : require('./d3.html'),
 })
-export class ChartsPage {
+export class D3Page {
     barChart: Array<any>;
     pieChart: Array<any>;
     
