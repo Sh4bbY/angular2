@@ -1,34 +1,21 @@
 @import './themes/default-theme.scss';
 @import './util.scss';
+@import './basic/styles.scss';
+@import './basic/structure.scss';
+@import './basic/materials.scss';
 @import './spinner.scss';
 @import './variables.scss';
 @import './grid.scss';
-@import './components/backToTop.scss';
-
-* {
-  box-sizing : border-box;
-}
-
-body {
-  font-family : Roboto, 'Helvetica Neue', sans-serif;
-  font-size   : 1rem;
-
-  // Helps fonts on OSX looks more consistent with other systems
-  // Isn't currently in button styles due to performance concerns
-  * {
-    -webkit-font-smoothing  : antialiased;
-    -moz-osx-font-smoothing : grayscale;
-  }
-}
+@import './components/index';
 
 my-app {
-  position              : absolute;
-  top                   : 0;
-  bottom                : 0;
-  left                  : 0;
-  right                 : 0;
-  display               : flex;
-  flex-direction        : column;
+  position       : absolute;
+  top            : 0;
+  bottom         : 0;
+  left           : 0;
+  right          : 0;
+  display        : flex;
+  flex-direction : column;
 
   & > md-toolbar {
     z-index : 1;
@@ -38,66 +25,17 @@ my-app {
       line-height : 40px;
     }
   }
-}
 
-md-card.mat-card > md-toolbar.mat-toolbar {
-  margin : -24px 24px 24px -24px;
-  width  : calc(100% + 48px);
-}
-
-.mat-sidenav-container {
-  height           : 100%;
-  background-color : #EEE;
-}
-
-div.mat-sidenav-content {
-  overflow-x : hidden;
-}
-
-.mat-sidenav {
-  width            : 240px;
-  border-right     : 1px solid #DDD;
-  background-color : #FFF;
-
-  a:hover md-icon {
-    color : mat-color($candy-app-primary, A200);
+  &::before {
+    content         : '';
+    position        : fixed;
+    width           : 100%;
+    height          : 100%;
+    top             : 0;
+    left            : 0;
+    background      : url(/assets/img/bg/sky.jpg) no-repeat center center;
+    background-size : cover;
+    will-change     : transform;
+    z-index         : 0;
   }
-
-  md-nav-list md-icon {
-    margin-right : 10px;
-  }
-}
-
-.app-content {
-  position : relative;
-  //max-width : 800px;
-  margin   : 50px 15px 50px 15px;
-
-  & > * {
-    width    : 100%;
-    position : absolute;
-  }
-}
-
-.mat-raised-button {
-  &:focus, &:hover {
-    @include mat-elevation(7);
-    @include mat-elevation-transition();
-  }
-}
-
-pre {
-  background-color : #2B2B2B;
-  padding          : 10px;
-  color            : #e0e5eb;
-  overflow         : auto;
-  code {
-    font-family : 'Source Code Pro', monospace;
-    font-size   : 1rem;
-  }
-  @include mat-elevation(3);
-}
-
-textarea {
-  resize : vertical;
 }

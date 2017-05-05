@@ -27,7 +27,7 @@ export const todoReducer = (state: ITodoList[] = initialState, { type, payload }
             return state.filter(list => list._id !== payload);
         
         case ADD_TODO_LIST:
-            return [ ...state, payload ];
+            return [ payload, ...state ];
         
         case ADD_TODO_ITEM:
             targetList       = Object.assign({}, state.find(list => list._id === payload.listId));

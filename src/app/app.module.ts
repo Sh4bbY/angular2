@@ -13,13 +13,13 @@ import { App } from './app.component';
 import { routes }   from './app.routes';
 import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
-import { HomeComponent } from './containers/home';
-import { LoginComponent } from './containers/login';
-import { RegistrationComponent } from './containers/registration';
-import { BlogComponent } from './containers/blog/blog';
-import { BlogAdminComponent } from './containers/blog/blog.admin';
-import { PostAdminComponent } from './containers/blog/post.admin';
-import { UserProfileComponent } from './containers/user/profile';
+import { HomePage } from './pages/home.page';
+import { LoginPage } from './pages/login.page';
+import { RegistrationPage } from './pages/registration.page';
+import { BlogPage } from './pages/blog/blog.page';
+import { BlogAdminPage } from './pages/blog/blog.admin.page';
+import { PostAdminPage } from './pages/blog/post.admin.page';
+import { UserProfilePage } from './pages/user/profile.page';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
 import { TodoListComponent } from './components/todo-list';
@@ -33,9 +33,10 @@ import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat';
 import { FeedbackService } from './services/feedback.service';
 import { TodoService } from './services/todo.service';
-import { TodoComponent } from './containers/todo';
-import { TypographyComponent } from './containers/typography';
+import { TodoPage } from './pages/todo.page';
+import { TypographyPage } from './pages/typography/typography.page';
 import { BackToTopComponent } from './components/back-to-top';
+import { ChatPage } from './pages/chat.page';
 
 @NgModule({
     imports        : [
@@ -63,18 +64,19 @@ import { BackToTopComponent } from './components/back-to-top';
     ],
     declarations   : [
         App,
-        HomeComponent,
-        LoginComponent,
-        RegistrationComponent,
-        UserProfileComponent,
-        BlogComponent,
-        BlogAdminComponent,
-        PostAdminComponent,
-        TodoComponent,
+        HomePage,
+        LoginPage,
+        RegistrationPage,
+        UserProfilePage,
+        BlogPage,
+        BlogAdminPage,
+        PostAdminPage,
+        TodoPage,
+        ChatPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
-        TypographyComponent,
+        TypographyPage,
         FeedbackDialogComponent,
         ChatComponent,
         BackToTopComponent,

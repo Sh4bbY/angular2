@@ -14,3 +14,40 @@
   vertical-align : middle;
   padding-left   : 2px;
 }
+
+.clearfix:after {
+  display : block;
+  content : "";
+  clear   : both;
+}
+
+.light-text {
+  font-weight : 300;
+}
+
+.bold-text{
+  font-weight : 700;
+}
+
+.upper-text{
+  text-transform : uppercase;
+}
+
+.small-text {
+  font-size   : 12px;
+  font-weight : 300;
+  line-height : 12px;
+}
+
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }

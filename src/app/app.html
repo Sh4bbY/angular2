@@ -16,7 +16,7 @@
 
 <md-sidenav-container>
     <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">
-        <my-usermenu></my-usermenu>
+        <my-user-menu></my-user-menu>
         <md-nav-list>
             <a *ngFor="let navItem of navItems" md-list-item [routerLink]="[navItem.route]">
                 <md-icon>{{navItem.icon}}</md-icon>
@@ -33,7 +33,7 @@
             </a>
         </md-nav-list>
     </md-sidenav>
-    <div class="app-content">
+    <div class="st-content">
         <router-outlet></router-outlet>
     </div>
 </md-sidenav-container>

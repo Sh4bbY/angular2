@@ -4,17 +4,13 @@ import { IRootState } from '../reducers/index';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
-    selector: 'my-usermenu',
+    selector: 'my-user-menu',
     styles  : [ `
-        .usermenu {
+        .user-menu {
             padding          : 20px;
-            background-color : #DDD;
             display          : flex;
             align-items      : center;
-        }
-
-        .fill {
-            flex : 1 1 auto;
+            background-color : rgba(0,0,0, 0.2);
         }
 
         .user-image {
@@ -27,10 +23,10 @@ import { AuthenticationService } from '../services/authentication.service';
         }
     ` ],
     template: `
-        <div class="usermenu" *ngIf="isAuthenticated">
+        <div class="user-menu" *ngIf="isAuthenticated">
             <div class="user-image"></div>
             <span class="user-name">{{username}}</span>
-            <span class="fill"></span>
+            <span class="fill-space"></span>
             <button md-icon-button [mdMenuTriggerFor]="menu">
                 <md-icon>more_vert</md-icon>
             </button>

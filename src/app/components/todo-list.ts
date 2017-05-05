@@ -32,7 +32,7 @@ import { ITodoList } from '../interfaces/todo-list';
                 </md-card-header>
                 <form (ngSubmit)="addItem()">
                     <md-input-container>
-                        <input #newTodoInput name="title" mdInput placeholder="Todo-Text">
+                        <input #newTodoInput name="title" mdInput placeholder="Todo-Text" autocomplete="off">
                     </md-input-container>
                     <button md-raised-button color="primary">add</button>
                 </form>

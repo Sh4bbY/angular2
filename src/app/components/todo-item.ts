@@ -13,7 +13,8 @@ import { ITodoItem } from '../interfaces/todo-item';
             <md-checkbox (click)="toggle.emit(item)" [(ngModel)]="item.complete" title="Toggle Todo"></md-checkbox>
             <span *ngIf="!isEditMode" class="fill-space">{{item.text}}</span>
             <md-input-container *ngIf="isEditMode" class="fill-space">
-                <input #updateInput mdInput placeholder="Todo-Text" (keydown.enter)="onUpdateClick()">
+                <input #updateInput mdInput placeholder="Todo-Text" (keydown.enter)="onUpdateClick()"
+                       autocomplete="off">
             </md-input-container>
             <button *ngIf="!isEditMode" md-icon-button color="accent" title="Edit Todo" (click)="onEditClick()">
                 <md-icon>edit</md-icon>

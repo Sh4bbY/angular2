@@ -1,0 +1,29 @@
+.breadcrumb {
+  padding    : 0;
+  margin     : 0;
+  float      : right;
+  list-style : none;
+}
+
+.breadcrumb-item {
+  float       : left;
+  font-size   : 18px;
+  color       : #FFF;
+  font-weight : 400;
+
+  &:before {
+    content : '';
+  }
+
+  & + &:before {
+    display       : inline-block;
+    padding-right : .5rem;
+    padding-left  : .5rem;
+    color         : #AAA;
+    content       : "/";
+  }
+
+  & > a {
+    color : #4dc4ff;
+  }
+}

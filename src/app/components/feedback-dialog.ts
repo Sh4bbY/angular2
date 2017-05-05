@@ -20,6 +20,10 @@ import { FeedbackService } from '../services/feedback.service';
         textarea {
             max-height : 300px;
         }
+
+        .mat-raised-button {
+            color : #fff;
+        }
     
     ` ],
     template: `

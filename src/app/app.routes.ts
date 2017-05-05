@@ -1,27 +1,27 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { HomeComponent } from './containers/home';
-import { LoginComponent } from './containers/login';
-import { RegistrationComponent } from './containers/registration';
-import { UserProfileComponent } from './containers/user/profile';
-import { PostAdminComponent } from './containers/blog/post.admin';
-import { BlogComponent } from './containers/blog/blog';
-import { BlogAdminComponent } from './containers/blog/blog.admin';
-import { ChatComponent } from './components/chat';
-import { TodoComponent } from './containers/todo';
-import { TypographyComponent } from './containers/typography';
+import { HomePage } from './pages/home.page';
+import { LoginPage } from './pages/login.page';
+import { RegistrationPage } from './pages/registration.page';
+import { UserProfilePage } from './pages/user/profile.page';
+import { PostAdminPage } from './pages/blog/post.admin.page';
+import { BlogPage } from './pages/blog/blog.page';
+import { BlogAdminPage } from './pages/blog/blog.admin.page';
+import { TodoPage } from './pages/todo.page';
+import { TypographyPage } from './pages/typography/typography.page';
+import { ChatPage } from './pages/chat.page';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'typography', component: TypographyComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegistrationComponent },
-    { path: 'user/profile', component: UserProfileComponent },
-    { path: 'blog', component: BlogComponent },
-    { path: 'admin/blog', component: BlogAdminComponent, canActivate: [ AuthGuard ] },
-    { path: 'admin/blog/post/create', component: PostAdminComponent, canActivate: [ AuthGuard ] },
-    { path: 'admin/blog/post/:id', component: PostAdminComponent, canActivate: [ AuthGuard ] },
+    { path: '', component: HomePage },
+    { path: 'typography', component: TypographyPage },
+    { path: 'login', component: LoginPage },
+    { path: 'register', component: RegistrationPage },
+    { path: 'user/profile', component: UserProfilePage },
+    { path: 'blog', component: BlogPage },
+    { path: 'admin/blog', component: BlogAdminPage, canActivate: [ AuthGuard ] },
+    { path: 'admin/blog/post/create', component: PostAdminPage, canActivate: [ AuthGuard ] },
+    { path: 'admin/blog/post/:id', component: PostAdminPage, canActivate: [ AuthGuard ] },
     
-    { path: 'todo', component: TodoComponent },
-    { path: 'chat', component: ChatComponent },
+    { path: 'todo', component: TodoPage },
+    { path: 'chat', component: ChatPage },
 ];

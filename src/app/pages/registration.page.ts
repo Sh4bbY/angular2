@@ -4,22 +4,13 @@ import { Router } from '@angular/router';
 import { routeAnimation } from '../animations/route.animation';
 
 @Component({
-    selector: 'my-registration',
     animations: [ routeAnimation ],
     host      : { '[@routeAnimation]': '' },
-    styles  : [ `
-        .register-page {
-            padding    : 15px;
-            max-width  : 400px;
-            text-align : center;
-        }
-
-        .full-width {
-            width : 100%;
-        }` ],
-    template: `
-        <div class="register-page">
-            <h2>Create your account at MyApplication</h2>
+    template  : `
+        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+            <div class="st-content-top clearfix">
+                <h1 class="st-title">Registration</h1>
+            </div>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur, dolor dolorem doloremque
                 earum eos magnam, molestiae necessitatibus officiis quas soluta tempora tenetur vel! Deserunt labore
@@ -41,16 +32,15 @@ import { routeAnimation } from '../animations/route.animation';
                            placeholder="Password repetition">
                 </md-input-container>
                 <button md-raised-button type="submit" color="primary" class="full-width">Register</button>
-                <p>
-                    Already have an account?
-                </p>
+                <br/><br/>
+                <p class="text-center"> Already have an account? </p>
                 <button md-raised-button type="button" color="accent" routerLink="/login" class="full-width">
                     Login
                 </button>
             </form>
         </div>`,
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationPage implements OnInit {
     model: any;
     
     constructor(private userService: UserService, private router: Router) {

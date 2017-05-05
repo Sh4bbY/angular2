@@ -1,0 +1,162 @@
+$accent-color : #ecc839;
+
+.typography-samples {
+
+  .card-title {
+    text-transform : uppercase;
+    text-align     : center;
+    width          : 100%;
+    margin         : 0;
+  }
+
+  .accent {
+    margin-top   : 30px;
+    color        : $accent-color;
+    line-height  : 14px;
+    font-size    : 14px;
+    padding-left : 11px;
+    border-left  : 4px solid $accent-color;
+    margin-left  : 13px;
+  }
+
+  ol {
+    counter-reset : section;
+    padding-left  : 13px;
+    margin-bottom : 19px;
+    list-style    : none;
+    padding-top   : 1px;
+
+    li {
+      position : relative;
+      color    : $accent-color;
+
+      &:before {
+        content           : counters(section, ".") ".";
+        counter-increment : section;
+        width             : 19px;
+        position          : absolute;
+        left              : 0;
+        top               : 0;
+        white-space       : nowrap;
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+      }
+
+      span {
+        padding-left : 14px;
+        display      : inline-block;
+        color        : white;
+      }
+
+      ol li {
+        &:before {
+          width : 27px;
+        }
+        span {
+          padding-left : 27px;
+        }
+        ol li {
+          &:before {
+            width : 40px;
+          }
+          span {
+            padding-left : 40px;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style    : none;
+    padding-left  : 13px;
+    margin-bottom : 19px;
+
+    li {
+      &:before {
+        content : "• ";
+        display : inline-block;
+        width   : 10px;
+        color   : $accent-color;
+      }
+
+      ul {
+        padding-left  : 20px;
+        margin-bottom : 0;
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight : 300;
+    text-align  : center;
+  }
+
+  p {
+    text-align : center;
+  }
+
+  md-card {
+    padding : 0;
+
+    md-card-header {
+      padding       : 14px 22px;
+      border-bottom : 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    md-card-content {
+      height        : 550px;
+      padding       : 24px;
+      margin-bottom : 5px;
+      overflow-y    : auto;
+    }
+  }
+}
+
+.img-wrapper {
+  margin-bottom : 19px;
+  margin-top    : 5px;
+  overflow      : hidden;
+  height        : 180px;
+}
+
+.banner {
+  position      : relative;
+  margin-bottom : 20px;
+}
+
+.large-banner-wrapper {
+  overflow : hidden;
+  height   : 400px;
+}
+
+.banner-text-wrapper {
+  margin-top : -400px;
+  height     : 400px;
+  text-align : center;
+}
+
+.banner-text {
+  padding    : 85px 90px 60px;
+  display    : inline-block;
+  margin     : 67px auto;
+  background : #fff;
+  min-width  : 432px;
+  overflow   : hidden;
+  background : rgba(0, 0, 0, 0.75);
+
+  & h1 {
+    font-weight   : 700;
+    width         : 100%;
+    color         : #fff;
+    margin-bottom : 10px;
+  }
+
+  & p {
+    font-size     : 24px;
+    line-height   : 30px;
+    font-weight   : 300;
+    color         : #00abff;
+    margin-bottom : 0;
+  }
+}

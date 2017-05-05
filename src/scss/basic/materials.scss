@@ -1,0 +1,60 @@
+.mat-card {
+  margin-bottom    : 24px;
+  color            : white;
+  background-color : rgba(#fff, 0.2);
+
+  & > md-toolbar.mat-toolbar {
+    margin : -24px 24px 24px -24px;
+    width  : calc(100% + 48px);
+  }
+}
+
+.mat-sidenav-container {
+  color            : #fff;
+  height           : 100%;
+  background-color : transparent;
+}
+
+div.mat-sidenav-content {
+  overflow-x : hidden;
+}
+
+.mat-sidenav {
+  width            : 240px;
+  color            : #fff;
+  border-right     : 1px solid rgba(#000, 0.1);
+  background-color : rgba(#000, 0.3);
+
+  hr {
+    border-color : rgba(#AAA, 0.3);
+  }
+
+  a {
+    transition : background-color 0.5s ease;
+
+    &:hover {
+      background-color : rgba(#000, 0.3);
+      md-icon {
+        color : mat-color($candy-app-accent, A200);
+      }
+    }
+  }
+  md-nav-list {
+    .mat-list-item {
+      color : #FFF;
+    }
+
+    md-icon {
+      margin-right : 10px;
+    }
+  }
+}
+
+.mat-raised-button {
+  background-color : rgba(#2d4c5f, 0.8);
+
+  &:focus, &:hover {
+    @include mat-elevation(7);
+    @include mat-elevation-transition();
+  }
+}

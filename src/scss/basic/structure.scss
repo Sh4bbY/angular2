@@ -1,0 +1,25 @@
+.st-content {
+  position : relative;
+  //max-width : 800px;
+  margin   : 50px 15px 50px 15px;
+
+  & > * {
+    width    : 100%;
+    position : absolute;
+  }
+}
+
+.st-content-top {
+  padding-bottom : 27px;
+}
+
+h1.st-title {
+  font-weight    : 700;
+  float          : left;
+  width          : auto;
+  margin         : 0;
+  padding        : 0;
+  color          : #FFF;
+  font-size      : 24px;
+  text-transform : uppercase;
+}

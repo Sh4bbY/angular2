@@ -1,0 +1,45 @@
+* {
+  box-sizing : border-box;
+}
+
+body {
+  font-family : Roboto, 'Helvetica Neue', sans-serif;
+  font-weight : 400;
+  font-size   : 1rem;
+
+  // Helps fonts on OSX looks more consistent with other systems
+  // Isn't currently in button styles due to performance concerns
+  * {
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+  }
+
+  textarea {
+    resize : vertical;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    margin-top : 0;
+  }
+
+  a {
+    color           : #285eb8;
+    text-decoration : none !important;
+    transition      : color 0.4s ease;
+    &:hover {
+      color : #163364;
+    }
+  }
+}
+
+pre {
+  background-color : rgba(#2B2B2B, 0.8);
+  padding          : 10px;
+  color            : #e0e5eb;
+  overflow         : auto;
+  code {
+    font-family : 'Source Code Pro', monospace;
+    font-size   : 1rem;
+  }
+  @include mat-elevation(3);
+}
