@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { routeAnimation } from '../../animations/route.animation';
+import { routeAnimation } from '../../../animations/route.animation';
 
 @Component({
     selector  : 'my-typography',

@@ -1,8 +1,8 @@
-<md-toolbar color="primary">
+<md-toolbar>
     <button md-icon-button (click)="toggleSideNav()">
         <md-icon>menu</md-icon>
     </button>
-    <span class="app-title">My Application</span>
+    <a routerLink="/" class="app-title"><span>shabb</span>tech</a>
     <span class="fill-space"></span>
     <button *ngIf="!(isAuthenticated$ | async)" md-button routerLink="/login" title="Login">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
@@ -18,10 +18,7 @@
     <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">
         <my-user-menu></my-user-menu>
         <md-nav-list>
-            <a *ngFor="let navItem of navItems" md-list-item [routerLink]="[navItem.route]">
-                <md-icon>{{navItem.icon}}</md-icon>
-                {{navItem.name}}
-            </a>
+            <my-nav-item *ngFor="let navItem of navItems" [navItem]="navItem"></my-nav-item>
             <hr>
             <a md-list-item (click)="openFeedbackDialog()">
                 <md-icon>feedback</md-icon>

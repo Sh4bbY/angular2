@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { Observable } from 'rxjs/Observable';
@@ -24,7 +24,11 @@ export class App implements OnInit {
         { name: 'Blog', route: '/blog', icon: 'description' },
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },
-        { name: 'Typography', route: '/typography', icon: 'view_quilt' },
+        { name: 'UI', icon: 'view_quilt', children: [
+            { name: 'Typography', route: '/ui/typography', icon: 'text_format' },
+            { name: 'Charts', route: '/ui/charts', icon: 'show_chart' },
+            { name: 'tables', route: '/ui/tables', icon: 'grid_on' },
+        ]},
     ];
     
     constructor(private store: Store<IRootState>,

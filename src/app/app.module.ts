@@ -17,6 +17,7 @@ import { HomePage } from './pages/home.page';
 import { LoginPage } from './pages/login.page';
 import { RegistrationPage } from './pages/registration.page';
 import { BlogPage } from './pages/blog/blog.page';
+import { ChatPage } from './pages/chat.page';
 import { BlogAdminPage } from './pages/blog/blog.admin.page';
 import { PostAdminPage } from './pages/blog/post.admin.page';
 import { UserProfilePage } from './pages/user/profile.page';
@@ -34,9 +35,11 @@ import { ChatComponent } from './components/chat';
 import { FeedbackService } from './services/feedback.service';
 import { TodoService } from './services/todo.service';
 import { TodoPage } from './pages/todo.page';
-import { TypographyPage } from './pages/typography/typography.page';
+import { TypographyPage } from './pages/ui/typography/typography.page';
 import { BackToTopComponent } from './components/back-to-top';
-import { ChatPage } from './pages/chat.page';
+import { ChartsPage } from './pages/ui/charts/charts.page';
+import { NavItemComponent } from './components/nav-item';
+import { TablesPage } from './pages/ui/tables/tables.page';
 
 @NgModule({
     imports        : [
@@ -73,6 +76,8 @@ import { ChatPage } from './pages/chat.page';
         PostAdminPage,
         TodoPage,
         ChatPage,
+        ChartsPage,
+        TablesPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
@@ -80,6 +85,7 @@ import { ChatPage } from './pages/chat.page';
         FeedbackDialogComponent,
         ChatComponent,
         BackToTopComponent,
+        NavItemComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],

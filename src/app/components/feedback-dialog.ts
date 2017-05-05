@@ -24,7 +24,6 @@ import { FeedbackService } from '../services/feedback.service';
         .mat-raised-button {
             color : #fff;
         }
-    
     ` ],
     template: `
         <form class="feedback-dialog">

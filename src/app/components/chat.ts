@@ -7,12 +7,9 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
 import { Subject } from 'rxjs/Subject';
-import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     selector: 'my-chat',
-    animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     styles  : [ `
         md-card-content {
             max-height : 200px;
