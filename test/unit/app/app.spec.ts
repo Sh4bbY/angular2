@@ -8,11 +8,12 @@ import { BackToTopComponent } from '../../../src/app/components/back-to-top';
 import { AuthenticationService } from '../../../src/app/services/authentication.service';
 import { rootReducer } from '../../../src/app/reducers/index';
 import 'rxjs/Rx';
+import { NavItemComponent } from '../../../src/app/components/nav-item';
 
 describe('App', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [ App, UserMenuComponent, BackToTopComponent],
+            declarations: [ App, UserMenuComponent, BackToTopComponent, NavItemComponent],
             providers   : [ AuthenticationService ],
             imports     : [
                 RouterTestingModule,
