@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { routeAnim } from '../animations/fade.animation';
+import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     selector  : 'my-typography',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
+    styles: [`
+        .typography-samples{
+            display: flex;
+        }
+        .typography-samples > typography-widget {
+            height: 100%;
+        }
+    `],
     template  : `
-        <div class="col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
+        <div class="row typography-samples">
+        <div class="typography-widget col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
             <md-card>
                 <md-card-header>
                     <h3 class="card-title">Text Size</h3>
@@ -52,7 +61,7 @@ import { routeAnim } from '../animations/fade.animation';
                 </md-card-content>
             </md-card>
         </div>
-        <div class="col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
+        <div class="typography-widget col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
             <md-card>
                 <md-card-header>
                     <h3 class="card-title">Some more text</h3>
@@ -98,7 +107,7 @@ import { routeAnim } from '../animations/fade.animation';
                 </md-card-content>
             </md-card>
         </div>
-        <div class="col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
+        <div class="typography-widget col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
             <md-card>
                 <md-card-header>
                     <h3 class="card-title">Lists</h3>
@@ -146,7 +155,7 @@ import { routeAnim } from '../animations/fade.animation';
                 </md-card-content>
             </md-card>
         </div>
-        <div class="col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
+        <div class="typography-widget col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
             <md-card>
                 <md-card-header>
                     <h3 class="card-title">Text Color</h3>
@@ -185,6 +194,7 @@ import { routeAnim } from '../animations/fade.animation';
                     </div>
                 </md-card-content>
             </md-card>
+        </div>
         </div>
         <div class="col-lg-12 col-sm-12 col-12">
             <md-card>

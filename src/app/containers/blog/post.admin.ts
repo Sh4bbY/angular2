@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { routeAnim } from '../../animations/fade.animation';
+import { routeAnimation } from '../../animations/route.animation';
 
 @Component({
     selector: 'my-blog-item',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     styles  : [ `` ],
     template: `
         <h1 *ngIf="id">Edit Blog Post</h1>

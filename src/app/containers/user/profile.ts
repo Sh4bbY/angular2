@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { routeAnim } from '../../animations/fade.animation';
+import { routeAnimation } from '../../animations/route.animation';
 
 @Component({
     selector: 'my-user-profile',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     template: `
         <h1>USER SETTINGS!</h1>
         <table>

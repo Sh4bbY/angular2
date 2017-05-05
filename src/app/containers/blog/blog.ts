@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
-import { routeAnim } from '../../animations/fade.animation';
+import { routeAnimation } from '../../animations/route.animation';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../../reducers/index';
 
 @Component({
     selector  : 'my-blog',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     styles    : [ `
         .example-header-image {
             background-image : url('/assets/img/user.png');

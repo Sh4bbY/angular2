@@ -4,12 +4,12 @@ import { IRootState } from '../reducers/index';
 import { Observable } from 'rxjs/Observable';
 import { TodoService } from '../services/todo.service';
 import { ITodoList } from '../interfaces/todo-list';
-import { routeAnim } from '../animations/fade.animation';
+import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     selector: 'my-todo',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     styles  : [ `
         ul {
             padding    : 0;

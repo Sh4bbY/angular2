@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { routeAnim } from '../animations/fade.animation';
+import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     selector  : 'my-home',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     template  : `
         <h1>HOME!</h1>
     `,

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { routeAnim } from '../animations/fade.animation';
+import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     selector: 'my-registration',
-    animations: [ routeAnim ],
-    host      : { '[@routeAnim]': '' },
+    animations: [ routeAnimation ],
+    host      : { '[@routeAnimation]': '' },
     styles  : [ `
         .register-page {
             padding    : 15px;

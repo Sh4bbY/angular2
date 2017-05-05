@@ -33,8 +33,9 @@ import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat';
 import { FeedbackService } from './services/feedback.service';
 import { TodoService } from './services/todo.service';
-import { TodoComponent } from './components/todo';
+import { TodoComponent } from './containers/todo';
 import { TypographyComponent } from './containers/typography';
+import { BackToTopComponent } from './components/back-to-top';
 
 @NgModule({
     imports        : [
@@ -76,6 +77,7 @@ import { TypographyComponent } from './containers/typography';
         TypographyComponent,
         FeedbackDialogComponent,
         ChatComponent,
+        BackToTopComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],

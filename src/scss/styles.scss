@@ -3,6 +3,7 @@
 @import './spinner.scss';
 @import './variables.scss';
 @import './grid.scss';
+@import './components/backToTop.scss';
 
 * {
   box-sizing : border-box;
@@ -26,12 +27,7 @@ my-app {
   bottom                : 0;
   left                  : 0;
   right                 : 0;
-  display               : -webkit-box;
-  display               : -ms-flexbox;
   display               : flex;
-  -webkit-box-orient    : vertical;
-  -webkit-box-direction : normal;
-  -ms-flex-direction    : column;
   flex-direction        : column;
 
   & > md-toolbar {

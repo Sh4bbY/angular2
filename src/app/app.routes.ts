@@ -8,7 +8,7 @@ import { PostAdminComponent } from './containers/blog/post.admin';
 import { BlogComponent } from './containers/blog/blog';
 import { BlogAdminComponent } from './containers/blog/blog.admin';
 import { ChatComponent } from './components/chat';
-import { TodoComponent } from './components/todo';
+import { TodoComponent } from './containers/todo';
 import { TypographyComponent } from './containers/typography';
 
 export const routes: Routes = [
