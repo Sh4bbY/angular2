@@ -1,0 +1,45 @@
+<div class="st-content-top clearfix">
+    <h1 class="st-title">Maps</h1>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">UI</li>
+        <li class="breadcrumb-item active">Maps</li>
+    </ul>
+</div>
+<div class="row">
+    <div class="typography-widget col-sm-12 col-md-8 col-lg-12">
+        <md-card>
+            <md-card-header>
+                <h3 class="card-title">Maps</h3>
+            </md-card-header>
+            <md-card-content>
+                <agm-map [latitude]="lat"
+                         [longitude]="lng"
+                         [zoom]="zoom"
+                         [disableDefaultUI]="false"
+                         [zoomControl]="false"
+                         (mapClick)="mapClicked($event)">
+                    <agm-marker *ngFor="let m of markers; let i = index"
+                                (markerClick)="clickedMarker(m.label, i)"
+                                [latitude]="m.lat"
+                                [longitude]="m.lng"
+                                [label]="m.label"
+                                [markerDraggable]="m.draggable"
+                                (dragEnd)="markerDragEnd(m, $event)">
+                        <agm-info-window>
+                            <strong>InfoWindow content</strong>
+                        </agm-info-window>
+                    </agm-marker>
+                    <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+                                [radius]="5000"
+                                [fillColor]="'red'"
+                                [circleDraggable]="true"
+                                [editable]="true">
+                    </agm-circle>
+                </agm-map>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

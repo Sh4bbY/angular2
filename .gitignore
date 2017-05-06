@@ -14,3 +14,6 @@ coverage/
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 dist/
+
+# config file
+config.json

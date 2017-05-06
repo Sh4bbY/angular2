@@ -5,7 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const conf = require('./conf');
+const conf  = require('./conf');
+let mapsKey = '';
+try {
+    const config = require('../config.json');
+    mapsKey      = config.GoogleMapsApiKey;
+} catch (err) {
+    console.log('WARN - no config file found');
+}
 
 module.exports = {
     entry: {
@@ -75,7 +82,8 @@ module.exports = {
             to  : ''
         }]),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            'process.env.NODE_ENV'  : JSON.stringify(process.env.NODE_ENV || 'development'),
+            'buildConfig.mapsKey': JSON.stringify(mapsKey)
         })
     ]
 };

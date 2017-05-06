@@ -43,6 +43,10 @@ import { TablesPage } from './pages/ui/tables/tables.page';
 import { BarChartComponent } from './components/charts/bar-chart';
 import { PieChartComponent } from './components/charts/pie-chart';
 import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
+import { AgmCoreModule } from '@agm/core';
+import { MapsPage } from './pages/ui/maps/maps.page';
+
+declare const buildConfig: any;
 
 @NgModule({
     imports        : [
@@ -51,6 +55,9 @@ import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
         FormsModule,
         HttpModule,
         MaterialModule,
+        AgmCoreModule.forRoot({
+            apiKey: buildConfig.mapsKey,
+        }),
         StoreModule.provideStore(rootReducer),
         StoreDevtoolsModule.instrumentOnlyWithExtension({
             maxAge: 5,
@@ -82,6 +89,7 @@ import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
         D3Page,
         HighchartsPage,
         TablesPage,
+        MapsPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
@@ -91,7 +99,7 @@ import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
         BackToTopComponent,
         NavItemComponent,
         BarChartComponent,
-        PieChartComponent
+        PieChartComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],
