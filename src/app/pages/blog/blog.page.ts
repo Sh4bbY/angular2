@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
 import { routeAnimation } from '../../animations/route.animation';
@@ -8,7 +8,6 @@ import { IRootState } from '../../reducers/index';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     styles    : [ `
         .example-header-image {
             background-image : url('/assets/img/user.png');
@@ -70,6 +69,7 @@ import { IRootState } from '../../reducers/index';
     `,
 })
 export class BlogPage {
+    @HostBinding('@routeAnimation') routeAnimation:any;
     posts: Observable<IBlogPost[]>;
     
     constructor(private store: Store<IRootState>, private blogService: BlogService) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { IBlogPost } from '../../interfaces/blog-post';
 import { BlogService } from '../../services/blog.service';
 import { routeAnimation } from '../../animations/route.animation';
@@ -8,7 +8,6 @@ import { Store } from '@ngrx/store';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     styles    : [ `
         .actions, .created-at, .author {
             text-align : right;
@@ -58,6 +57,7 @@ import { Store } from '@ngrx/store';
     `,
 })
 export class BlogAdminPage {
+    @HostBinding('@routeAnimation') routeAnimation:any;
     posts: Observable<IBlogPost[]>;
     
     constructor(private store: Store<IRootState>, private blogService: BlogService) {

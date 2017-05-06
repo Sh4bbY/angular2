@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +9,6 @@ import { routeAnimation } from '../animations/route.animation';
 @Component({
     selector  : 'my-chat-page',
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     styles    : [ `
         ul {
             padding    : 0;
@@ -40,4 +39,5 @@ import { routeAnimation } from '../animations/route.animation';
     `,
 })
 export class ChatPage {
+    @HostBinding('@routeAnimation') routeAnimation:any;
 }

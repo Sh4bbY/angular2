@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
 import { Observable } from 'rxjs/Observable';
@@ -8,7 +8,6 @@ import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     styles    : [ `
         ul {
             padding    : 0;
@@ -48,8 +47,9 @@ import { routeAnimation } from '../animations/route.animation';
     `,
 })
 export class TodoPage {
-    lists: Observable<ITodoList[]>;
+    @HostBinding('@routeAnimation') routeAnimation:any;
     @ViewChild('newListInput') newListInput: ElementRef;
+    lists: Observable<ITodoList[]>;
     
     constructor(private store: Store<IRootState>, private todoService: TodoService) {
         this.lists = this.store.select('todo');

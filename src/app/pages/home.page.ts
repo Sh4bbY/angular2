@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     template  : `
         <div class="st-content-top clearfix">
             <h1 class="st-title">Home</h1>
@@ -11,4 +10,5 @@ import { routeAnimation } from '../animations/route.animation';
     `,
 })
 export class HomePage {
+    @HostBinding('@routeAnimation') routeAnimation:any;
 }

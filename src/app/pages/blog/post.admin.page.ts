@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,7 +6,6 @@ import { routeAnimation } from '../../animations/route.animation';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     template  : `
         <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
             <div class="st-content-top clearfix">
@@ -34,6 +33,7 @@ import { routeAnimation } from '../../animations/route.animation';
     `,
 })
 export class PostAdminPage implements OnInit {
+    @HostBinding('@routeAnimation') routeAnimation:any;
     public model: any;
     public id: string;
     

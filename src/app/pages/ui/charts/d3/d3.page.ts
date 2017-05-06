@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { routeAnimation } from '../../../../animations/route.animation';
 
 @Component({
     selector  : 'my-charts',
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     template  : require('./d3.html'),
 })
 export class D3Page {
-    barChart: Array<any>;
-    pieChart: Array<any>;
+    @HostBinding('@routeAnimation') routeAnimation:any;
+    barChart: any[];
+    pieChart: any[];
     
     constructor() {
         this.barChart = [

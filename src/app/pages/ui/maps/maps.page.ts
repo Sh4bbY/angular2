@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { routeAnimation } from '../../../animations/route.animation';
 
 // just an interface for type safety.
-interface marker {
+interface IMarker {
     lat: number;
     lng: number;
     label?: string;
@@ -18,10 +18,10 @@ interface marker {
             width  : 100%;
         }
     ` ],
-    host      : { '[@routeAnimation]': '' },
     template  : require('./maps.html'),
 })
 export class MapsPage {
+    @HostBinding('@routeAnimation') routeAnimation:any;
     // google maps zoom level
     zoom: number = 8;
     
@@ -40,11 +40,11 @@ export class MapsPage {
         });
     }
     
-    markerDragEnd(m: marker, $event: MouseEvent) {
+    markerDragEnd(m: IMarker, $event: MouseEvent) {
         console.log('dragEnd', m, $event);
     }
     
-    markers: marker[] = [ {
+    markers: IMarker[] = [ {
         lat      : 51.673858,
         lng      : 7.815982,
         label    : 'A',

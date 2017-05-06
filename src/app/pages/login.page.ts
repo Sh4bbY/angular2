@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
@@ -6,7 +6,6 @@ import { routeAnimation } from '../animations/route.animation';
 
 @Component({
     animations: [ routeAnimation ],
-    host      : { '[@routeAnimation]': '' },
     template  : `
         <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
             <div class="st-content-top clearfix">
@@ -47,6 +46,7 @@ import { routeAnimation } from '../animations/route.animation';
     `,
 })
 export class LoginPage implements OnInit {
+    @HostBinding('@routeAnimation') routeAnimation:any;
     loading: boolean;
     model: any;
     error: string;

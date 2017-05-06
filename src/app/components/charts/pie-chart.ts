@@ -17,7 +17,7 @@ import * as d3 from 'd3';
 })
 export class PieChartComponent implements AfterViewInit {
     @ViewChild('chart') chart: ElementRef;
-    @Input() data: Array<any>;
+    @Input() data: any[];
     
     private static WIDTH  = 800;
     private static HEIGHT = 400;
