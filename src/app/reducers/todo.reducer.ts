@@ -4,6 +4,7 @@ import { ITodoItem } from '../interfaces/todo-item';
 
 export const LOAD_TODO_LISTS  = 'LOAD_TODO_LISTS';
 export const ADD_TODO_LIST    = 'ADD_TODO_LIST';
+export const UPDATE_TODO_LIST = 'UPDATE_TODO_LIST';
 export const REMOVE_TODO_LIST = 'REMOVE_TODO_LIST';
 export const ADD_TODO_ITEM    = 'ADD_TODO_ITEM';
 export const REMOVE_TODO_ITEM = 'REMOVE_TODO_ITEM';
@@ -22,16 +23,19 @@ export const todoReducer = (state: ITodoList[] = initialState, { type, payload }
     switch (type) {
         case LOAD_TODO_LISTS:
             return payload;
-        
+    
+        case ADD_TODO_LIST:
+            return [ payload, ...state ];
+    
+        case UPDATE_TODO_LIST:
+            return state.map(list => (list._id === payload._id) ? payload : list);
+            
         case REMOVE_TODO_LIST:
             return state.filter(list => list._id !== payload);
         
-        case ADD_TODO_LIST:
-            return [ payload, ...state ];
-        
         case ADD_TODO_ITEM:
             targetList       = Object.assign({}, state.find(list => list._id === payload.listId));
-            targetList.items = [ ...targetList.items, payload.item ];
+            targetList.items = [ payload.item, ...targetList.items ];
             return [ ...state.map(list => (list._id === payload.listId) ? targetList : list) ];
         
         case REMOVE_TODO_ITEM:

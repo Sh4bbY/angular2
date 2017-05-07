@@ -7,6 +7,10 @@ import { ITodoItem } from '../interfaces/todo-item';
         .todo-item {
             display : flex;
         }
+        
+        .todo-item > span{
+            word-break: break-all;
+        }
     ` ],
     template: `
         <div class="todo-item">

@@ -35,7 +35,7 @@ import { routeAnimation } from '../animations/route.animation';
                 <div class="todo-head">
                     <form (ngSubmit)="addList()" class="full-width">
                         <md-input-container class="full-width">
-                            <input #newListInput name="title" mdInput placeholder="Todo-List Name" autocomplete="off">
+                            <input #newListInput name="title" mdInput placeholder="Add a new list" autocomplete="off">
                         </md-input-container>
                     </form>
                 </div>

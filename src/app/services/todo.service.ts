@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import { IRootState } from '../reducers/index';
 import {
     ADD_TODO_ITEM, ADD_TODO_LIST, REMOVE_TODO_ITEM, REMOVE_TODO_LIST, TOGGLE_TODO_ITEM, UPDATE_TODO_ITEM,
-    LOAD_TODO_LISTS,
+    LOAD_TODO_LISTS, UPDATE_TODO_LIST,
 } from '../reducers/todo.reducer';
 import { Store } from '@ngrx/store';
 
@@ -16,8 +16,13 @@ export class TodoService {
     }
     
     addList(title: string) {
-        return this.http.post('/api/todo/list', { title: title })
+        return this.http.post('/api/todo/list', { title })
             .map(res => this.store.dispatch({ type: ADD_TODO_LIST, payload: res.json() }));
+    }
+    
+    updateListTitle(id: string, title: string) {
+        return this.http.put('/api/todo/' + id, { title })
+            .map(res => this.store.dispatch({ type: UPDATE_TODO_LIST, payload: res.json() }));
     }
     
     removeList(id: string) {

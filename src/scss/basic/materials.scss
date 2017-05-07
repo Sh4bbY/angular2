@@ -1,6 +1,6 @@
-.mat-toolbar{
-  background-color: rgba(#000,0.8);
-  color: white;
+.mat-toolbar {
+  background-color : rgba(#000, 0.8);
+  color            : white;
 }
 
 .mat-card {
@@ -61,5 +61,16 @@ div.mat-sidenav-content {
   &:focus, &:hover {
     @include mat-elevation(7);
     @include mat-elevation-transition();
+  }
+}
+
+.mat-menu-content {
+  background-color : rgba(#284c70, 0.95);
+}
+
+.mat-menu-item {
+  color : white;
+  .mat-icon {
+    color : currentColor;
   }
 }
