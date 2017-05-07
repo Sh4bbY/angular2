@@ -17,7 +17,8 @@ import { MapsPage } from './pages/ui/maps/maps.page';
 import { CalendarPage } from './pages/ui/calendar/calendar.page';
 
 export const routes: Routes = [
-    { path: '', component: HomePage },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomePage },
     { path: 'ui/typography', component: TypographyPage },
     { path: 'ui/charts/d3', component: D3Page },
     { path: 'ui/charts/highcharts', component: HighchartsPage },

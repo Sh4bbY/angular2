@@ -31,7 +31,7 @@ import { IRootState } from '../../reducers/index';
                     <h1 class="st-title">Blog</h1>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a routerLink="/">Home</a>
+                            <a routerLink="/home">Home</a>
                         </li>
                         <li class="breadcrumb-item active">Blog</li>
                     </ul>

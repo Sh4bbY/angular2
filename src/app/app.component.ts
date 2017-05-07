@@ -20,7 +20,7 @@ export class App implements OnInit {
     navMode  = 'side';
     navOpen  = false;
     navItems = [
-        { name: 'Home', route: '/', icon: 'home' },
+        { name: 'Home', route: '/home', icon: 'home' },
         { name: 'Blog', route: '/blog', icon: 'description' },
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },

@@ -25,7 +25,7 @@ import { routeAnimation } from '../animations/route.animation';
             <h1 class="st-title">Todo</h1>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a routerLink="/">Home</a>
+                    <a routerLink="/home">Home</a>
                 </li>
                 <li class="breadcrumb-item active">Todo</li>
             </ul>

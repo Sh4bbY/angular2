@@ -27,7 +27,7 @@ import { routeAnimation } from '../animations/route.animation';
                     <h1 class="st-title">Chat</h1>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a routerLink="/">Home</a>
+                            <a routerLink="/home">Home</a>
                         </li>
                         <li class="breadcrumb-item active">Chat</li>
                     </ul>
