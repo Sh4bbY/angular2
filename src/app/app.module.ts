@@ -8,6 +8,8 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CalendarModule } from 'angular-calendar';
+
 // app
 import { App } from './app.component';
 import { routes }   from './app.routes';
@@ -45,6 +47,7 @@ import { PieChartComponent } from './components/charts/pie-chart';
 import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
 import { AgmCoreModule } from '@agm/core';
 import { MapsPage } from './pages/ui/maps/maps.page';
+import { CalendarPage } from './pages/ui/calendar/calendar.page';
 
 declare const buildConfig: any;
 
@@ -55,6 +58,7 @@ declare const buildConfig: any;
         FormsModule,
         HttpModule,
         MaterialModule,
+        CalendarModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: buildConfig.mapsKey,
         }),
@@ -90,6 +94,7 @@ declare const buildConfig: any;
         HighchartsPage,
         TablesPage,
         MapsPage,
+        CalendarPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,

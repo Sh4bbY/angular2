@@ -32,6 +32,7 @@ export class App implements OnInit {
                 { name: 'Highcharts', route: '/ui/charts/highcharts', icon: 'show_chart' },
             ]},
             { name: 'Maps', route: '/ui/maps', icon: 'map' },
+            { name: 'Calendar', route: '/ui/calendar', icon: 'event' },
         ]},
     ];
     

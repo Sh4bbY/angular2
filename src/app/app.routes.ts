@@ -14,6 +14,7 @@ import { D3Page } from './pages/ui/charts/d3/d3.page';
 import { TablesPage } from './pages/ui/tables/tables.page';
 import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
 import { MapsPage } from './pages/ui/maps/maps.page';
+import { CalendarPage } from './pages/ui/calendar/calendar.page';
 
 export const routes: Routes = [
     { path: '', component: HomePage },
@@ -22,6 +23,7 @@ export const routes: Routes = [
     { path: 'ui/charts/highcharts', component: HighchartsPage },
     { path: 'ui/tables', component: TablesPage },
     { path: 'ui/maps', component: MapsPage },
+    { path: 'ui/calendar', component: CalendarPage },
     { path: 'login', component: LoginPage },
     { path: 'register', component: RegistrationPage },
     { path: 'user/profile', component: UserProfilePage },
