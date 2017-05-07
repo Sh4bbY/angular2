@@ -7,7 +7,6 @@ import { ITodoList } from '../interfaces/todo-list';
 import { routeAnimation } from '../animations/route.animation';
 
 @Component({
-    selector  : 'my-chat-page',
     animations: [ routeAnimation ],
     styles    : [ `
         ul {

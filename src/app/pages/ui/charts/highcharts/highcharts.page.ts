@@ -4,7 +4,6 @@ import * as Highcharts from 'highcharts';
 import 'highcharts/adapters/standalone-framework.src';
 
 @Component({
-    selector  : 'my-charts',
     animations: [ routeAnimation ],
     styles    : [ `
         svg {

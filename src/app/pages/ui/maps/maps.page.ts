@@ -10,7 +10,6 @@ interface IMarker {
 }
 
 @Component({
-    selector  : 'my-maps',
     animations: [ routeAnimation ],
     styles    : [ `
         agm-map {
