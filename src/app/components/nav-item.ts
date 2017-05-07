@@ -12,6 +12,18 @@ import { rotateAnimation } from '../animations/rotate.animation';
             color : #FFF;
         }
 
+        a.is-active {
+            position: relative;
+        }
+        a.is-active:before {
+            border-left : 3px solid #4dc4ff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            content: '';
+        }
+
         .child-container {
             overflow         : hidden;
             border-left      : 10px solid rgba(0, 0, 0, 0.3);
@@ -22,11 +34,13 @@ import { rotateAnimation } from '../animations/rotate.animation';
         }
     ` ],
     template  : `
-        <a *ngIf="navItem.hasOwnProperty('route')" md-list-item [routerLink]="[navItem.route]">
+        <a *ngIf="navItem.hasOwnProperty('route')" md-list-item
+           [routerLink]="[navItem.route]" [routerLinkActive]="['is-active']">
             <md-icon>{{navItem.icon}}</md-icon>
             {{navItem.name}}
         </a>
-        <a *ngIf="navItem.hasOwnProperty('children')" md-list-item (click)="toggleNavChildren()">
+        <a *ngIf="navItem.hasOwnProperty('children')" md-list-item (click)="toggleNavChildren()"
+           href="javascript:void(0)">
             <md-icon>{{navItem.icon}}</md-icon>
             {{navItem.name}}
             <span class="fill-space"></span>
@@ -42,7 +56,7 @@ export class NavItemComponent {
     rotateState  = 'initial';
     @Input() navItem: ITodoItem;
     
-    toggleNavChildren(children: ElementRef) {
+    toggleNavChildren() {
         this.showChildren = !this.showChildren;
         this.rotateState  = (this.rotateState === 'initial') ? 'rotated' : 'initial';
     }

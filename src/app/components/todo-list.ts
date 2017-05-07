@@ -25,7 +25,7 @@ import { ITodoList } from '../interfaces/todo-list';
         }
     ` ],
     template: `
-        <div class="col-xlg-3 col-lg-3  col-md-6 col-sm-6 col-12">
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xlg-3">
             <md-card>
                 <div class="custom-card-header">
                     <h2 *ngIf="!isUpdateActive" class="todo-title" (click)="isUpdateActive=true">
@@ -54,7 +54,7 @@ import { ITodoList } from '../interfaces/todo-list';
                             <input #newTodoInput name="title" mdInput placeholder="Add a new item" autocomplete="off">
                         </md-input-container>
                     </form>
-                    <ul style="min-width: 300px">
+                    <ul>
                         <li *ngFor="let item of list.items">
                             <my-todo-item [item]="item"
                                           (remove)="removeItem($event)"

@@ -1,38 +1,39 @@
-<md-toolbar>
-    <button md-icon-button (click)="toggleSideNav()">
-        <md-icon>menu</md-icon>
-    </button>
-    <a routerLink="/" class="app-title"><span>shabb</span>tech</a>
-    <span class="fill-space"></span>
-    <button *ngIf="!(isAuthenticated$ | async)" md-button routerLink="/login" title="Login">
-        <i class="fa fa-sign-in" aria-hidden="true"></i>
-        <span>Sign-up</span>
-    </button>
-    <button *ngIf="isAuthenticated$ | async" md-button (click)="logout()" title="Logout">
-        <i class="fa fa-sign-out" aria-hidden="true"></i>
-        <span>Logout</span>
-    </button>
-</md-toolbar>
+<div class="main">
+    <md-toolbar>
+        <button md-icon-button (click)="toggleSideNav()">
+            <md-icon>menu</md-icon>
+        </button>
+        <a routerLink="/" class="app-title"><span>shabb</span>tech</a>
+        <span class="fill-space"></span>
+        <button *ngIf="!(isAuthenticated$ | async)" md-button routerLink="/login" title="Login">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <span>Sign-up</span>
+        </button>
+        <button *ngIf="isAuthenticated$ | async" md-button (click)="logout()" title="Logout">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span>Logout</span>
+        </button>
+    </md-toolbar>
 
-<md-sidenav-container>
-    <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">
-        <my-user-menu></my-user-menu>
-        <md-nav-list>
-            <my-nav-item *ngFor="let navItem of navItems" [navItem]="navItem"></my-nav-item>
-            <hr>
-            <a md-list-item (click)="openFeedbackDialog()">
-                <md-icon>feedback</md-icon>
-                <span>Provide Feedback</span>
-            </a>
-            <a md-list-item (click)="sideNav.close()">
-                <md-icon>close</md-icon>
-                <span>Close Sidebar</span>
-            </a>
-        </md-nav-list>
-    </md-sidenav>
-    <div class="st-content">
-        <router-outlet></router-outlet>
-    </div>
-</md-sidenav-container>
-<my-back-to-top></my-back-to-top>
-
+    <md-sidenav-container>
+        <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">
+            <my-user-menu></my-user-menu>
+            <md-nav-list>
+                <my-nav-item *ngFor="let navItem of navItems" [navItem]="navItem"></my-nav-item>
+                <hr>
+                <a md-list-item (click)="openFeedbackDialog()">
+                    <md-icon>feedback</md-icon>
+                    <span>Provide Feedback</span>
+                </a>
+                <a md-list-item (click)="sideNav.close()">
+                    <md-icon>close</md-icon>
+                    <span>Close Sidebar</span>
+                </a>
+            </md-nav-list>
+        </md-sidenav>
+        <div class="st-content">
+            <router-outlet></router-outlet>
+        </div>
+    </md-sidenav-container>
+    <my-back-to-top></my-back-to-top>
+</div>

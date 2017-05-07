@@ -41,36 +41,24 @@ import { IRootState } from '../../reducers/index';
                 <md-card *ngFor="let post of posts | async">
                     <md-card-header>
                         <div md-card-avatar class="example-header-image"></div>
-                        <md-card-title>{{post.title}}</md-card-title>
+                        <md-card-title><h3>{{post.title}}</h3></md-card-title>
                         <md-card-subtitle>
                             created by
                             <a routerLink="/user/profile/{{post.author.id}}">{{post.author.name}}</a>
-                            at {{post.createdAt | date:'fullDate'}}
+                            at {{post.createdAt | date:'fullDate'}} at {{post.createdAt | date:'shortTime'}}
                         </md-card-subtitle>
                     </md-card-header>
                     <hr/>
                     <md-card-content [innerHTML]="post.body">
                     </md-card-content>
-                    <md-card-actions>
-                        <button md-button>
-                            <md-icon>thumb_up</md-icon>
-                            LIKE
-                        </button>
-                        <button md-button>
-                            <md-icon>share</md-icon>
-                            SHARE
-                        </button>
-                        <span class="fill-space"></span>
-                        <span>0 likes - 0 comments</span>
-                    </md-card-actions>
                 </md-card>
             </div>
         </div>
     `,
 })
 export class BlogPage {
-    @HostBinding('@routeAnimation') routeAnimation:any;
-    posts: Observable<IBlogPost[]>;
+    @HostBinding('@routeAnimation') routeAnimation: any;
+                                    posts: Observable<IBlogPost[]>;
     
     constructor(private store: Store<IRootState>, private blogService: BlogService) {
         this.posts = store.select(s => s.blog);

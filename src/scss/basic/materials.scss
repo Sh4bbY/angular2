@@ -16,8 +16,8 @@
 
 .mat-sidenav-container {
   color            : #fff;
-  height           : 100%;
   background-color : transparent;
+  height           : 100%;
 }
 
 div.mat-sidenav-content {
@@ -29,6 +29,10 @@ div.mat-sidenav-content {
   color            : #fff;
   border-right     : 1px solid rgba(#000, 0.1);
   background-color : rgba(#000, 0.3);
+
+  &.mat-sidenav-over {
+    background-color : #0d1623;
+  }
 
   hr {
     border-color : rgba(#AAA, 0.3);
