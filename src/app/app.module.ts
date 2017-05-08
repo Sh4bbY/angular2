@@ -48,6 +48,7 @@ import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
 import { AgmCoreModule } from '@agm/core';
 import { MapsPage } from './pages/ui/maps/maps.page';
 import { CalendarPage } from './pages/ui/calendar/calendar.page';
+import { KpiWidgetComponent } from './components/kpi-widget';
 
 declare const buildConfig: any;
 
@@ -105,6 +106,7 @@ declare const buildConfig: any;
         NavItemComponent,
         BarChartComponent,
         PieChartComponent,
+        KpiWidgetComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],
