@@ -18,8 +18,6 @@ export class BackToTopComponent implements OnInit {
     
     ngOnInit() {
         this.content = document.getElementsByClassName('mat-sidenav-content')[ 0 ];
-        console.log(this.content);
-        
         Observable.fromEvent(this.content, 'scroll')
             .debounceTime(200)
             .subscribe(() => this.showButton());
