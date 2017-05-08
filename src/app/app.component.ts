@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { Observable } from 'rxjs/Observable';
@@ -6,6 +6,7 @@ import { IRootState } from './reducers/index';
 import { setWindowSize } from './reducers/app.reducer';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from './services/authentication.service';
+import { INavItem } from './interfaces/nav-item';
 
 @Component({
     selector   : 'my-app',
@@ -17,23 +18,27 @@ export class App implements OnInit {
     windowSize$: Observable<any>;
     isAuthenticated$: Observable<boolean>;
     
-    navMode  = 'side';
-    navOpen  = false;
-    navItems = [
+    navMode              = 'side';
+    navOpen              = false;
+    navItems: INavItem[] = [
         { name: 'Home', route: '/home', icon: 'home' },
         { name: 'Blog', route: '/blog', icon: 'description' },
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },
-        { name: 'UI', icon: 'view_quilt', children: [
+        {
+            name: 'UI', icon: 'view_quilt', children: [
             { name: 'Typography', route: '/ui/typography', icon: 'text_format' },
             { name: 'tables', route: '/ui/tables', icon: 'grid_on' },
-            { name: 'Charts', icon: 'show_chart', children: [
+            {
+                name: 'Charts', icon: 'show_chart', children: [
                 { name: 'D3 Charts', route: '/ui/charts/d3', icon: 'show_chart' },
                 { name: 'Highcharts', route: '/ui/charts/highcharts', icon: 'show_chart' },
-            ]},
+            ],
+            },
             { name: 'Maps', route: '/ui/maps', icon: 'map' },
             { name: 'Calendar', route: '/ui/calendar', icon: 'event' },
-        ]},
+        ],
+        },
     ];
     
     constructor(private store: Store<IRootState>,

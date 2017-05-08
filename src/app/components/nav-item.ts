@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input } from '@angular/core';
-import { ITodoItem } from '../interfaces/todo-item';
+import { Component,  Input } from '@angular/core';
+import { INavItem } from '../interfaces/nav-item';
 import { expandAnimation } from '../animations/expand.animation';
 import { rotateAnimation } from '../animations/rotate.animation';
 
@@ -54,7 +54,7 @@ import { rotateAnimation } from '../animations/rotate.animation';
 export class NavItemComponent {
     showChildren = false;
     rotateState  = 'initial';
-    @Input() navItem: ITodoItem;
+    @Input() navItem: INavItem;
     
     toggleNavChildren() {
         this.showChildren = !this.showChildren;

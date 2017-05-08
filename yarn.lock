@@ -238,7 +238,7 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.2.tgz#b02d10ab028e2928ac592a051aaa4981a1941d03"
 
-"@types/highcharts@^4.2.54":
+"@types/highcharts@4.2.54":
   version "4.2.54"
   resolved "https://registry.yarnpkg.com/@types/highcharts/-/highcharts-4.2.54.tgz#b803fd15a7d45f124483213b437e9cdb6cb24fe2"
   dependencies:
@@ -268,7 +268,7 @@
   version "2.53.42"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.42.tgz#74cb77fb6052edaff2a8984ddafd88d419f25cac"
 
-"@types/socket.io-client@^1.4.29":
+"@types/socket.io-client@1.4.29":
   version "1.4.29"
   resolved "https://registry.yarnpkg.com/@types/socket.io-client/-/socket.io-client-1.4.29.tgz#f8743070cee93175e36e0b6a77a8af73e58ccb32"
 
@@ -343,7 +343,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-calendar@^0.14.0:
+angular-calendar@0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/angular-calendar/-/angular-calendar-0.14.0.tgz#6b1c8e378000a5a577cb08f9f4fec3f16ba381a6"
   dependencies:
