@@ -24,7 +24,7 @@ export const routes: Routes = [
     { path: 'ui/tables', component: TablesPage },
     { path: 'ui/maps', loadChildren: './pages/ui/maps/maps.module#MapsModule' },
     { path: 'ui/calendar', loadChildren: './pages/ui/calendar/calendar.module#CalendarPageModule' },
-    { path: 'login', component: LoginPage },
+    { path: 'login', loadChildren: './pages/login.module#LoginModule' },
     { path: 'register', loadChildren: './pages/registration.module#RegistrationModule'},
     { path: 'user/profile', component: UserProfilePage },
     { path: 'blog', component: BlogPage },

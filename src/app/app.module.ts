@@ -62,7 +62,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
     declarations   : [
         App,
         HomePage,
-        LoginPage,
         UserProfilePage,
         BlogPage,
         BlogAdminPage,
