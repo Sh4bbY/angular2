@@ -1,6 +1,6 @@
 // angular
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { BrowserModule }  from '@angular/platform-browser';
@@ -17,7 +17,6 @@ import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
 import { HomePage } from './pages/home.page';
 import { LoginPage } from './pages/login.page';
-import { RegistrationPage } from './pages/registration.page';
 import { BlogPage } from './pages/blog/blog.page';
 import { BlogAdminPage } from './pages/blog/blog.admin.page';
 import { UserProfilePage } from './pages/user/profile.page';
@@ -43,7 +42,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        ReactiveFormsModule,
         HttpModule,
         MaterialModule,
         StoreModule.provideStore(rootReducer),
@@ -65,7 +63,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         App,
         HomePage,
         LoginPage,
-        RegistrationPage,
         UserProfilePage,
         BlogPage,
         BlogAdminPage,
