@@ -30,7 +30,7 @@ import { NgForm } from '@angular/forms';
                                    placeholder="Password" autocomplete="off" minlength="5" required>
                             <md-hint align="end" *ngIf="formErrors.password">{{ formErrors.password }}</md-hint>
                         </md-input-container>
-                        <md-error *ngIf="error">{{responseError}}</md-error>
+                        <md-error *ngIf="responseError">{{responseError}}</md-error>
                         <br/>
                         <br/>
                         <button md-raised-button type="submit" color="primary" class="full-width" [disabled]="loading">
