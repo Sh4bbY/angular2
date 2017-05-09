@@ -73,7 +73,7 @@ module.exports = {
             {} // a map of your routes
         ),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app']
+            name: ['commons']
         }),
         new HtmlWebpackPlugin({
             template: 'public/index.html'
