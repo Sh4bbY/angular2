@@ -1,13 +1,45 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routeAnimation } from '../../animations/route.animation';
+import 'froala-editor/js/froala_editor.min.js';
+import 'froala-editor/js/plugins/file.min.js';
+import 'froala-editor/js/plugins/char_counter.min.js';
+import 'froala-editor/js/plugins/font_size.min.js';
+import 'froala-editor/js/plugins/fullscreen.min.js';
+import 'froala-editor/js/plugins/image.min.js';
+import 'froala-editor/js/plugins/image_manager.min.js';
+import 'froala-editor/js/plugins/table.min.js';
+import 'froala-editor/js/plugins/quick_insert.min.js';
+import 'froala-editor/js/plugins/code_view.min.js';
+import 'froala-editor/js/plugins/colors.min.js';
+import 'froala-editor/js/plugins/lists.min.js';
+import 'froala-editor/js/plugins/paragraph_format.min.js';
+import 'froala-editor/js/plugins/paragraph_style.min.js';
+import 'froala-editor/js/plugins/quote.min.js';
+import 'froala-editor/js/plugins/url.min.js';
+import 'froala-editor/js/plugins/save.min.js';
+import 'froala-editor/js/plugins/special_characters.min.js';
+import 'froala-editor/js/plugins/word_paste.min.js';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+//import 'froala-editor/js/froala_editor.pkgd.min.js';
+import 'jquery';
 
 @Component({
     animations: [ routeAnimation ],
+    encapsulation: ViewEncapsulation.None,
+    styles: [`
+        .fr-toolbar{
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .fr-box.fr-basic .fr-wrapper {
+            background: rgba(255,255,255,0.9);
+        }
+    `],
     template  : `
-        <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
             <div class="st-content-top clearfix">
                 <h1 *ngIf="id" class="st-title">Edit Blog Post</h1>
                 <h1 *ngIf="!id" class="st-title">Create Blog Post</h1>
@@ -17,9 +49,8 @@ import { routeAnimation } from '../../animations/route.animation';
                     <md-input-container class="full-width">
                         <input mdInput name="title" [(ngModel)]="model.title" placeholder="Title">
                     </md-input-container>
-                    <md-input-container class="full-width">
-                        <textarea mdInput name="body" [(ngModel)]="model.body" rows="6" placeholder="Body"></textarea>
-                    </md-input-container>
+                    <div [froalaEditor] [(froalaModel)]="model.body"></div>
+                    <br/>
                     <div>
                         <button md-raised-button type="button" color="accent" (click)="save()" title="Save">
                             Save
@@ -33,7 +64,7 @@ import { routeAnimation } from '../../animations/route.animation';
     `,
 })
 export class PostAdminPage implements OnInit {
-    @HostBinding('@routeAnimation') routeAnimation:any;
+    @HostBinding('@routeAnimation') routeAnimation: any;
     public model: any;
     public id: string;
     

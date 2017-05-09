@@ -9,7 +9,9 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AgmCoreModule } from '@agm/core';
 import { CalendarModule } from 'angular-calendar';
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 // app
 import { App } from './app.component';
@@ -46,7 +48,6 @@ import { TablesPage } from './pages/ui/tables/tables.page';
 import { BarChartComponent } from './components/charts/bar-chart';
 import { PieChartComponent } from './components/charts/pie-chart';
 import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
-import { AgmCoreModule } from '@agm/core';
 import { MapsPage } from './pages/ui/maps/maps.page';
 import { CalendarPage } from './pages/ui/calendar/calendar.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
@@ -65,6 +66,8 @@ declare const buildConfig: any;
         AgmCoreModule.forRoot({
             apiKey: buildConfig.mapsKey,
         }),
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot(),
         StoreModule.provideStore(rootReducer),
         StoreDevtoolsModule.instrumentOnlyWithExtension({
             maxAge: 5,

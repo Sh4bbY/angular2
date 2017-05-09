@@ -26,6 +26,5 @@ if (process.env.NODE_ENV === 'production') {
 // application bootstrap
 import { AppModule } from './app/app.module';
 import './scss/styles.scss';
-//import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-import 'highlightjs/styles/darcula.css';
+
 pbd.platformBrowserDynamic().bootstrapModule(AppModule);
