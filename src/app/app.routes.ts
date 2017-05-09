@@ -23,7 +23,7 @@ export const routes: Routes = [
     { path: 'ui/charts/highcharts', loadChildren: './pages/ui/charts/highcharts/highcharts.module#HighchartsModule' },
     { path: 'ui/tables', component: TablesPage },
     { path: 'ui/maps', loadChildren: './pages/ui/maps/maps.module#MapsModule' },
-    { path: 'ui/calendar', component: CalendarPage },
+    { path: 'ui/calendar', loadChildren: './pages/ui/calendar/calendar.module#CalendarPageModule' },
     { path: 'login', component: LoginPage },
     { path: 'register', component: RegistrationPage },
     { path: 'user/profile', component: UserProfilePage },

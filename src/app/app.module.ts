@@ -9,7 +9,6 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CalendarModule } from 'angular-calendar';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 // app
@@ -43,7 +42,6 @@ import { TypographyPage } from './pages/ui/typography/typography.page';
 import { BackToTopComponent } from './components/back-to-top';
 import { NavItemComponent } from './components/nav-item';
 import { TablesPage } from './pages/ui/tables/tables.page';
-import { CalendarPage } from './pages/ui/calendar/calendar.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
 
 @NgModule({
@@ -54,7 +52,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         ReactiveFormsModule,
         HttpModule,
         MaterialModule,
-        CalendarModule.forRoot(),
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
         StoreModule.provideStore(rootReducer),
@@ -86,7 +83,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         TodoPage,
         ChatPage,
         TablesPage,
-        CalendarPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
