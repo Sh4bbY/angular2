@@ -41,12 +41,8 @@ import { TodoService } from './services/todo.service';
 import { TodoPage } from './pages/todo.page';
 import { TypographyPage } from './pages/ui/typography/typography.page';
 import { BackToTopComponent } from './components/back-to-top';
-import { D3Page } from './pages/ui/charts/d3/d3.page';
 import { NavItemComponent } from './components/nav-item';
 import { TablesPage } from './pages/ui/tables/tables.page';
-import { BarChartComponent } from './components/charts/bar-chart';
-import { PieChartComponent } from './components/charts/pie-chart';
-import { HighchartsPage } from './pages/ui/charts/highcharts/highcharts.page';
 import { CalendarPage } from './pages/ui/calendar/calendar.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
 
@@ -89,7 +85,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         PostAdminPage,
         TodoPage,
         ChatPage,
-        HighchartsPage,
         TablesPage,
         CalendarPage,
         TodoListComponent,

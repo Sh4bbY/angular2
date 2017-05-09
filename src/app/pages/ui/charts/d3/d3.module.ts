@@ -9,8 +9,8 @@ import { BarChartComponent } from '../../../../components/charts/bar-chart';
 @NgModule({
     imports     : [
         CommonModule,
-        RouterModule.forChild([ { path: '', component: D3Page } ]),
         MaterialModule,
+        RouterModule.forChild([ { path: '', component: D3Page } ]),
     ],
     declarations: [
         D3Page,

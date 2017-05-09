@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'home', component: HomePage },
     { path: 'ui/typography', component: TypographyPage },
     { path: 'ui/charts/d3', loadChildren: './pages/ui/charts/d3/d3.module#D3Module' },
-    { path: 'ui/charts/highcharts', component: HighchartsPage },
+    { path: 'ui/charts/highcharts', loadChildren: './pages/ui/charts/highcharts/highcharts.module#HighchartsModule' },
     { path: 'ui/tables', component: TablesPage },
     { path: 'ui/maps', loadChildren: './pages/ui/maps/maps.module#MapsModule' },
     { path: 'ui/calendar', component: CalendarPage },
