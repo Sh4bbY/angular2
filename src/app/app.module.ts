@@ -9,7 +9,6 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 // app
 import { App } from './app.component';
@@ -52,8 +51,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         ReactiveFormsModule,
         HttpModule,
         MaterialModule,
-        FroalaEditorModule.forRoot(),
-        FroalaViewModule.forRoot(),
         StoreModule.provideStore(rootReducer),
         StoreDevtoolsModule.instrumentOnlyWithExtension({
             maxAge: 5,
@@ -79,7 +76,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         UserProfilePage,
         BlogPage,
         BlogAdminPage,
-        PostAdminPage,
         TodoPage,
         ChatPage,
         TablesPage,

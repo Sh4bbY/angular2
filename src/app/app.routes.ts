@@ -29,8 +29,14 @@ export const routes: Routes = [
     { path: 'user/profile', component: UserProfilePage },
     { path: 'blog', component: BlogPage },
     { path: 'admin/blog', component: BlogAdminPage, canActivate: [ AuthGuard ] },
-    { path: 'admin/blog/post/create', component: PostAdminPage, canActivate: [ AuthGuard ] },
-    { path: 'admin/blog/post/:id', component: PostAdminPage, canActivate: [ AuthGuard ] },
     { path: 'todo', component: TodoPage },
     { path: 'chat', component: ChatPage },
+    {
+        path       : 'admin/blog/post/create', loadChildren: './pages/blog/post.admin.module#PostAdminModule',
+        canActivate: [ AuthGuard ],
+    },
+    {
+        path       : 'admin/blog/post/:id', loadChildren: './pages/blog/post.admin.module#PostAdminModule',
+        canActivate: [ AuthGuard ],
+    },
 ];

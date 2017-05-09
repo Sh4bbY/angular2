@@ -3,42 +3,20 @@ import { UserService } from '../../services/user.service';
 import { BlogService } from '../../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routeAnimation } from '../../animations/route.animation';
-import 'froala-editor/js/froala_editor.min.js';
-import 'froala-editor/js/plugins/file.min.js';
-import 'froala-editor/js/plugins/char_counter.min.js';
-import 'froala-editor/js/plugins/font_size.min.js';
-import 'froala-editor/js/plugins/fullscreen.min.js';
-import 'froala-editor/js/plugins/image.min.js';
-import 'froala-editor/js/plugins/image_manager.min.js';
-import 'froala-editor/js/plugins/table.min.js';
-import 'froala-editor/js/plugins/quick_insert.min.js';
-import 'froala-editor/js/plugins/code_view.min.js';
-import 'froala-editor/js/plugins/colors.min.js';
-import 'froala-editor/js/plugins/lists.min.js';
-import 'froala-editor/js/plugins/paragraph_format.min.js';
-import 'froala-editor/js/plugins/paragraph_style.min.js';
-import 'froala-editor/js/plugins/quote.min.js';
-import 'froala-editor/js/plugins/url.min.js';
-import 'froala-editor/js/plugins/save.min.js';
-import 'froala-editor/js/plugins/special_characters.min.js';
-import 'froala-editor/js/plugins/word_paste.min.js';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-//import 'froala-editor/js/froala_editor.pkgd.min.js';
-import 'jquery';
 
 @Component({
-    animations: [ routeAnimation ],
+    animations   : [ routeAnimation ],
     encapsulation: ViewEncapsulation.None,
-    styles: [`
-        .fr-toolbar{
-            background: rgba(255,255,255,0.5);
+    styles       : [ `
+        .fr-toolbar {
+            background : rgba(255, 255, 255, 0.5);
         }
-        
+
         .fr-box.fr-basic .fr-wrapper {
-            background: rgba(255,255,255,0.9);
+            background : rgba(255, 255, 255, 0.9);
         }
-    `],
-    template  : `
+    ` ],
+    template     : `
         <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
             <div class="st-content-top clearfix">
                 <h1 *ngIf="id" class="st-title">Edit Blog Post</h1>
@@ -47,7 +25,7 @@ import 'jquery';
             <md-card>
                 <form style="display:flex;flex-direction: column">
                     <md-input-container class="full-width">
-                        <input mdInput name="title" [(ngModel)]="model.title" placeholder="Title">
+                        <input mdInput name="title" [(ngModel)]="model.title" placeholder="Title" autocomplete="off">
                     </md-input-container>
                     <div [froalaEditor] [(froalaModel)]="model.body"></div>
                     <br/>
@@ -92,6 +70,7 @@ export class PostAdminPage implements OnInit {
             this.model.author.name  = user.name;
             this.model.author.email = user.email;
         });
+        console.log('post page init');
     }
     
     save() {
