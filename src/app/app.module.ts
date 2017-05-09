@@ -16,21 +16,16 @@ import { routes }   from './app.routes';
 import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
 import { HomePage } from './pages/home.page';
-import { LoginPage } from './pages/login.page';
 import { BlogPage } from './pages/blog/blog.page';
 import { BlogAdminPage } from './pages/blog/blog.admin.page';
 import { UserProfilePage } from './pages/user/profile.page';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
-import { TodoListComponent } from './components/todo-list';
-import { TodoItemComponent } from './components/todo-item';
 import { BlogService } from './services/blog.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { FeedbackService } from './services/feedback.service';
-import { TodoService } from './services/todo.service';
-import { TodoPage } from './pages/todo.page';
 import { TypographyPage } from './pages/ui/typography/typography.page';
 import { BackToTopComponent } from './components/back-to-top';
 import { NavItemComponent } from './components/nav-item';
@@ -56,7 +51,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         UserService,
         BlogService,
         FeedbackService,
-        TodoService,
         AuthGuard,
     ],
     declarations   : [
@@ -65,10 +59,7 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         UserProfilePage,
         BlogPage,
         BlogAdminPage,
-        TodoPage,
         TablesPage,
-        TodoListComponent,
-        TodoItemComponent,
         UserMenuComponent,
         TypographyPage,
         FeedbackDialogComponent,
