@@ -28,15 +28,17 @@ export const routes: Routes = [
     { path: 'register', component: RegistrationPage },
     { path: 'user/profile', component: UserProfilePage },
     { path: 'blog', component: BlogPage },
-    { path: 'admin/blog', component: BlogAdminPage, canActivate: [ AuthGuard ] },
     { path: 'todo', component: TodoPage },
-    { path: 'chat', component: ChatPage },
+    { path: 'chat', loadChildren: './pages/chat.module#ChatModule' },
+    { path: 'admin/blog', component: BlogAdminPage, canActivate: [ AuthGuard ] },
     {
-        path       : 'admin/blog/post/create', loadChildren: './pages/blog/post.admin.module#PostAdminModule',
-        canActivate: [ AuthGuard ],
+        path        : 'admin/blog/post/create',
+        loadChildren: './pages/blog/post.admin.module#PostAdminModule',
+        canActivate : [ AuthGuard ],
     },
     {
-        path       : 'admin/blog/post/:id', loadChildren: './pages/blog/post.admin.module#PostAdminModule',
-        canActivate: [ AuthGuard ],
+        path        : 'admin/blog/post/:id',
+        loadChildren: './pages/blog/post.admin.module#PostAdminModule',
+        canActivate : [ AuthGuard ],
     },
 ];

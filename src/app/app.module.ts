@@ -19,9 +19,7 @@ import { HomePage } from './pages/home.page';
 import { LoginPage } from './pages/login.page';
 import { RegistrationPage } from './pages/registration.page';
 import { BlogPage } from './pages/blog/blog.page';
-import { ChatPage } from './pages/chat.page';
 import { BlogAdminPage } from './pages/blog/blog.admin.page';
-import { PostAdminPage } from './pages/blog/post.admin.page';
 import { UserProfilePage } from './pages/user/profile.page';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
@@ -31,9 +29,6 @@ import { BlogService } from './services/blog.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
-import { WebSocketService } from './services/websocket.service';
-import { ChatService } from './services/chat.service';
-import { ChatComponent } from './components/chat';
 import { FeedbackService } from './services/feedback.service';
 import { TodoService } from './services/todo.service';
 import { TodoPage } from './pages/todo.page';
@@ -62,8 +57,6 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         AuthenticationService,
         UserService,
         BlogService,
-        WebSocketService,
-        ChatService,
         FeedbackService,
         TodoService,
         AuthGuard,
@@ -77,21 +70,18 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         BlogPage,
         BlogAdminPage,
         TodoPage,
-        ChatPage,
         TablesPage,
         TodoListComponent,
         TodoItemComponent,
         UserMenuComponent,
         TypographyPage,
         FeedbackDialogComponent,
-        ChatComponent,
         BackToTopComponent,
         NavItemComponent,
         KpiWidgetComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],
-    exports        : [ MaterialModule ],
 })
 export class AppModule {
 }
