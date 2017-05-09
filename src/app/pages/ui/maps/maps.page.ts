@@ -21,6 +21,24 @@ interface IMarker {
 })
 export class MapsPage {
     @HostBinding('@routeAnimation') routeAnimation:any;
+    
+    markers: IMarker[] = [ {
+        lat      : 51.673858,
+        lng      : 7.815982,
+        label    : 'A',
+        draggable: true,
+    }, {
+        lat      : 51.373858,
+        lng      : 7.215982,
+        label    : 'B',
+        draggable: false,
+    }, {
+        lat      : 51.723858,
+        lng      : 7.895982,
+        label    : 'C',
+        draggable: true,
+    } ];
+    
     // google maps zoom level
     zoom: number = 8;
     
@@ -42,21 +60,4 @@ export class MapsPage {
     markerDragEnd(m: IMarker, $event: MouseEvent) {
         console.log('dragEnd', m, $event);
     }
-    
-    markers: IMarker[] = [ {
-        lat      : 51.673858,
-        lng      : 7.815982,
-        label    : 'A',
-        draggable: true,
-    }, {
-        lat      : 51.373858,
-        lng      : 7.215982,
-        label    : 'B',
-        draggable: false,
-    }, {
-        lat      : 51.723858,
-        lng      : 7.895982,
-        label    : 'C',
-        draggable: true,
-    } ];
 }

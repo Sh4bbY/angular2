@@ -32,7 +32,8 @@ module.exports = {
                         loader : 'awesome-typescript-loader',
                         options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
                     },
-                    'angular2-template-loader'
+                    'angular2-template-loader',
+                    'angular-router-loader'
                 ]
             }, {
                 test   : /\.s[ac]ss$/,
@@ -82,12 +83,12 @@ module.exports = {
             to  : ''
         }]),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV'  : JSON.stringify(process.env.NODE_ENV || 'development'),
-            'buildConfig.mapsKey': JSON.stringify(mapsKey)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            'buildConfig.mapsKey' : JSON.stringify(mapsKey)
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
+            $     : 'jquery',
+            jQuery: 'jquery'
         })
     ]
 };

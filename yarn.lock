@@ -365,6 +365,12 @@ angular-resizable-element@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-1.0.0.tgz#5698a703d5db876ef1a7b43ace7463e81ec54685"
 
+angular-router-loader@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/angular-router-loader/-/angular-router-loader-0.6.0.tgz#6c7caf7f1ea6acc6e2bc682cef91a343e9a7f3b5"
+  dependencies:
+    loader-utils "^1.0.2"
+
 angular2-froala-wysiwyg@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/angular2-froala-wysiwyg/-/angular2-froala-wysiwyg-2.6.0.tgz#79c207d9b34dba5b9038ee8bafaa223b52f31951"

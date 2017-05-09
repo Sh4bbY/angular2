@@ -23,7 +23,7 @@ export const routes: Routes = [
     { path: 'ui/charts/d3', component: D3Page },
     { path: 'ui/charts/highcharts', component: HighchartsPage },
     { path: 'ui/tables', component: TablesPage },
-    { path: 'ui/maps', component: MapsPage },
+    { path: 'ui/maps', loadChildren: './pages/ui/maps/maps.module#MapsModule' },
     { path: 'ui/calendar', component: CalendarPage },
     { path: 'login', component: LoginPage },
     { path: 'register', component: RegistrationPage },
