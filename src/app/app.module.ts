@@ -1,6 +1,6 @@
 // angular
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { BrowserModule }  from '@angular/platform-browser';
@@ -9,15 +9,16 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import 'jquery';
+import {
+    MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdInputModule, MdListModule,
+    MdMenuModule, MdSelectModule, MdSidenavModule, MdToolbarModule,
+} from '@angular/material';
 
 // app
 import { App } from './app.component';
 import { routes }   from './app.routes';
 import { rootReducer } from './reducers/index';
 import { HomePage } from './pages/home.page';
-import { BlogPage } from './pages/blog/blog.page';
-import { BlogAdminPage } from './pages/blog/blog.admin.page';
 import { UserProfilePage } from './pages/user/profile.page';
 import { FeedbackDialogComponent } from './components/feedback-dialog';
 import { UserMenuComponent } from './components/user-menu';
@@ -31,15 +32,14 @@ import { BackToTopComponent } from './components/back-to-top';
 import { NavItemComponent } from './components/nav-item';
 import { TablesPage } from './pages/ui/tables/tables.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
-import {
-    MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdInputModule, MdListModule,
-    MdMenuModule, MdSelectModule, MdSidenavModule, MdToolbarModule,
-} from '@angular/material';
+import { RegistrationPage } from './pages/registration.page';
+import { LoginPage } from './pages/login.page';
 
 @NgModule({
     imports        : [
         BrowserModule,
         BrowserAnimationsModule,
+        ReactiveFormsModule,
         FormsModule,
         HttpModule,
         MdInputModule,
@@ -70,8 +70,8 @@ import {
         App,
         HomePage,
         UserProfilePage,
-        BlogPage,
-        BlogAdminPage,
+        LoginPage,
+        RegistrationPage,
         TablesPage,
         UserMenuComponent,
         TypographyPage,

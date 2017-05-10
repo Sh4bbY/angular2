@@ -20,7 +20,7 @@ import { Store } from '@ngrx/store';
                 <h1 class="st-title">Blog Administration</h1>
             </div>
 
-            <button md-raised-button routerLink="/admin/blog/post/create">Create Post</button>
+            <button md-raised-button routerLink="/blog/admin/post/create">Create Post</button>
             <br/><br/>
             <md-card>
                 <table class="full-width">
@@ -42,7 +42,7 @@ import { Store } from '@ngrx/store';
                                 <md-icon>publish</md-icon>
                             </button>
                             <button md-icon-button color="accent" title="Edit Post"
-                                    [routerLink]="['/admin/blog/post/',post._id]">
+                                    [routerLink]="['/blog/admin/post/',post._id]">
                                 <md-icon>edit</md-icon>
                             </button>
                             <button md-icon-button color="warn" title="Delete Post" (click)="onDeleteClick(post._id)">

@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MdCardModule } from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
-import { MapsPage } from './maps.page';
+import { MapsPage } from '../pages/ui/maps/maps.page';
 
 declare const buildConfig: any;
 

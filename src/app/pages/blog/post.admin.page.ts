@@ -34,7 +34,7 @@ import { routeAnimation } from '../../animations/route.animation';
                             Save
                         </button>
                         <button md-raised-button type="button" (click)="discard()" title="Discard">Discard</button>
-                        <button md-raised-button type="button" routerLink="/admin/blog" title="Back">Back</button>
+                        <button md-raised-button type="button" routerLink="/blog/admin" title="Back">Back</button>
                     </div>
                 </form>
             </md-card>

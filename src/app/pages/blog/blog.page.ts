@@ -36,7 +36,7 @@ import { IRootState } from '../../reducers/index';
                         <li class="breadcrumb-item active">Blog</li>
                     </ul>
                 </div>
-                <button md-raised-button routerLink="/admin/blog/">Blog Administration</button>
+                <button md-raised-button routerLink="/blog/admin">Blog Administration</button>
                 <br/><br/>
                 <md-card *ngFor="let post of posts | async">
                     <md-card-header>
