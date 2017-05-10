@@ -36,7 +36,7 @@ module.exports = {
                         }
                     }, {
                         loader : 'awesome-typescript-loader',
-                        options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
+                        options: {configFileName: conf.dir.fromRoot('tsconfig.webpack.json')}
                     },
                     'angular2-template-loader'
                 ]
