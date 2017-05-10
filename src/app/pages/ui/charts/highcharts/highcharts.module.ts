@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MdCardModule } from '@angular/material';
 import { HighchartsPage } from './highcharts.page';
-import { MaterialModule } from '../../../../modules/material.module';
 
 @NgModule({
     imports     : [
         CommonModule,
-        MaterialModule,
+        MdCardModule,
         RouterModule.forChild([ { path: '', component: HighchartsPage } ]),
     ],
     declarations: [

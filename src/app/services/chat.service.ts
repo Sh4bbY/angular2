@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
 import { WebSocketService } from './websocket.service';
 import { IChatMessage } from '../interfaces/chat-message';
 import { IRootState } from '../reducers/index';
-import { Store } from '@ngrx/store';
 import { ADD_CHAT_MESSAGE } from '../reducers/chat.reducer';
-import { Http } from '@angular/http';
 
 const CHAT_URL = 'ws://localhost:8000/api/chat';
 

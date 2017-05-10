@@ -70,7 +70,6 @@ export class PostAdminPage implements OnInit {
             this.model.author.name  = user.name;
             this.model.author.email = user.email;
         });
-        console.log('post page init');
     }
     
     save() {

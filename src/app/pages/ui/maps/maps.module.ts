@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MapsPage } from './maps.page';
-import { MaterialModule } from '../../../modules/material.module';
-import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
+import { MdCardModule } from '@angular/material';
+import { AgmCoreModule } from '@agm/core';
+import { MapsPage } from './maps.page';
 
 declare const buildConfig: any;
 
@@ -11,7 +11,7 @@ declare const buildConfig: any;
     imports     : [
         CommonModule,
         RouterModule.forChild([ { path: '', component: MapsPage } ]),
-        MaterialModule,
+        MdCardModule,
         AgmCoreModule.forRoot({
             apiKey: buildConfig.mapsKey,
         }),

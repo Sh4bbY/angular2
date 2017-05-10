@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 import { AuthenticationService } from './authentication.service';
 import { IFeedbackForm } from '../interfaces/forms/feedback';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class FeedbackService {

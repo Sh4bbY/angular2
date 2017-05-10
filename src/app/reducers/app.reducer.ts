@@ -2,16 +2,6 @@ import { Action } from '@ngrx/store';
 
 export const SET_WINDOW_SIZE = 'SET_WINDOW_SIZE';
 
-export function setWindowSize(): Action {
-    return {
-        type   : SET_WINDOW_SIZE,
-        payload: {
-            width : window.innerWidth,
-            height: window.innerHeight,
-        },
-    };
-}
-
 export interface IAppState {
     windowSize: { width: number; height: number };
 }

@@ -1,11 +1,6 @@
 import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
 import { routeAnimation } from '../../../animations/route.animation';
-import * as moment from 'moment';
-import {
-    CalendarDateFormatter, CalendarEvent, CalendarEventAction,
-    CalendarMomentDateFormatter, MOMENT,
-    CalendarEventTimesChangedEvent,
-} from 'angular-calendar';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 
@@ -28,10 +23,6 @@ const colors: any = {
     animations   : [ routeAnimation ],
     template     : require('./calendar.html'),
     styles       : [ require('./calendar.scss') ],
-    providers    : [
-        { provide: CalendarDateFormatter, useClass: CalendarMomentDateFormatter },
-        { provide: MOMENT, useValue: moment },
-    ],
     encapsulation: ViewEncapsulation.None,
 })
 export class CalendarPage {

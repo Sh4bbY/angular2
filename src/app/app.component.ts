@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSidenav } from '@angular/material';
-import { FeedbackDialogComponent } from './components/feedback-dialog';
-import { Observable } from 'rxjs/Observable';
-import { IRootState } from './reducers/index';
-import { setWindowSize } from './reducers/app.reducer';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/skip';
+import { FeedbackDialogComponent } from './components/feedback-dialog';
+import { IRootState } from './reducers/index';
+import { SET_WINDOW_SIZE } from './reducers/app.reducer';
 import { AuthenticationService } from './services/authentication.service';
 import { INavItem } from './interfaces/nav-item';
 
@@ -44,24 +46,10 @@ export class App implements OnInit {
     constructor(private store: Store<IRootState>,
                 private dialog: MdDialog,
                 private authenticationService: AuthenticationService) {
-        this.windowSize$ = store.select(s => s.app.windowSize);
-        
-        Observable.fromEvent(window, 'load').subscribe(() => this.store.dispatch(setWindowSize()));
-        Observable.fromEvent(window, 'resize')
-            .debounceTime(200)
-            .subscribe(() => this.store.dispatch(setWindowSize()));
-        
+        this.windowSize$      = store.select(s => s.app.windowSize);
         this.isAuthenticated$ = store.select(s => s.user.isAuthenticated);
-        this.windowSize$.skip(1).subscribe(screen => {
-            if (screen.width < 768) {
-                this.navMode = 'over';
-                this.sideNav.close();
-            }
-            else {
-                this.navMode = 'side';
-                this.sideNav.open();
-            }
-        });
+        
+        this.subscribeToWindowResize();
     }
     
     ngOnInit() {
@@ -84,5 +72,28 @@ export class App implements OnInit {
     
     openFeedbackDialog() {
         this.dialog.open(FeedbackDialogComponent);
+    }
+    
+    private subscribeToWindowResize() {
+        const createResizeEvent = () => ({
+            type   : SET_WINDOW_SIZE,
+            payload: { width: window.innerWidth, height: window.innerHeight },
+        });
+        
+        Observable.fromEvent(window, 'load').subscribe(() => this.store.dispatch(createResizeEvent()));
+        Observable.fromEvent(window, 'resize')
+            .debounceTime(200)
+            .subscribe(() => this.store.dispatch(createResizeEvent()));
+        
+        this.windowSize$.skip(1).subscribe(screen => {
+            if (screen.width < 768) {
+                this.navMode = 'over';
+                this.sideNav.close();
+            }
+            else {
+                this.navMode = 'side';
+                this.sideNav.open();
+            }
+        });
     }
 }

@@ -365,12 +365,6 @@ angular-resizable-element@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/angular-resizable-element/-/angular-resizable-element-1.0.0.tgz#5698a703d5db876ef1a7b43ace7463e81ec54685"
 
-angular-router-loader@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/angular-router-loader/-/angular-router-loader-0.6.0.tgz#6c7caf7f1ea6acc6e2bc682cef91a343e9a7f3b5"
-  dependencies:
-    loader-utils "^1.0.2"
-
 angular2-froala-wysiwyg@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/angular2-froala-wysiwyg/-/angular2-froala-wysiwyg-2.6.0.tgz#79c207d9b34dba5b9038ee8bafaa223b52f31951"
@@ -3684,6 +3678,13 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng-router-loader@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ng-router-loader/-/ng-router-loader-2.1.0.tgz#7a253863d0d7fde804564f39762ebd7f78afc8e9"
+  dependencies:
+    loader-utils "^0.2.16"
+    recast "^0.11.20"
+
 ngrx-store-freeze@0.1.9:
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.1.9.tgz#b20f18f21fd5efc4e1b1e05f6f279674d0f70c81"
@@ -4612,7 +4613,7 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-recast@~0.11.12:
+recast@^0.11.20, recast@~0.11.12:
   version "0.11.23"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.11.23.tgz#451fd3004ab1e4df9b4e4b66376b2a21912462d3"
   dependencies:

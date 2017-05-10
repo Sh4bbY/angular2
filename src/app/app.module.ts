@@ -9,11 +9,11 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 // vendors
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import 'jquery';
 
 // app
 import { App } from './app.component';
 import { routes }   from './app.routes';
-import { MaterialModule } from './modules/material.module';
 import { rootReducer } from './reducers/index';
 import { HomePage } from './pages/home.page';
 import { BlogPage } from './pages/blog/blog.page';
@@ -31,6 +31,10 @@ import { BackToTopComponent } from './components/back-to-top';
 import { NavItemComponent } from './components/nav-item';
 import { TablesPage } from './pages/ui/tables/tables.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
+import {
+    MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdInputModule, MdListModule,
+    MdMenuModule, MdSelectModule, MdSidenavModule, MdToolbarModule,
+} from '@angular/material';
 
 @NgModule({
     imports        : [
@@ -38,7 +42,16 @@ import { KpiWidgetComponent } from './components/kpi-widget';
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
-        MaterialModule,
+        MdInputModule,
+        MdIconModule,
+        MdSelectModule,
+        MdListModule,
+        MdCardModule,
+        MdButtonModule,
+        MdDialogModule,
+        MdMenuModule,
+        MdSidenavModule,
+        MdToolbarModule,
         StoreModule.provideStore(rootReducer),
         StoreDevtoolsModule.instrumentOnlyWithExtension({
             maxAge: 5,

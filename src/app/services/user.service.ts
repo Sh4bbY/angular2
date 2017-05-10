@@ -12,7 +12,6 @@ import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class UserService {
-    public token: string;
     
     constructor(private http: Http,
                 private store: Store<IRootState>,

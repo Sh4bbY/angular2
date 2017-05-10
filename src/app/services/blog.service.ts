@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { AuthenticationService } from './authentication.service';
 import { IBlogPost } from '../interfaces/blog-post';
 import { UserService } from './user.service';
-import { AuthenticationService } from './authentication.service';
 import { IRootState } from '../reducers/index';
-import { Store } from '@ngrx/store';
 import { CREATE_BLOG_POST, DELETE_BLOG_POST, LOAD_BLOG_POSTS, UPDATE_BLOG_POST } from '../reducers/blog.reducer';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class BlogService {

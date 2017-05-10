@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
-import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
 import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../reducers/user.reducer';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';

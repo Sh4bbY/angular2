@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 import { routeAnimation } from '../../../animations/route.animation';
+
 @Component({
     animations: [ routeAnimation ],
     template  : require('./tables.html'),

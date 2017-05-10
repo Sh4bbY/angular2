@@ -16,7 +16,8 @@ try {
 
 module.exports = {
     entry: {
-        'app': './src/bootstrap.ts'
+        'app'      : './src/bootstrap.ts',
+        'polyfills': './src/polyfills.ts'
     },
     
     resolve: {
@@ -29,11 +30,15 @@ module.exports = {
                 test   : /\.ts$/,
                 loaders: [
                     {
+                        loader : 'ng-router-loader',
+                        options: {
+                            loader: 'async-require'
+                        }
+                    }, {
                         loader : 'awesome-typescript-loader',
                         options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
                     },
-                    'angular2-template-loader',
-                    'angular-router-loader'
+                    'angular2-template-loader'
                 ]
             }, {
                 test   : /\.s[ac]ss$/,
@@ -60,7 +65,7 @@ module.exports = {
             }, {
                 test   : /\.css$/,
                 exclude: conf.dir.fromRoot('app/app'),
-                loader : ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap'})
+                loader : ExtractTextPlugin.extract({fallback: 'style-loader', loader: 'css-loader?sourceMap'})
             }
         ]
     },
@@ -73,10 +78,17 @@ module.exports = {
             {} // a map of your routes
         ),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['commons']
+            name     : 'vendor',
+            chunks   : ['app'],
+            minChunks: module => /node_modules/.test(module.resource)
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name     : ['polyfills', 'vendor']
         }),
         new HtmlWebpackPlugin({
-            template: 'public/index.html'
+            template: 'public/index.html',
+            chunksSortMode: 'dependency',
+            chunks  : ['polyfills', 'vendor', 'app']
         }),
         new CopyWebpackPlugin([{
             from: 'public',

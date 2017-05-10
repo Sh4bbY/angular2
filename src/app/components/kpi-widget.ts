@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { expandAnimation } from '../animations/expand.animation';
 import { rotateAnimation } from '../animations/rotate.animation';
 
