@@ -1,10 +1,10 @@
-@import './themes/default-theme.scss';
-@import './util.scss';
-@import './basic/styles.scss';
-@import './basic/structure.scss';
-@import './basic/materials.scss';
-@import './spinner.scss';
 @import './variables.scss';
+
+@import './material/index.scss';
+@import './basic/index.scss';
+
+@import './util.scss';
+@import './spinner.scss';
 @import './grid.scss';
 @import './components/index';
 
