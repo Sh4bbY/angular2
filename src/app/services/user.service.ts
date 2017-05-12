@@ -31,11 +31,4 @@ export class UserService {
         return this.http.get('/api/users', options)
             .map((response: Response) => response.json());
     }
-    
-    register(formData: IRegistrationForm): Observable<any> {
-        return this.http.post('/api/registration', formData)
-            .map((res: Response) => {
-                this.store.dispatch({ type: REGISTRATION_SUCCESS, payload: res.json() });
-            });
-    }
 }

@@ -1,8 +1,9 @@
 import { Component, ElementRef, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { routeAnimation } from '../animations/route.animation';
+import { UserService } from '../services/user.service';
 
 @Component({
     animations: [ routeAnimation ],
@@ -40,6 +41,7 @@ import { routeAnimation } from '../animations/route.animation';
                             </md-hint>
                         </md-input-container>
                         <br/>
+                        {{ responseError }}
                         <br/>
                         <button md-raised-button type="submit" color="primary" class="full-width">Register</button>
                         <br/>
@@ -59,6 +61,7 @@ export class RegistrationPage implements OnInit {
     @ViewChild('pc') pc: ElementRef;
     
     model: any;
+    responseError      = '';
     registerForm: FormGroup;
     formErrors         = {
         name            : '',
@@ -87,7 +90,10 @@ export class RegistrationPage implements OnInit {
         mismatchedPasswords: 'Passwords need to match',
     };
     
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    constructor(private fb: FormBuilder,
+                private authService: AuthenticationService,
+                private userService: UserService,
+                private router: Router) {
         this.model = {};
     }
     
@@ -127,17 +133,36 @@ export class RegistrationPage implements OnInit {
             const control            = form.get(field);
             if (control && control.dirty && !control.valid) {
                 const messages = this.validationMessages[ field ];
-                Object.keys(control.errors).forEach(key => this.formErrors[ field ] += messages[ key ] + '');
+                Object.keys(control.errors)
+                    .forEach(key => this.formErrors[ field ] += messages[ key ] + '');
             }
             if (form.hasError('mismatchedPasswords')) {
                 this.formErrors.password_confirm = this.validationMessages.mismatchedPasswords;
+                form.get('password_confirm').setErrors([ 'mismatchedPasswords' ]);
             }
         });
     }
     
     submit() {
-        this.userService.register(this.model)
-            .subscribe(() => this.router.navigateByUrl('/'));
+        if (!this.registerForm.valid) {
+            console.log('form is not valid');
+            return;
+        }
+        this.authService.register(this.registerForm.value)
+            .subscribe(
+                () => this.router.navigateByUrl('/'),
+                (err) => this.handleServerError(err));
+    }
+    
+    handleServerError(err: any) {
+        console.log(err);
+        switch (err.status) {
+            case 406:
+                return this.responseError = 'your username or email-address is already being used';
+            case 400:
+            default:
+                return this.responseError = 'something went wrong';
+        }
     }
 }
 

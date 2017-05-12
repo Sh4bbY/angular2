@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../reducers/user.reducer';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS, REGISTRATION_SUCCESS } from '../reducers/user.reducer';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
+import { IRegistrationForm } from '../interfaces/forms/registration';
 
 
 @Injectable()
@@ -43,16 +44,30 @@ export class AuthenticationService {
                 return true;
             });
     }
+    
+    register(formData: IRegistrationForm): Observable<any> {
+        return this.http.post('/api/registration', formData)
+            .map(processRegistrationResponse.bind(this));
+    }
 }
 
+function processRegistrationResponse(res: Response) {
+    return processTokenResponse.call(this, res, REGISTRATION_SUCCESS);
+}
+
+
 function processLoginResponse(res: Response) {
+    return processTokenResponse.call(this, res, LOGIN_SUCCESS);
+}
+
+function processTokenResponse(res: Response, event: string) {
     const token        = res.json() && res.json().token;
     const tokenPayload = getTokenPayload(token);
     
     if (token && tokenPayload) {
         this.token = token;
         localStorage.setItem('currentUser', JSON.stringify({ name: tokenPayload.name, token }));
-        this.store.dispatch({ type: LOGIN_SUCCESS, payload: tokenPayload });
+        this.store.dispatch({ type: event, payload: tokenPayload });
         return true;
     }
     return false;
