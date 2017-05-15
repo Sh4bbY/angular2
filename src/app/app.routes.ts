@@ -8,6 +8,9 @@ import { LoginPage } from './pages/login.page';
 import { RegistrationPage } from './pages/registration.page';
 import { BlogModule } from './modules/blog.module';
 import { TodoModule } from './modules/todo.module';
+import { GameOfLifeComponent } from './components/game-of-life';
+import { ShooterComponent } from './components/shooter';
+import { PhysicsComponent } from './components/physics';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +20,9 @@ export const routes: Routes = [
     { path: 'blog', loadChildren: () => BlogModule },
     { path: 'todo', loadChildren: () => TodoModule },
     { path: 'chat', loadChildren: './pages/chat.module#ChatModule' },
+    { path: 'canvas/game-of-life', component: GameOfLifeComponent },
+    { path: 'canvas/shooter', component: ShooterComponent },
+    { path: 'canvas/physics', component: PhysicsComponent },
     { path: 'ui/typography', component: TypographyPage },
     { path: 'ui/charts/d3', loadChildren: './modules/d3.module#D3Module' },
     { path: 'ui/charts/highcharts', loadChildren: './modules/highcharts.module#HighchartsModule' },

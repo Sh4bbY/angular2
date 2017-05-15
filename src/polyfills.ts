@@ -32,8 +32,5 @@ if ('production' === process.env.NODE_ENV) {
     // Development
     Error.stackTraceLimit = Infinity;
     
-    // prevents error message about md-theme is not loaded with webpack-dev-server
-    require('@angular/material/prebuilt-themes/indigo-pink.css');
-    
     require('zone.js/dist/long-stack-trace-zone');
 }

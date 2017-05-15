@@ -34,6 +34,10 @@ import { TablesPage } from './pages/ui/tables/tables.page';
 import { KpiWidgetComponent } from './components/kpi-widget';
 import { RegistrationPage } from './pages/registration.page';
 import { LoginPage } from './pages/login.page';
+import { GameOfLifeComponent } from './components/game-of-life';
+import { ShooterComponent } from './components/shooter';
+import { PhysicsComponent } from './components/physics';
+import { SearchComponent } from './components/search';
 
 @NgModule({
     imports        : [
@@ -79,6 +83,10 @@ import { LoginPage } from './pages/login.page';
         BackToTopComponent,
         NavItemComponent,
         KpiWidgetComponent,
+        GameOfLifeComponent,
+        ShooterComponent,
+        PhysicsComponent,
+        SearchComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],

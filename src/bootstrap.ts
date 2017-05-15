@@ -4,7 +4,7 @@ import { ApplicationRef, enableProdMode } from '@angular/core';
 import { AppModule } from './app/app.module';
 import './scss/styles.scss';
 
-import 'sw-toolbox';
+//import 'sw-toolbox';
 //import 'hammerjs';
 //import 'rxjs';
 

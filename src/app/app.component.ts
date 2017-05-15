@@ -28,6 +28,13 @@ export class App implements OnInit {
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },
         {
+            name: 'Canvas', icon: 'format_paint', children: [
+            { name: 'Game of Life', route: '/canvas/game-of-life', icon: 'blur_on' },
+            { name: 'Shooter', route: '/canvas/shooter', icon: 'gamepad' },
+            { name: 'Physics', route: '/canvas/physics', icon: 'language' },
+        ],
+        },
+        {
             name: 'UI', icon: 'view_quilt', children: [
             { name: 'Typography', route: '/ui/typography', icon: 'text_format' },
             { name: 'tables', route: '/ui/tables', icon: 'grid_on' },
@@ -93,6 +100,12 @@ export class App implements OnInit {
             else {
                 this.navMode = 'side';
                 this.sideNav.open();
+            }
+            
+            if (screen.width <= 330) {
+                document.getElementsByTagName('body')[ 0 ].style.height = `${screen.height}px`;
+            } else {
+                document.getElementsByTagName('body')[ 0 ].style.height = '';
             }
         });
     }
