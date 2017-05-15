@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, ViewChild
 import { routeAnimation } from '../../../../animations/route.animation';
 import * as Highcharts from 'highcharts';
 import 'highcharts/adapters/standalone-framework.src';
+import { Http } from '@angular/http';
 
 @Component({
     animations: [ routeAnimation ],
@@ -18,13 +19,18 @@ export class HighchartsPage implements AfterViewInit, OnDestroy {
     @ViewChild('barChartEl') barChartEl: ElementRef;
     @ViewChild('pieChartEl') pieChartEl: ElementRef;
     
+    constructor(private http:Http){
+    }
     
     private lineChart: any;
     private barChart: any;
     private pieChart: any;
     
     ngAfterViewInit() {
-        this.lineChart = this.createLineChart();
+        
+        this.http.get('/api/chart_data/BTC_ETH').subscribe(res => {
+            this.lineChart = this.createLineChart(res.json());
+        });
         this.barChart  = this.createBarChart();
         this.pieChart  = this.createPieChart();
         
@@ -42,7 +48,7 @@ export class HighchartsPage implements AfterViewInit, OnDestroy {
         if (this.pieChart) this.pieChart.destroy();
     }
     
-    createLineChart() {
+    createLineChart(data:any) {
         if (!this.lineChartEl) {
             return null;
         }
@@ -50,11 +56,11 @@ export class HighchartsPage implements AfterViewInit, OnDestroy {
         const opts: any = {
             xAxis : {
                 type             : 'datetime',
-                tickPixelInterval: 150,
+                tickPixelInterval: 15,
             },
             series: [ {
-                name: 'Random data',
-                data: generateData(),
+                name: 'BTC_ETH',
+                data: data,
             } ],
             chart : {
                 type    : 'spline',
