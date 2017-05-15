@@ -12,14 +12,17 @@ import { BackToTopComponent } from '../../../src/app/components/back-to-top';
 import { AuthenticationService } from '../../../src/app/services/authentication.service';
 import { rootReducer } from '../../../src/app/reducers/index';
 import { App } from '../../../src/app/app.component';
+import { SearchComponent } from '../../../src/app/components/search';
+import { FormsModule } from '@angular/forms';
 
 describe('App', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [ App, UserMenuComponent, BackToTopComponent, NavItemComponent ],
+            declarations: [ App, UserMenuComponent, BackToTopComponent, NavItemComponent, SearchComponent ],
             providers   : [ AuthenticationService ],
             imports     : [
                 RouterTestingModule,
+                FormsModule,
                 MdInputModule,
                 MdIconModule,
                 MdSelectModule,
