@@ -4,6 +4,7 @@
             <md-icon>menu</md-icon>
         </button>
         <a routerLink="/" class="app-title"><span>shabb</span>tech</a>
+        <my-search></my-search>
         <span class="fill-space"></span>
         <button *ngIf="!(isAuthenticated$ | async)" md-button routerLink="/login" title="Login">
             <i class="fa fa-sign-in" aria-hidden="true"></i>

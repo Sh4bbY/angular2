@@ -1,0 +1,70 @@
+
+.search .mat-icon {
+  float : right;
+}
+
+.search {
+  margin-top  : 5px;
+  font-size   : 16px;
+  font-weight : normal;
+  margin-left : 60px;
+}
+
+.search {
+  margin-top  : 5px;
+  font-size   : 16px;
+  font-weight : normal;
+  margin-left : 60px;
+}
+
+.search .mat-input-underline {
+  background-color : #4dc4ff;
+}
+
+.search .mat-input-underline .mat-input-ripple {
+  background-color : #fff;
+  height           : 1px;
+}
+
+.search .mat-input-placeholder {
+  color : #fff;
+}
+
+.search.mat-focused .mat-input-placeholder,
+.search .mat-input-placeholder:not(.mat-empty) {
+  color : #4dc4ff;
+}
+
+.search-results {
+  position         : absolute;
+  top              : 42px;
+  margin           : 0;
+  list-style       : none;
+  z-index          : 4;
+  background-color : #0e1926;
+  padding          : 10px;
+  overflow         : hidden;
+}
+
+.search-results li {
+  max-width     : 400px;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  margin        : 5px 0;
+  border-bottom : 1px solid rgba(255, 255, 255, 0.4);
+  color         : #fff;
+}
+
+.search-results li a {
+  color : #fff;
+}
+
+.search-results li a:hover {
+  color : #4dc4ff;
+}
+
+@media (max-width : 480px) {
+  .mat-input-container.search {
+    display : none;
+  }
+}
