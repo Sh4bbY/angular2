@@ -3,6 +3,7 @@
 const webpack           = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CheckerPlugin     = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const conf  = require('./conf');
@@ -17,7 +18,7 @@ try {
 module.exports = {
     entry: {
         'app'      : './src/bootstrap.ts',
-        'polyfills': './src/polyfills.ts',
+        'polyfills': './src/polyfills.ts'
     },
     
     resolve: {
@@ -29,7 +30,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 use : [
-                    // {loader: 'ng-router-loader', options: {loader: 'async-require'}},
+                    {loader: 'ng-router-loader', options: {loader: 'async-require'}},
                     {
                         loader : 'awesome-typescript-loader',
                         options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
@@ -72,27 +73,42 @@ module.exports = {
             conf.dir.fromRoot('src'), // location of your app
             {} // a map of your routes
         ),
+        
+        /** enable treeshaking of vendor modules */
         new webpack.optimize.CommonsChunkPlugin({
             name     : 'vendor',
             chunks   : ['app'],
             minChunks: module => /node_modules/.test(module.resource)
         }),
+        
+        /** define order of chunk imports */
         new webpack.optimize.CommonsChunkPlugin({
             name: ['polyfills', 'vendor']
         }),
+        
+        /** specify a template and insert chunks */
         new HtmlWebpackPlugin({
             template      : 'public/index.html',
             chunksSortMode: 'dependency',
             chunks        : ['polyfills', 'vendor', 'app']
         }),
+        
+        /** copy all files from the public folder to the compilation root */
         new CopyWebpackPlugin([{
             from: 'public',
             to  : ''
         }]),
+        
+        /** Do type checking in a separate process, so webpack don't need to wait. */
+        new CheckerPlugin(),
+        
+        /** replace defined variables during compile time */
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
             'buildConfig.mapsKey' : JSON.stringify(mapsKey)
         }),
+        
+        /** provides global access to aliases(keys) for the library(values) */
         new webpack.ProvidePlugin({
             $     : 'jquery',
             jQuery: 'jquery'
