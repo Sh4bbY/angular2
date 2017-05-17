@@ -85,7 +85,7 @@ class Sim {
     gameLoop() {
         this.frame++;
         if (!this.isPaused) {// && this.frame % 10 == 0) {
-            const time     = Date.now();
+            const time     = performance.now();
             this.df        = (time - this.timeStamp || 0) / 100;
             this.timeStamp = time;
             this.objects.forEach(obj => obj.update());

@@ -148,20 +148,6 @@ export class HighchartsPage implements AfterViewInit, OnDestroy {
     }
 }
 
-function generateData() {
-    const data = [];
-    const time = Date.now();
-    
-    for (let i = 0; i < 20; i++) {
-        data.push({
-            x: time + i * 1000,
-            y: Math.floor(Math.random() * 100),
-        });
-    }
-    return data;
-}
-
-
 function generateBarData() {
     const data = [];
     
