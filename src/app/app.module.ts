@@ -85,7 +85,7 @@ import { SearchComponent } from './components/search';
         KpiWidgetComponent,
         GameOfLifeComponent,
         ShooterComponent,
-       // PhysicsComponent,
+        PhysicsComponent,
         SearchComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],

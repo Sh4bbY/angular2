@@ -4,10 +4,6 @@ import { ApplicationRef, enableProdMode } from '@angular/core';
 import { AppModule } from './app/app.module';
 import './scss/styles.scss';
 
-//import 'sw-toolbox';
-//import 'hammerjs';
-//import 'rxjs';
-
 let decorateModuleRef = <T>(value: T): T => value;
 
 if (process.env.NODE_ENV === 'production') {

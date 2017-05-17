@@ -37,8 +37,7 @@ module.exports = {
             }, {
                 test: /\.s[ac]ss$/,
                 use : [
-                    {loader: 'to-string-loader'}, // creates style nodes from JS strings
-                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS
+                    {loader: 'raw'}, // takes CSS and import it as string
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
                 ]
             }, {

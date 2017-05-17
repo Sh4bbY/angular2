@@ -6,14 +6,15 @@ import {
     MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdInputModule, MdListModule,
     MdMenuModule, MdSelectModule, MdSidenavModule, MdToolbarModule,
 } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { NavItemComponent } from '../../../src/app/components/nav-item';
 import { UserMenuComponent } from '../../../src/app/components/user-menu';
 import { BackToTopComponent } from '../../../src/app/components/back-to-top';
+import { SearchComponent } from '../../../src/app/components/search';
 import { AuthenticationService } from '../../../src/app/services/authentication.service';
 import { rootReducer } from '../../../src/app/reducers/index';
 import { App } from '../../../src/app/app.component';
-import { SearchComponent } from '../../../src/app/components/search';
-import { FormsModule } from '@angular/forms';
 
 describe('App', () => {
     beforeEach(() => {
@@ -23,6 +24,7 @@ describe('App', () => {
             imports     : [
                 RouterTestingModule,
                 FormsModule,
+                HttpModule,
                 MdInputModule,
                 MdIconModule,
                 MdSelectModule,

@@ -17,7 +17,7 @@ try {
 module.exports = {
     entry: {
         'app'      : './src/bootstrap.ts',
-        'polyfills': './src/polyfills.ts'
+        'polyfills': './src/polyfills.ts',
     },
     
     resolve: {
@@ -29,7 +29,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 use : [
-                   // {loader: 'ng-router-loader', options: {loader: 'async-require'}},
+                    // {loader: 'ng-router-loader', options: {loader: 'async-require'}},
                     {
                         loader : 'awesome-typescript-loader',
                         options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
@@ -39,8 +39,7 @@ module.exports = {
             }, {
                 test   : /\.s[ac]ss$/,
                 use    : [
-                    'to-string-loader', // creates JS strings
-                    {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
+                    'raw-loader', // creates JS strings
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
                 ],
                 exclude: [conf.dir.fromRoot('src/scss')],
@@ -60,7 +59,7 @@ module.exports = {
                 use : 'file-loader?username=assets/[username].[hash].[ext]'
             }, {
                 test   : /\.css$/,
-                use    : ExtractTextPlugin.extract({fallback: 'style-loader', loader: 'css-loader?sourceMap'}),
+                use    : ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap'}),
                 exclude: conf.dir.fromRoot('app/app')
             }
         ]

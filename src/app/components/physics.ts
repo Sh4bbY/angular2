@@ -25,7 +25,6 @@ export class PhysicsComponent implements AfterViewInit {
     
     fire() {
         const value = +this.vector.nativeElement.value;
-        console.log(value);
         this.sim.fire({ x: value, y: value });
     }
     
@@ -42,7 +41,7 @@ class Sim {
     isPaused          = false;
     stage: PIXI.Container;
     renderer: PIXI.SystemRenderer;
-    objects: Object[] = [];
+    objects: SimObject[] = [];
     timeStamp: number;
     mousedownPoint: IPoint;
     df: number;
@@ -54,7 +53,7 @@ class Sim {
         PIXI.ticker.shared.add(this.gameLoop.bind(this));
         this.renderer.render(this.stage);
         
-        this.objects.push(new Object(this));
+        this.objects.push(new SimObject(this));
     }
     
     initialize(element: HTMLElement) {
@@ -68,13 +67,12 @@ class Sim {
         this.stage.interactive = true;
         this.stage.hitArea     = new PIXI.Rectangle(0, 0, Sim.WIDTH, Sim.HEIGHT);
         this.stage.on('mousedown', (event: any) => {
-            const p     = event.data.global;
-            this.mousedownPoint = {x: p.x, y: p.y};
+            const p             = event.data.global;
+            this.mousedownPoint = { x: p.x, y: p.y };
         });
         this.stage.on('mouseup', (event: any) => {
             const p     = event.data.global;
             const force = { x: p.x - this.mousedownPoint.x, y: p.y - this.mousedownPoint.y };
-            console.log(force);
             this.fire(force);
         });
         this.renderer.view.style.border = '1px solid black';
@@ -101,7 +99,7 @@ interface IPoint {
     y: number
 }
 
-class Object {
+class SimObject {
     sim: Sim;
     shape: PIXI.Graphics;
     vector: IPoint;
@@ -148,7 +146,6 @@ class Object {
             this.vector.x = -(this.vector.x * this.absorbtion);
         }
         
-        //   console.log(Sim.G , this.pos.y, this.sim.df, this.vector.y);
         this.draw();
     }
 }
