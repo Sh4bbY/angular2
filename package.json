@@ -83,9 +83,9 @@
     "to-string-loader": "^1.1.5",
     "ts-node": "3.0.2",
     "tslint": "5.1.0",
-    "typescript": "2.1.5",
-    "webpack": "2.4.1",
-    "webpack-dev-server": "2.4.2",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5",
     "webpack-merge": "4.1.0"
   }
 }
