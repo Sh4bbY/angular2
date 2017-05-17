@@ -4,20 +4,8 @@
     <base href="/">
     <title>Angular With Webpack</title>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#123456">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(navigator.serviceWorker.register('/precache-service-worker.js'))
-                .then(registration => {
-                    console.log('Service Workers registered');
-                })
-                .catch(err => {
-                    console.log('Service Worker registration failed: ', err);
-                });
-        }
-    </script>
+    <meta name="theme-color" content="#123456">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,6 +14,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="javascript-disabled">
+    Javascript needs to be enabled in order to use this app.
+</div>
 <my-app>
     <style type="text/css">
         @-webkit-keyframes spin {
@@ -99,5 +90,21 @@
         <div></div>
     </div>
 </my-app>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+    /** remove warning for disabled javascript */
+    document.getElementsByClassName('javascript-disabled')[0].remove();
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(navigator.serviceWorker.register('/precache-service-worker.js'))
+            .then(registration => {
+                console.log('Service Workers registered');
+            })
+            .catch(err => {
+                console.log('Service Worker registration failed: ', err);
+            });
+    }
+</script>
 </body>
 </html>
