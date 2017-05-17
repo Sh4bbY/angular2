@@ -27,23 +27,19 @@ module.exports = {
     module: {
         rules: [
             {
-                test   : /\.ts$/,
-                loaders: [
+                test: /\.ts$/,
+                use : [
+                   // {loader: 'ng-router-loader', options: {loader: 'async-require'}},
                     {
-                        loader : 'ng-router-loader',
-                        options: {
-                            loader: 'async-require'
-                        }
-                    }, {
                         loader : 'awesome-typescript-loader',
-                        options: {configFileName: conf.dir.fromRoot('tsconfig.webpack.json')}
+                        options: {configFileName: conf.dir.fromRoot('tsconfig.json')}
                     },
                     'angular2-template-loader'
                 ]
             }, {
                 test   : /\.s[ac]ss$/,
                 use    : [
-                    {loader: 'to-string-loader'}, // creates JS strings
+                    'to-string-loader', // creates JS strings
                     {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
                 ],
@@ -51,21 +47,21 @@ module.exports = {
                 include: [conf.dir.fromRoot('src/app')]
             }, {
                 test   : /\.s[ac]ss$/,
-                loader : ExtractTextPlugin.extract([
+                use    : ExtractTextPlugin.extract([
                     {loader: 'css-loader', options: {sourceMap: true}}, // translates CSS into CommonJS Modules
                     {loader: 'sass-loader', options: {sourceMap: true}} // compiles Sass to CSS
                 ]),
                 exclude: [conf.dir.fromRoot('src/app')]
             }, {
-                test  : /\.html$/,
-                loader: 'html-loader'
+                test: /\.html$/,
+                use : 'html-loader'
             }, {
-                test  : /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file-loader?username=assets/[username].[hash].[ext]'
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                use : 'file-loader?username=assets/[username].[hash].[ext]'
             }, {
                 test   : /\.css$/,
-                exclude: conf.dir.fromRoot('app/app'),
-                loader : ExtractTextPlugin.extract({fallback: 'style-loader', loader: 'css-loader?sourceMap'})
+                use    : ExtractTextPlugin.extract({fallback: 'style-loader', loader: 'css-loader?sourceMap'}),
+                exclude: conf.dir.fromRoot('app/app')
             }
         ]
     },
@@ -83,12 +79,12 @@ module.exports = {
             minChunks: module => /node_modules/.test(module.resource)
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name     : ['polyfills', 'vendor']
+            name: ['polyfills', 'vendor']
         }),
         new HtmlWebpackPlugin({
-            template: 'public/index.html',
+            template      : 'public/index.html',
             chunksSortMode: 'dependency',
-            chunks  : ['polyfills', 'vendor', 'app']
+            chunks        : ['polyfills', 'vendor', 'app']
         }),
         new CopyWebpackPlugin([{
             from: 'public',
