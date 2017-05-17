@@ -22,7 +22,7 @@ export const routes: Routes = [
     { path: 'chat', loadChildren: './pages/chat.module#ChatModule' },
     { path: 'canvas/game-of-life', component: GameOfLifeComponent },
     { path: 'canvas/shooter', component: ShooterComponent },
-    { path: 'canvas/physics', component: PhysicsComponent },
+ //   { path: 'canvas/physics', component: PhysicsComponent },
     { path: 'ui/typography', component: TypographyPage },
     { path: 'ui/charts/d3', loadChildren: './modules/d3.module#D3Module' },
     { path: 'ui/charts/highcharts', loadChildren: './modules/highcharts.module#HighchartsModule' },
