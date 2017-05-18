@@ -28,11 +28,14 @@ export class App implements OnInit {
         { name: 'Todo-List', route: '/todo', icon: 'checkbox' },
         { name: 'Chat', route: '/chat', icon: 'chat' },
         {
-            name: 'Canvas', icon: 'format_paint', children: [
-            { name: 'Game of Life', route: '/canvas/game-of-life', icon: 'blur_on' },
-            { name: 'Shooter', route: '/canvas/shooter', icon: 'gamepad' },
-            { name: 'Physics', route: '/canvas/physics', icon: 'language' },
-        ],
+            name: 'Pixi', icon: 'format_paint', children: [
+            { name: 'Game of Life', route: '/pixi/game-of-life', icon: 'blur_on' },
+            { name: 'Shooter', route: '/pixi/shooter', icon: 'gamepad' },
+            { name: 'Physics', route: '/pixi/physics', icon: 'language' } ],
+        },
+        {
+            name: 'Three', icon: 'format_paint', children: [
+            { name: 'Sphere', route: '/three/sphere', icon: 'blur_on' } ],
         },
         {
             name: 'UI', icon: 'view_quilt', children: [

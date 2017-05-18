@@ -38,6 +38,7 @@ import { GameOfLifeComponent } from './components/game-of-life';
 import { ShooterComponent } from './components/shooter';
 import { PhysicsComponent } from './components/physics';
 import { SearchComponent } from './components/search';
+import { SphereComponent } from './components/sphere';
 
 @NgModule({
     imports        : [
@@ -87,6 +88,7 @@ import { SearchComponent } from './components/search';
         ShooterComponent,
         PhysicsComponent,
         SearchComponent,
+        SphereComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],
