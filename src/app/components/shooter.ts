@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as PIXI from 'pixi.js';
+import InteractionEvent = PIXI.interaction.InteractionEvent;
 
 
 /* tslint:disable */
@@ -56,8 +57,8 @@ class Shooter {
         this.stage             = new PIXI.Container();
         this.stage.interactive = true;
         this.stage.hitArea     = new PIXI.Rectangle(0, 0, Shooter.WIDTH, Shooter.HEIGHT);
-        this.stage.on('mousedown', () => {
-            this.bunny.shoot();
+        this.stage.on('mousedown', (event: InteractionEvent) => {
+            this.bunny.shoot(event);
         });
         
         this.bunny   = new Bunny(this, 200, 150);
@@ -99,12 +100,20 @@ class Bunny {
         this.sprite.rotation = Math.atan2(dist_Y, dist_X);
     }
     
-    shoot() {
+    shoot(event: InteractionEvent) {
         const position = {
-            x: this.sprite.position.x + Math.cos(this.sprite.rotation) * 50,
-            y: this.sprite.position.y + Math.sin(this.sprite.rotation) * 80,
+            x: this.sprite.position.x + Math.cos(this.sprite.rotation) * 40,
+            y: this.sprite.position.y + Math.sin(this.sprite.rotation) * 40,
         };
-        new Bullet(this.game, position, this.sprite.rotation);
+        const dist_Y   = position.y - event.data.global.y;
+        const dist_X   = position.x - event.data.global.x;
+        
+        let rotation = Math.atan(dist_Y / dist_X);
+        
+        if (position.x > event.data.global.x)
+            rotation = rotation - Math.PI;
+        
+        new Bullet(this.game, position, rotation);
     }
 }
 
@@ -121,7 +130,8 @@ class Bullet {
         this.sprite.position.x = position.x;
         this.sprite.position.y = position.y;
         this.sprite.rotation   = rotation;
-        this.sprite.scale.set(0.7, 0.7);
+        this.sprite.anchor.set(0.5, 0.5);
+        this.sprite.scale.set(0.5, 0.5);
         this.game.stage.addChild(this.sprite);
         this.game.bullets.push(this);
     }
