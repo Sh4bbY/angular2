@@ -1,14 +1,15 @@
 {
   "name": "client",
   "version": "0.0.0",
-  "description": "A webpack starter for Angular",
+  "description": "shabbtech angular2 client application",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress",
     "server": "node ./node_modules/node-server/index.js",
     "test": "karma start config/karma.conf.js",
     "lint": "tslint -c tslint.json './src/**/*.ts'",
     "e2e": "protractor ./config/protractor.conf.js",
-    "build": "NODE_ENV=production rimraf dist && webpack --config ./config/webpack.prod.js --progress --bail --profile"
+    "build": "NODE_ENV=production rimraf dist && webpack --config ./config/webpack.prod.js --progress --bail --profile",
+    "ci:travis": "npm run lint && npm run test && npm run build"
   },
   "license": "MIT",
   "dependencies": {
@@ -71,7 +72,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "1.1.0",
     "karma-mocha-reporter": "2.2.3",
-    "karma-phantomjs-launcher": "1.0.4",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.3",
     "node-sass": "^4.5.2",
