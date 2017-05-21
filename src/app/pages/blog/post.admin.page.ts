@@ -75,10 +75,10 @@ export class PostAdminPage implements OnInit {
     save() {
         if (this.id) {
             this.blogService.updateBlogPost(this.id, this.model)
-                .subscribe(() => this.router.navigateByUrl('/admin/blog'));
+                .subscribe(() => this.router.navigateByUrl('/blog/admin'));
         }
         this.blogService.createBlogPost(this.model)
-            .subscribe(() => this.router.navigateByUrl('/admin/blog'));
+            .subscribe(() => this.router.navigateByUrl('/blog/admin'));
     }
     
     discard() {
