@@ -4,6 +4,7 @@ import { IUser } from '../interfaces/user';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 export const LOGIN_SUCCESS        = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS       = 'LOGOUT_SUCCESS';
+export const UNAUTHENTICATED      = 'UNAUTHENTICATED';
 
 const initialState: IUser = {
     id             : '',
@@ -13,10 +14,14 @@ const initialState: IUser = {
     isVerified     : false,
     createdAt      : null,
     roles          : [ 'guest' ],
+    isAuthPending  : true,
 };
 
 export const userReducer = (state: IUser = initialState, { type, payload }: Action): IUser => {
     switch (type) {
+        
+        case UNAUTHENTICATED:
+            return Object.assign({}, state, { isAuthPending: false });
         
         case LOGIN_SUCCESS:
             const userLoginData = {
@@ -25,6 +30,7 @@ export const userReducer = (state: IUser = initialState, { type, payload }: Acti
                 email          : payload.email,
                 createdAt      : payload.createdAt,
                 isAuthenticated: true,
+                isAuthPending  : false,
             };
             return Object.assign({}, state, userLoginData);
         
@@ -35,11 +41,12 @@ export const userReducer = (state: IUser = initialState, { type, payload }: Acti
                 email          : payload.email,
                 createdAt      : payload.createdAt,
                 isAuthenticated: true,
+                isAuthPending  : false,
             };
             return Object.assign({}, state, userRegistrationData);
         
         case LOGOUT_SUCCESS:
-            return Object.assign({}, initialState);
+            return Object.assign({}, initialState, { isAuthPending: false });
         
         default:
             return state;

@@ -61,7 +61,7 @@ const reducers = {
 let actionReducer;
 
 if (process.env.NODE_ENV === 'development') {
-    actionReducer = compose(storeFreeze, storeLogger(), combineReducers)(reducers);
+    actionReducer = compose(storeFreeze, storeLogger({collapsed: true}), combineReducers)(reducers);
 } else {
     actionReducer = combineReducers(reducers);
 }

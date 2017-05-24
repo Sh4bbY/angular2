@@ -63,9 +63,7 @@ export class App implements OnInit {
     }
     
     ngOnInit() {
-        if (this.authenticationService.token) {
-            this.authenticationService.loginByToken().subscribe();
-        }
+        this.authenticationService.loginByToken();
     }
     
     toggleSideNav() {

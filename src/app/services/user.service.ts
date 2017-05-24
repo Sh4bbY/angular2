@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { IUser } from '../interfaces/user';
-import { IRegistrationForm } from '../interfaces/forms/registration';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../reducers/index';
-import { REGISTRATION_SUCCESS } from '../reducers/user.reducer';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from './authentication.service';
 
@@ -19,7 +18,7 @@ export class UserService {
     }
     
     getUser(): Observable<IUser> {
-        return this.store.select(s => s.user);
+        return this.store.select(s => s.user).filter(user => !user.isAuthPending);
     }
     
     getUsers(): Observable<IUser[]> {

@@ -6,4 +6,5 @@ export interface IUser {
     isVerified: boolean;
     createdAt: Date;
     roles: string[];
+    isAuthPending: boolean;
 }
