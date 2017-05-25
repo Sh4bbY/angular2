@@ -57,7 +57,7 @@ module.exports = {
                 use : 'html-loader'
             }, {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                use : 'file-loader?username=assets/[username].[hash].[ext]'
+                use : 'file-loader?name=assets/[name].[hash].[ext]'
             }, {
                 test   : /\.css$/,
                 use    : ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap'}),
