@@ -21,7 +21,11 @@ export class SphereComponent implements AfterViewInit {
     sphere: Sphere;
     
     ngAfterViewInit() {
-        this.sphere = new Sphere(this.sphereContainer.nativeElement);
+        try{
+            this.sphere = new Sphere(this.sphereContainer.nativeElement);
+        }catch(err){
+            this.sphereContainer.nativeElement.innerHTML = 'your browser does not support webgl :(';
+        }
     }
 }
 

@@ -5,9 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin     = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-const conf  = require('./conf');
-let mapsKey = '';
+const conf        = require('./conf');
+const pacakgeJson = require('../package.json');
+const version     = pacakgeJson.version;
+let mapsKey       = '';
+
 try {
     const config = require('../config.json');
     mapsKey      = config.GoogleMapsApiKey;
@@ -56,7 +60,7 @@ module.exports = {
                 test: /\.html$/,
                 use : 'html-loader'
             }, {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\??\#?v=[.0-9]+)?$/,
                 use : 'file-loader?name=assets/[name].[hash].[ext]'
             }, {
                 test   : /\.css$/,
@@ -104,8 +108,17 @@ module.exports = {
         
         /** replace defined variables during compile time */
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-            'buildConfig.mapsKey' : JSON.stringify(mapsKey)
+            'process.env.NODE_ENV' : JSON.stringify(process.env.NODE_ENV || 'development'),
+            'buildConfig.mapsKey'  : JSON.stringify(mapsKey),
+            'buildConfig.version'  : JSON.stringify(version),
+            'buildConfig.buildTime': JSON.stringify(Date.now())
+        }),
+        
+        /** preload specified assets */
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as: 'script',
+            include: ['polyfills', 'vendor']
         }),
         
         /** provides global access to aliases(keys) for the library(values) */

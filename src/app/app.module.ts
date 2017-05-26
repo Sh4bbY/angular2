@@ -39,6 +39,8 @@ import { ShooterComponent } from './components/shooter';
 import { PhysicsComponent } from './components/physics';
 import { SearchComponent } from './components/search';
 import { SphereComponent } from './components/sphere';
+import { AppFooterComponent } from './components/app-footer';
+import { AppService } from './services/app.service';
 
 @NgModule({
     imports        : [
@@ -68,6 +70,7 @@ import { SphereComponent } from './components/sphere';
         AuthenticationService,
         UserService,
         BlogService,
+        AppService,
         FeedbackService,
         AuthGuard,
     ],
@@ -84,11 +87,8 @@ import { SphereComponent } from './components/sphere';
         BackToTopComponent,
         NavItemComponent,
         KpiWidgetComponent,
-        GameOfLifeComponent,
-        ShooterComponent,
-        PhysicsComponent,
         SearchComponent,
-        SphereComponent,
+        AppFooterComponent,
     ],
     entryComponents: [ FeedbackDialogComponent ],
     bootstrap      : [ App ],

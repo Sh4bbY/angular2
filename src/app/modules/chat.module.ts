@@ -5,7 +5,7 @@ import { MdButtonModule, MdCardModule, MdInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { WebSocketService } from '../services/websocket.service';
 import { ChatService } from '../services/chat.service';
-import { ChatPage } from './chat.page';
+import { ChatPage } from '../pages/chat.page';
 import { ChatComponent } from '../components/chat';
 
 @NgModule({

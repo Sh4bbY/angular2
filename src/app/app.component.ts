@@ -9,6 +9,7 @@ import { IRootState } from './reducers/index';
 import { SET_WINDOW_SIZE } from './reducers/app.reducer';
 import { AuthenticationService } from './services/authentication.service';
 import { INavItem } from './interfaces/nav-item';
+import { AppService } from './services/app.service';
 
 @Component({
     selector   : 'my-app',
@@ -20,8 +21,6 @@ export class App implements OnInit {
     windowSize$: Observable<any>;
     isAuthenticated$: Observable<boolean>;
     
-    navMode              = 'side';
-    navOpen              = false;
     navItems: INavItem[] = [
         { name: 'Home', route: '/home', icon: 'home' },
         { name: 'Blog', route: '/blog', icon: 'description' },
@@ -55,7 +54,8 @@ export class App implements OnInit {
     
     constructor(private store: Store<IRootState>,
                 private dialog: MdDialog,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                public appService: AppService) {
         this.windowSize$      = store.select(s => s.app.windowSize);
         this.isAuthenticated$ = store.select(s => s.user.isAuthenticated);
         
@@ -64,6 +64,7 @@ export class App implements OnInit {
     
     ngOnInit() {
         this.authenticationService.loginByToken();
+        this.appService.sideNav = this.sideNav;
     }
     
     toggleSideNav() {
@@ -95,11 +96,11 @@ export class App implements OnInit {
         
         this.windowSize$.skip(1).subscribe(screen => {
             if (screen.width < 768) {
-                this.navMode = 'over';
+                this.sideNav.mode = 'over';
                 this.sideNav.close();
             }
             else {
-                this.navMode = 'side';
+                this.sideNav.mode = 'side';
                 this.sideNav.open();
             }
             

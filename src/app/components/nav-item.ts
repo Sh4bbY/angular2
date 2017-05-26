@@ -1,7 +1,8 @@
-import { Component,  Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { INavItem } from '../interfaces/nav-item';
 import { expandAnimation } from '../animations/expand.animation';
 import { rotateAnimation } from '../animations/rotate.animation';
+import { AppService } from '../services/app.service';
 
 @Component({
     selector  : 'my-nav-item',
@@ -13,15 +14,16 @@ import { rotateAnimation } from '../animations/rotate.animation';
         }
 
         a.is-active {
-            position: relative;
+            position : relative;
         }
+
         a.is-active:before {
             border-left : 3px solid #4dc4ff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            content: '';
+            position    : absolute;
+            top         : 0;
+            left        : 0;
+            bottom      : 0;
+            content     : '';
         }
 
         .child-container {
@@ -35,7 +37,7 @@ import { rotateAnimation } from '../animations/rotate.animation';
     ` ],
     template  : `
         <a *ngIf="navItem.hasOwnProperty('route')" md-list-item
-           [routerLink]="[navItem.route]" [routerLinkActive]="['is-active']">
+           [routerLink]="[navItem.route]" (click)="onClick($event)" [routerLinkActive]="['is-active']">
             <md-icon>{{navItem.icon}}</md-icon>
             {{navItem.name}}
         </a>
@@ -56,8 +58,17 @@ export class NavItemComponent {
     rotateState  = 'initial';
     @Input() navItem: INavItem;
     
+    constructor(private appService: AppService) {
+    }
+    
     toggleNavChildren() {
         this.showChildren = !this.showChildren;
         this.rotateState  = (this.rotateState === 'initial') ? 'rotated' : 'initial';
+    }
+    
+    onClick(e: MouseEvent) {
+        if(this.appService.sideNav.mode === 'over'){
+            this.appService.sideNav.close();
+        }
     }
 }

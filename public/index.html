@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <base href="/">
     <title>shabbtech</title>
@@ -7,17 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#123456">
     <link rel="manifest" href="/manifest.json">
+    <link rel="preload" href="/assets/img/bg/sky.jpg" as="image">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="javascript-disabled">
-    Javascript needs to be enabled in order to use this app.
-</div>
 <my-app>
+
     <style type="text/css">
         @-webkit-keyframes spin {
             0% { transform : rotate(0deg); }
@@ -85,26 +80,29 @@
             border-top-color : #e7ba08;
             animation        : spin 1.5s linear infinite;
         }
+
+        noscript {
+            position         : absolute;
+            top              : 0;
+            left             : 0;
+            right            : 0;
+            bottom           : 0;
+            background-color : #000;
+            display          : flex;
+            align-items      : center;
+            justify-content  : center;
+            color            : red;
+            z-index          : 1005;
+        }
     </style>
+    <noscript>
+        <p>Javascript needs to be enabled in order to use this app.</p>
+    </noscript>
     <div id="preloader" style="display: block;">
         <div></div>
     </div>
 </my-app>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-    /** remove warning for disabled javascript */
-    document.getElementsByClassName('javascript-disabled')[0].remove();
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(navigator.serviceWorker.register('/precache-service-worker.js'))
-            .then(registration => {
-                console.log('Service Workers registered');
-            })
-            .catch(err => {
-                console.log('Service Worker registration failed: ', err);
-            });
-    }
-</script>
+<!-- register service workers -->
+<script src="sw-registration.js"></script>
 </body>
 </html>

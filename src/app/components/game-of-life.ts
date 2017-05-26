@@ -1,12 +1,15 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as PIXI from 'pixi.js';
+import { IRootState } from '../reducers/index';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
 
 
 /* tslint:disable */
 
 @Component({
-    selector  : 'my-game-of-life',
-    template  : `
+    selector: 'my-game-of-life',
+    template: `
         <md-card>
             <h2>Game of Life</h2>
             <button md-raised-button *ngIf="!game?.isPlaying" (click)="game.run()">run</button>
@@ -15,18 +18,31 @@ import * as PIXI from 'pixi.js';
             <button md-raised-button *ngIf="!game?.isPlaying" (click)="game.reset()">reset</button>
             <br/>
             <br/>
-            <div #gameContainer></div>
+            <div #gameContainer style="overflow: hidden"></div>
         </md-card>
     `,
 })
 
-export class GameOfLifeComponent implements AfterViewInit {
+export class GameOfLifeComponent implements AfterViewInit,OnDestroy {
     @ViewChild('gameContainer') gameContainer: ElementRef;
     
     game: GameOfLife;
+    resizeSub: Subscription;
+    
+    constructor(private store: Store<IRootState>) {
+    }
     
     ngAfterViewInit() {
         this.game = new GameOfLife(this.gameContainer.nativeElement);
+        this.resizeSub = this.store.select(s => s.app.windowSize.width).subscribe(width => {
+            if (this.game) {
+                this.game.resize();
+            }
+        });
+    }
+    
+    ngOnDestroy() {
+        this.resizeSub.unsubscribe();
     }
 }
 
@@ -36,6 +52,7 @@ class GameOfLife {
     static WIDTH  = 800;
     static HEIGHT = 300;
     
+    container: HTMLElement;
     stage: PIXI.Container;
     renderer: PIXI.SystemRenderer;
     gameField: Cell[][];
@@ -44,10 +61,21 @@ class GameOfLife {
     birthCells: Cell[];
     killCells: Cell[];
     
-    constructor(element: HTMLElement) {
-        this.initialize(element);
+    constructor(container: HTMLElement) {
+        this.container = container;
+        this.initialize(container);
         this.createGameField(GameOfLife.COLS, GameOfLife.ROWS);
         PIXI.ticker.shared.add(this.gameLoop.bind(this));
+        this.renderer.render(this.stage);
+    }
+    
+    resize() {
+        GameOfLife.WIDTH = this.container.offsetWidth;
+        this.renderer.resize(this.container.offsetWidth, GameOfLife.HEIGHT);
+        this.gameField.forEach(col => col.forEach(cell => {
+            cell.resize();
+            cell.drawRect();
+        }));
         this.renderer.render(this.stage);
     }
     
@@ -59,7 +87,7 @@ class GameOfLife {
         this.isPlaying = !this.isPlaying;
     }
     
-    reset(){
+    reset() {
         this.gameField.forEach(col => col.forEach(cell => cell.resetState()));
         this.doStep = true;
     }
@@ -73,7 +101,6 @@ class GameOfLife {
         element.appendChild(this.renderer.view);
         this.stage                      = new PIXI.Container();
         this.stage.interactive          = true;
-        this.renderer.view.style.border = '1px dashed black';
     }
     
     createGameField(cols: number, rows: number) {
@@ -132,11 +159,16 @@ class Cell {
     }
     
     resetState() {
-        this.state  = Math.random() > 0.5 ? STATE.ALIVE : STATE.DEAD;
+        this.state = Math.random() > 0.5 ? STATE.ALIVE : STATE.DEAD;
+    }
+    
+    resize() {
+        this.width  = Math.floor(GameOfLife.WIDTH / GameOfLife.COLS);
+        this.height = Math.floor(GameOfLife.HEIGHT / GameOfLife.ROWS);
+        this.pos    = { x: this.x * this.width, y: this.y * this.height };
     }
     
     update() {
-        this.rect.clear();
         const neighbors      = this.getNeighbors();
         const aliveNeighbors = neighbors.filter(cell => cell.state === STATE.ALIVE);
         if (this.isAlive() && (aliveNeighbors.length < 2 || aliveNeighbors.length > 3)) {
@@ -159,6 +191,7 @@ class Cell {
     }
     
     drawRect() {
+        this.rect.clear();
         switch (this.state) {
             case STATE.ALIVE:
                 this.fillColor = 0x0000FF;

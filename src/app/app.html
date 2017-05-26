@@ -17,7 +17,7 @@
     </md-toolbar>
 
     <md-sidenav-container>
-        <md-sidenav #sideNav mode="{{navMode}}" opened="{{navOpen}}">
+        <md-sidenav #sideNav mode="side" opened="false">
             <my-user-menu></my-user-menu>
             <md-nav-list>
                 <my-nav-item *ngFor="let navItem of navItems" [navItem]="navItem"></my-nav-item>
@@ -32,8 +32,11 @@
                 </a>
             </md-nav-list>
         </md-sidenav>
-        <div class="st-content">
-            <router-outlet></router-outlet>
+        <div class="st-main">
+            <div class="st-content">
+                <router-outlet></router-outlet>
+            </div>
+            <app-footer></app-footer>
         </div>
     </md-sidenav-container>
     <my-back-to-top></my-back-to-top>

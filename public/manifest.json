@@ -1,11 +1,11 @@
 {
-  "name"                : "my-angular2",
-  "short_name"          : "my-ng2",
+  "name"                : "shabbtech",
+  "short_name"          : "shabbtech",
   "start_url"           : ".",
   "display"             : "standalone",
   "background_color"    : "#fff",
   "theme_color"         : "#123456",
-  "description"         : "my angular2 playground.",
+  "description"         : "shabbtech development playgorund",
   "icons"               : [
     {
       "src"  : "/assets/img/touch/homescreen48.png",
@@ -35,6 +35,11 @@
     {
       "src"  : "/assets/img/touch/homescreen192.png",
       "sizes": "192x192",
+      "type" : "image/png"
+    },
+    {
+      "src"  : "/assets/img/touch/homescreen512.png",
+      "sizes": "512x512",
       "type" : "image/png"
     }
   ],

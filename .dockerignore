@@ -1,0 +1,8 @@
+# IDEA IDE project settings directory
+.idea/
+config/
+coverage/
+node_modules/
+public/
+src/
+test/

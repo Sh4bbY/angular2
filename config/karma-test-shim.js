@@ -13,6 +13,9 @@ require('zone.js/dist/jasmine-patch');
 require('zone.js/dist/async-test');
 require('zone.js/dist/fake-async-test');
 
+// define global variables that are replaced by webpack's define plugin
+window.buildConfig = {version: '0.0.0'};
+
 var appContext = require.context('../test/unit', true, /\.spec\.ts/);
 appContext.keys().forEach(appContext);
 

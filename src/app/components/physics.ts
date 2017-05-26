@@ -1,5 +1,8 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import * as PIXI from 'pixi.js';
+import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../reducers/index';
 
 
 /* tslint:disable */
@@ -9,27 +12,32 @@ import * as PIXI from 'pixi.js';
     template: `
         <md-card>
             <h2>Physics</h2>
-            <input #vector type="text">
-            <button (click)="fire()">FIRE</button>
-            <br/>
-            <div #simContainer></div>
+            <div #simContainer style="overflow: hidden"></div>
         </md-card>
     `,
 })
 
-export class PhysicsComponent implements AfterViewInit {
+export class PhysicsComponent implements AfterViewInit, OnDestroy {
     @ViewChild('simContainer') simContainer: ElementRef;
     @ViewChild('vector') vector: ElementRef;
     
     sim: Sim;
+    resizeSub: Subscription;
     
-    fire() {
-        const value = +this.vector.nativeElement.value;
-        this.sim.fire({ x: value, y: value });
+    constructor(private store: Store<IRootState>) {
     }
     
     ngAfterViewInit() {
-        this.sim = new Sim(this.simContainer.nativeElement);
+        this.sim       = new Sim(this.simContainer.nativeElement);
+        this.resizeSub = this.store.select(s => s.app.windowSize.width).subscribe(width => {
+            if (this.sim) {
+                this.sim.resize();
+            }
+        });
+    }
+    
+    ngOnDestroy() {
+        this.resizeSub.unsubscribe();
     }
 }
 
@@ -38,17 +46,19 @@ class Sim {
     static HEIGHT = 400;
     static G      = 9.87;
     
-    isPaused          = false;
+    container: HTMLElement;
+    isPaused             = false;
     stage: PIXI.Container;
     renderer: PIXI.SystemRenderer;
     objects: SimObject[] = [];
     timeStamp: number;
     mousedownPoint: IPoint;
     df: number;
-    frame             = 0;
+    frame                = 0;
     
-    constructor(element: HTMLElement) {
-        this.initialize(element);
+    constructor(container: HTMLElement) {
+        this.container = container;
+        this.initialize(container);
         
         PIXI.ticker.shared.add(this.gameLoop.bind(this));
         this.renderer.render(this.stage);
@@ -56,26 +66,32 @@ class Sim {
         this.objects.push(new SimObject(this));
     }
     
-    initialize(element: HTMLElement) {
+    initialize(container: HTMLElement) {
         this.renderer = PIXI.autoDetectRenderer(Sim.WIDTH, Sim.HEIGHT, {
             antialias  : true,
             transparent: true,
             resolution : 1,
         });
-        element.appendChild(this.renderer.view);
+        container.appendChild(this.renderer.view);
         this.stage             = new PIXI.Container();
         this.stage.interactive = true;
         this.stage.hitArea     = new PIXI.Rectangle(0, 0, Sim.WIDTH, Sim.HEIGHT);
-        this.stage.on('mousedown', (event: any) => {
+        this.stage.on('pointerdown', (event: any) => {
             const p             = event.data.global;
             this.mousedownPoint = { x: p.x, y: p.y };
         });
-        this.stage.on('mouseup', (event: any) => {
+        this.stage.on('pointerup', (event: any) => {
             const p     = event.data.global;
             const force = { x: p.x - this.mousedownPoint.x, y: p.y - this.mousedownPoint.y };
             this.fire(force);
         });
         this.renderer.view.style.border = '1px solid black';
+    }
+    
+    resize() {
+        Sim.WIDTH = this.container.offsetWidth;
+        this.renderer.resize(this.container.offsetWidth - 2, Sim.HEIGHT);
+        this.renderer.render(this.stage);
     }
     
     fire(force: IPoint) {

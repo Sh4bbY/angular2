@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Sh4bbY/angular2.svg?branch=master)](https://travis-ci.org/Sh4bbY/angular2) 
+![License MIT](https://img.shields.io/badge/license-MIT-green.svg) 
+
 # angular2
 angular2 client application
 

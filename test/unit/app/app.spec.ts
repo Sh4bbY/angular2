@@ -15,12 +15,14 @@ import { SearchComponent } from '../../../src/app/components/search';
 import { AuthenticationService } from '../../../src/app/services/authentication.service';
 import { rootReducer } from '../../../src/app/reducers/index';
 import { App } from '../../../src/app/app.component';
+import { AppFooterComponent } from '../../../src/app/components/app-footer';
+import { AppService } from '../../../src/app/services/app.service';
 
 describe('App', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [ App, UserMenuComponent, BackToTopComponent, NavItemComponent, SearchComponent ],
-            providers   : [ AuthenticationService ],
+            declarations: [ App, UserMenuComponent, BackToTopComponent, NavItemComponent, SearchComponent, AppFooterComponent ],
+            providers   : [ AuthenticationService, AppService ],
             imports     : [
                 RouterTestingModule,
                 FormsModule,
