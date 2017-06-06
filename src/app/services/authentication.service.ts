@@ -46,7 +46,7 @@ export class AuthenticationService {
     loginByToken() {
         if (this.token) {
             this.http.post('/api/loginByToken', { token: this.token })
-                .map(processLoginResponse.bind(this)).subscribe();
+                .subscribe(processLoginResponse.bind(this));
         } else {
             return this.store.dispatch({ type: UNAUTHENTICATED });
         }
